@@ -54,7 +54,7 @@ static int cmd_si(char *args) {
 }
 static int cmd_info(char *args){
   if (strcmp(args, "r") == 0) {
-    printf("eax: %#x\necx: %#x\nedx: %#x\nebx: %#x\nesp: %#x\nebp: %#x\nesi: %#x\nedi: %#x\n", cpu.eax, cpu.ecx, cpu.edx, cpu.ebx, cpu.esp, cpu.ebp, cpu.esi, cpu.edi);
+    printf("eax: %#010x\necx: %#010x\nedx: %#010x\nebx: %#010x\nesp: %#010x\nebp: %#010x\nesi: %#010x\nedi: %#010x\n", cpu.eax, cpu.ecx, cpu.edx, cpu.ebx, cpu.esp, cpu.ebp, cpu.esi, cpu.edi);
   }
   else if (strcmp(args, "w") == 0) {
   }
