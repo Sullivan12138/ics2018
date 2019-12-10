@@ -41,7 +41,7 @@ static int cmd_si(char *args) {
   int n = 0;
   char steps[100];
   strcpy(steps, args);
-  if (sscanf(steps, "%d", n) != EOF) {
+  if (sscanf(steps, "%d", &n) != EOF) {
     printf("%d steps\n", n);
   }
   return 0;
