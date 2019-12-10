@@ -38,6 +38,12 @@ static int cmd_q(char *args) {
 
 static int cmd_help(char *args);
 static int cmd_si(){}
+static int cmd_info(){}
+static int cmd_p(){}
+static int cmd_x(){}
+static int cmd_w(){}
+static int cmd_d(){}
+
 static struct {
   char *name;
   char *description;
@@ -46,7 +52,12 @@ static struct {
   { "help", "Display informations about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
-  { "si [N]", "let the procedure execute N instructions step by step", cmd_si},
+  { "si [N]", "Let the procedure execute N instructions step by step", cmd_si},
+  { "info SUBCMD", "Print information. For example, when the SUMCMD is r it means print register state, when the SUBCMD is w it means print watchpoint information.", cmd_info},
+  { "p EXPR", "Calculate the value of EXPR", cmd_p},
+  { "x N EXPR", "Calculate the value of EXPR, then use it as the start memory address, print N four-bytes in 0x format", cmd_x},
+  { "w EXPR", "When EXPR's value changes, pause the program.", cmd_w},
+  { "d N", "Delete the watchpoint of sequence number N", cmd_d},
   /* TODO: Add more commands */
 
 };
