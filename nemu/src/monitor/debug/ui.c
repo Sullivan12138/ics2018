@@ -37,7 +37,13 @@ static int cmd_q(char *args) {
 }
 
 static int cmd_help(char *args);
-static int cmd_si(){}
+static int cmd_si(char *args) {
+  int n = 0;
+  if (sscanf(args, "%d", n) != EOF) {
+    printf("%d steps\n", n);
+  }
+  return 0;
+}
 static int cmd_info(){}
 static int cmd_p(){}
 static int cmd_x(){}
