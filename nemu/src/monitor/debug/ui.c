@@ -39,9 +39,10 @@ static int cmd_q(char *args) {
 static int cmd_help(char *args);
 static int cmd_si(char *args) {
   int n = 0;
-  char steps[100];
+/*  char steps[100];
   strcpy(steps, args);
-  if (sscanf(steps, "%d", &n) != EOF) {
+*/
+  if (sscanf(args, "%d", &n) != EOF) {
     printf("%d steps\n", n);
   }
   return 0;
