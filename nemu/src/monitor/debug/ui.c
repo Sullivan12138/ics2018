@@ -38,10 +38,18 @@ static int cmd_q(char *args) {
 
 static int cmd_help(char *args);
 static int cmd_si(char *args) {
-  int n = 0;
-  if (sscanf(args, "%d", &n) != EOF) {
-    printf("%d steps\n", n);
+  int n = 1;
+  if (args != NULL) { 
+    if (sscanf(args, "%d", &n) == EOF) {
+      printf("Error, please enter a number as argument.");
+      return 0;
+    }
   }
+  if (n <= 0) {
+    printf("Please enter a number > 0.");
+    return 0;
+  }
+  cpu_exec(n);
   return 0;
 }
 static int cmd_info(){}
