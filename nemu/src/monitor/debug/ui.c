@@ -8,7 +8,7 @@
 #include <readline/history.h>
 
 void cpu_exec(uint64_t);
-
+CPU_state cpu;
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 char* rl_gets() {
   static char *line_read = NULL;
@@ -52,7 +52,15 @@ static int cmd_si(char *args) {
   cpu_exec(n);
   return 0;
 }
-static int cmd_info(){}
+static int cmd_info(char *args){
+  if (strcmp(args, "r") == 0) {
+    printf("eax: %#x\necx: %#x\nedx: %3x\nebx: %#x\nesp: %#x\nebp: %#x\nesi: %#x\nedi: %#x\n", cpu.eax, cpu.ecx, cpu.edx, cpu.ebx, cpu.esp, cpu.ebp, cpu.esi, cpu.edi);
+  }
+  else if (strcmp(args, "w") == 0) {
+  }
+  else printf("Please choose r or w to be argument.");
+  return 0;
+}
 static int cmd_p(){}
 static int cmd_x(){}
 static int cmd_w(){}
