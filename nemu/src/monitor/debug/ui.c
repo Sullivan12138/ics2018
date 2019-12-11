@@ -62,7 +62,15 @@ static int cmd_info(char *args){
   return 0;
 }
 static int cmd_p(){}
-static int cmd_x(){}
+static int cmd_x(char *args){
+  int n = 0;
+  char *number, *expr;
+  number = strtok(args, " ");
+  printf("%s\n", number);
+  expr = strtok(NULL, " ");
+  printf("%s\n", expr);
+  return 0;
+}
 static int cmd_w(){}
 static int cmd_d(){}
 
