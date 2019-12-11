@@ -91,6 +91,7 @@ static int cmd_x(char *args){
     printf("Please enter an expr in 0x format.\n");
     return 0;
   }
+  printf("addr: %#x\n", addr);
   for (; n > 0; n--) {
     printf("%04x %04x %04x %04x\n", pmem[addr], pmem[addr+1], pmem[addr+2], pmem[addr+3]);
     //printf("%c%c%c%c", pmem[addr], pmem[addr+1], pmem[addr+2], pmem[addr+3]);
