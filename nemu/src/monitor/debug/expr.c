@@ -78,6 +78,12 @@ static bool make_token(char *e) {
 
         Log("match rules[%d] = \"%s\" at position %d with len %d: %.*s",
             i, rules[i].regex, position, substr_len, substr_len, substr_start);
+        int count;
+        char value[32];
+        for (count = 0; count < substr_len && count < 31; count++) {
+          value[count] = *(substr_start + count);
+        }
+        value[count] = '\0';
         position += substr_len;
 
         /* TODO: Now a new token is recognized with rules[i]. Add codes
@@ -90,9 +96,31 @@ static bool make_token(char *e) {
             tokens[nr_token++].type = TK_NOTYPE;
           };
           case 1: {
-            tokens[nr_token].type = '+';
+            tokens[nr_token++].type = '+';
           };
-          
+          case 2: {
+            tokens[nr_token++].type = TK_EQ;
+          };
+          case 3: {
+            tokens[nr_token++].type = '-';
+          };
+          case 4: {
+            tokens[nr_token++].type = '*';
+          };
+          case 5: {
+            tokens[nr_token++].type = '/';
+          };
+          case 6: {
+            tokens[nr_token].type = NUM;
+            strcpy(tokens[nr_token].str, value];
+            nr_token++;
+          };
+          case 7: {
+            tokens[nr_token++].type = LC;
+          };
+          case 8: {
+            tokens[nr_token++].type = RC;
+          };
           default: TODO();
         }
 
