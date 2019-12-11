@@ -9,6 +9,7 @@
 
 void cpu_exec(uint64_t);
 CPU_state cpu;
+uint8_t pmem[];
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 char* rl_gets() {
   static char *line_read = NULL;
@@ -41,12 +42,12 @@ static int cmd_si(char *args) {
   int n = 1;
   if (args != NULL) { 
     if (sscanf(args, "%d", &n) == EOF) {
-      printf("Error, please enter a number as argument.");
+      printf("Please enter a number as argument.\n");
       return 0;
     }
   }
   if (n <= 0) {
-    printf("Please enter a number > 0.");
+    printf("Please enter a number > 0.\n");
     return 0;
   }
   cpu_exec(n);
@@ -58,7 +59,7 @@ static int cmd_info(char *args){
   }
   else if (strcmp(args, "w") == 0) {
   }
-  else printf("Please choose r or w to be argument.");
+  else printf("Please choose r or w to be argument.\n");
   return 0;
 }
 static int cmd_p(){}
@@ -66,9 +67,33 @@ static int cmd_x(char *args){
   int n = 0;
   char *number, *expr;
   number = strtok(args, " ");
-  printf("%s\n", number);
+  if (sscanf(number, "%d", &n) != EOF) {
+    if (n <= 0) {
+      printf("Please enter a positive number N.\n");
+      return 0;
+    }
+  }
+  else {
+    printf("Please enter a number as the first argument.\n");
+    return 0;
+  }
   expr = strtok(NULL, " ");
-  printf("%s\n", expr);
+  int addr = 0;
+  if (sscanf(expr, "%x", &addr) != EOF) {
+    if (n < 0) {
+      printf("Please enter an expr that has a value >= 0.\n");
+      return 0;
+    }
+  }
+  else {
+    printf("Please enter an expr in 0x format.\n");
+    return 0;
+  }
+  for (; n >=0; n--) {
+    printf("%#x%#x%#x%#x", pmem[addr], pmem[addr+1], pmem[addr+2], pmem[addr+3]);
+    addr += 4;
+  }
+  printf("\n");
   return 0;
 }
 static int cmd_w(){}
