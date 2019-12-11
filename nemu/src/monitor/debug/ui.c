@@ -90,7 +90,9 @@ static int cmd_x(char *args){
     return 0;
   }
   for (; n >=0; n--) {
-    printf("%#x%#x%#x%#x", pmem[addr], pmem[addr+1], pmem[addr+2], pmem[addr+3]);
+    //printf("%#x%#x%#x%#x", pmem[addr], pmem[addr+1], pmem[addr+2], pmem[addr+3]);
+    printf("%c%c%c%c", pmem[addr], pmem[addr+1], pmem[addr+2], pmem[addr+3]);
+
     addr += 4;
   }
   printf("\n");
