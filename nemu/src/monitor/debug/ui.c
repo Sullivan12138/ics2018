@@ -67,6 +67,7 @@ static int cmd_x(char *args){
   int n = 0;
   char *number, *expr;
   number = strtok(args, " ");
+  printf("number: %s\n", number);
   if (sscanf(number, "%d", &n) != EOF) {
     if (n <= 0) {
       printf("Please enter a positive number N.\n");
@@ -78,6 +79,7 @@ static int cmd_x(char *args){
     return 0;
   }
   expr = strtok(NULL, " ");
+  printf("expr: %s\n", expr);
   int addr = 0;
   if (sscanf(expr, "%x", &addr) != EOF) {
     if (n < 0) {
@@ -90,8 +92,8 @@ static int cmd_x(char *args){
     return 0;
   }
   for (; n >=0; n--) {
-    //printf("%#x%#x%#x%#x", pmem[addr], pmem[addr+1], pmem[addr+2], pmem[addr+3]);
-    printf("%c%c%c%c", pmem[addr], pmem[addr+1], pmem[addr+2], pmem[addr+3]);
+    printf("%02#x%02#x%02#x%02#x\n", pmem[addr], pmem[addr+1], pmem[addr+2], pmem[addr+3]);
+    //printf("%c%c%c%c", pmem[addr], pmem[addr+1], pmem[addr+2], pmem[addr+3]);
 
     addr += 4;
   }
