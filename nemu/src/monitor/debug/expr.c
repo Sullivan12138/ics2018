@@ -84,7 +84,6 @@ static bool make_token(char *e) {
           value[count] = *(substr_start + count);
         }
         value[count] = '\0';
-        printf("Valueee: %s\n", value);
         position += substr_len;
 
         /* TODO: Now a new token is recognized with rules[i]. Add codes
@@ -93,11 +92,9 @@ static bool make_token(char *e) {
          */
 
           switch (rules[i].token_type) {
-              
               case NUM: {
                   tokens[nr_token].type = NUM;
                   strcpy(tokens[nr_token].str, value);
-                  printf("aaa str:%s aaa\n",tokens[nr_token].str);
                   nr_token++;
                   break;
               };
@@ -140,6 +137,7 @@ int findPrimeOp(int p, int q) {
   int i;
   bool flag = true;
   for (i = p; i <= q; i++) {
+    printf("type: %c\n", tokens[i].type);
     if (tokens[i].type == LC) flag = false;
     else if(tokens[i].type == RC) flag = true;
     if (flag == false) continue;
@@ -158,7 +156,6 @@ int eval(int p, int q) {
     int value = 0;
     sscanf(tokens[p].str, "%d", &value);
     printf("tokens[%d].str: %s\n", p, tokens[p].str);
-    printf("value: %d\n", value);
     return value;
   }
   else if (checkparentheses(p, q) == true) {
