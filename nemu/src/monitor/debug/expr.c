@@ -114,7 +114,7 @@ static bool make_token(char *e) {
           case 6: {
             tokens[nr_token].type = NUM;
             strcpy(tokens[nr_token].str, value);
-            printf("%s aaa",tokens[nr_token].str); 
+            printf("aaa str:%s aaa\n",tokens[nr_token].str); 
             nr_token++;
           };
           case 7: {
