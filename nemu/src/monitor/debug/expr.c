@@ -183,6 +183,6 @@ uint32_t expr(char *e, bool *success) {
 
   /* TODO: Insert codes to evaluate the expression. */
   int p = 0;
-  int q = nr_token;
+  int q = nr_token-1;
   return eval(p, q);
 }
