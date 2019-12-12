@@ -54,7 +54,7 @@ static int cmd_si(char *args) {
   cpu_exec(n);
   return 0;
 }
-static int cmd_info(char *args){
+static int cmd_info(char *args) {
   if (strcmp(args, "r") == 0) {
     printf("eax: %#010x\necx: %#010x\nedx: %#010x\nebx: %#010x\nesp: %#010x\nebp: %#010x\nesi: %#010x\nedi: %#010x\n", cpu.eax, cpu.ecx, cpu.edx, cpu.ebx, cpu.esp, cpu.ebp, cpu.esi, cpu.edi);
   }
@@ -63,8 +63,16 @@ static int cmd_info(char *args){
   else printf("Please choose r or w to be argument.\n");
   return 0;
 }
-static int cmd_p(){}
-static int cmd_x(char *args){
+static int cmd_p(char *args) {
+  bool *success;
+  success = (bool*)malloc(sizeof(bool));
+  *success = true;
+  int value = expr(args, success);
+  if (*success == false) printf("This is not an expr.\n");
+  else printf("%d", value);
+  return 0;
+}
+static int cmd_x(char *args) {
   int n = 0;
   char *number, *expr;
   number = strtok(args, " ");
