@@ -84,6 +84,7 @@ static bool make_token(char *e) {
           value[count] = *(substr_start + count);
         }
         value[count] = '\0';
+        printf("Valueee: %s\n", value);
         position += substr_len;
 
         /* TODO: Now a new token is recognized with rules[i]. Add codes
