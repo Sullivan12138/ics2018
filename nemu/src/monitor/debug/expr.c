@@ -121,7 +121,6 @@ static bool make_token(char *e) {
           case 8: {
             tokens[nr_token++].type = RC;
           };
-          default: TODO();
         }
 
         break;
