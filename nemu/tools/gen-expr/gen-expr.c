@@ -6,9 +6,45 @@
 #include <string.h>
 
 // this should be enough
+uint32_t choose(uint32_t n) {
+  srand(time(NULL));
+  return rand()%n;
+}
 static char buf[65536];
+void gen_rand_op() {
+  switch(choose(4)) {
+    case 0: {
+      strcat(buf, "+");
+    };
+    case 1: {
+      strcat(buf, "-");
+    }
+    case 2: strcat(buf, "*");
+    case 3: strcat(buf, "/");
+  }
+}  
 static inline void gen_rand_expr() {
-  buf[0] = '\0';
+  switch(choose(3)) {
+    case 0: {
+      char str[32];
+      uint32_t x;
+      srand(time(NULL));
+      x = rand();
+      sprintf(str, "%u", x);
+      strcat(buf, str);
+      break;
+    };
+    case 1: {
+      strcat(buf, "(");
+      gen_rand_expr();
+      strcat(buf, ")");
+      break;
+    };
+    default: {
+      gen_rand_expr();
+      gen_rand_op();
+      gen_rand_expr();
+    };
 }
 
 static char code_buf[65536];
