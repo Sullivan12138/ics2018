@@ -176,6 +176,7 @@ int eval(int p, int q) {
   else if (p == q) {
     int value = 0;
     sscanf(tokens[p].str, "%d", &value);
+    printf("tokens[%d].str: %s\n", p, tokens[p].str);
     printf("value: %d\n", value);
     return value;
   }
