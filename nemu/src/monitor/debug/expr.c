@@ -176,6 +176,7 @@ int eval(int p, int q) {
   else if (p == q) {
     int value = 0;
     sscanf(tokens[p].str, "%d", &value);
+    printf("value: %d", value);
     return value;
   }
   else if (checkparentheses(p, q) == true) {
