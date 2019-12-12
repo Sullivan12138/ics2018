@@ -69,7 +69,7 @@ static int cmd_p(char *args) {
   *success = true;
   int value = expr(args, success);
   if (*success == false) printf("This is not an expr.\n");
-  else printf("%d", value);
+  else printf("%d\n", value);
   return 0;
 }
 static int cmd_x(char *args) {
