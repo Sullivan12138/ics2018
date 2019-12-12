@@ -92,38 +92,17 @@ static bool make_token(char *e) {
          * of tokens, some extra actions should be performed.
          */
 
-        switch (rules[i].token_type) {
-          case 0: {
-            tokens[nr_token++].type = TK_NOTYPE;
-          };
-          case 1: {
-            tokens[nr_token++].type = '+';
-          };
-          case 2: {
-            tokens[nr_token++].type = TK_EQ;
-          };
-          case 3: {
-            tokens[nr_token++].type = '-';
-          };
-          case 4: {
-            tokens[nr_token++].type = '*';
-          };
-          case 5: {
-            tokens[nr_token++].type = '/';
-          };
-          case 6: {
-            tokens[nr_token].type = NUM;
-            strcpy(tokens[nr_token].str, value);
-            printf("aaa str:%s aaa\n",tokens[nr_token].str); 
-            nr_token++;
-          };
-          case 7: {
-            tokens[nr_token++].type = LC;
-          };
-          case 8: {
-            tokens[nr_token++].type = RC;
-          };
-        }
+          switch (rules[i].token_type) {
+              
+              case NUM: {
+                  tokens[nr_token].type = NUM;
+                  strcpy(tokens[nr_token].str, value);
+                  printf("aaa str:%s aaa\n",tokens[nr_token].str);
+                  nr_token++;
+                  break;
+              };
+              default: tokens[nr_token++].type = rules[i].token_type;
+          }
 
         break;
       }
