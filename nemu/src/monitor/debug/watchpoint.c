@@ -33,7 +33,7 @@ WP* new_WP() {
     return head;
 }
 
-void free_wp(WP *wp) {
+void free_WP(WP *wp) {
     if(wp == NULL) assert(0);
     WP *p;
     WP *q;
