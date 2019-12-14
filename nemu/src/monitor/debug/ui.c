@@ -107,7 +107,11 @@ static int cmd_x(char *args) {
   printf("\n");
   return 0;
 }
-static int cmd_w(){}
+static int cmd_w(char *args){
+  WP *p = new_wp();
+    strcpy(p->buf, args);
+    return 0;
+}
 static int cmd_d(){}
 
 static struct {
