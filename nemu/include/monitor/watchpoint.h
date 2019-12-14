@@ -12,5 +12,7 @@ typedef struct watchpoint {
   int value;
   bool isInit;
 } WP;
+WP *new_WP();
+void free_WP(WP *wp);
 int checkWatchpoint();
 #endif
