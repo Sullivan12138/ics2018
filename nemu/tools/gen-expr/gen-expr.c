@@ -45,6 +45,7 @@ static inline void gen_rand_expr() {
       gen_rand_op();
       gen_rand_expr();
     };
+  }
 }
 
 static char code_buf[65536];
