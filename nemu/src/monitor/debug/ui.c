@@ -112,7 +112,18 @@ static int cmd_w(char *args){
     strcpy(p->buf, args);
     return 0;
 }
-static int cmd_d(){}
+static int cmd_d(char *args) {
+  int num;
+  if(sscanf(args, "%d", num) != EOF) {
+    WP *wp = find_WP(num);
+    if(wp != NULL) {
+      free_WP(wp);
+      return 0;
+    }
+  }
+  printf("Please enter a correct watchpoint number.\n");
+  return 0;
+}
 
 static struct {
   char *name;

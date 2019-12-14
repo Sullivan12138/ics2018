@@ -60,7 +60,7 @@ void free_wp(WP *wp) {
     wp->next = r;
 }
 
-int checkWatchpoint() {
+int check_WP() {
     WP *p = head;
     while(p != NULL) {
       bool *success = (bool*)malloc(sizeof(bool));
@@ -78,4 +78,13 @@ int checkWatchpoint() {
       p = p->next;
     }
     return 0;
+}
+
+WP *find_WP(int NO) {
+    WP *p = head;
+    while(p != NULL) {
+        if(p->NO == NO) return p;
+        else p = p->next;
+    }
+    return NULL;
 }
