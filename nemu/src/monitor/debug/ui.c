@@ -108,7 +108,7 @@ static int cmd_x(char *args) {
   return 0;
 }
 static int cmd_w(char *args){
-  WP *p = new_wp();
+  WP *p = new_WP();
     strcpy(p->buf, args);
     return 0;
 }
