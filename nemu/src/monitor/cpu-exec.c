@@ -41,13 +41,13 @@ void cpu_exec(uint64_t n) {
 
 #ifdef DEBUG
     /* TODO: check watchpoints here. */
-    int ret = checkWatchpoint();
+    int ret = check_WP();
     if(ret != 0) {
       nemu_state = NEMU_STOP;
       printf("the program has reach the watchpoint NO%d", ret);
       return;
     }
-    
+
 #endif
 
 #ifdef HAS_IOE
