@@ -7,10 +7,7 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
-// #define PMEM_SIZE (128 * 1024 * 1024)
-void cpu_exec(uint64_t);
-CPU_state cpu;
-// uint8_t pmem[PMEM_SIZE];
+
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 char* rl_gets() {
   static char *line_read = NULL;
