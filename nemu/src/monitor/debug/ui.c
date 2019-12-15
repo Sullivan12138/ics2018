@@ -115,7 +115,7 @@ static int cmd_w(char *args){
 }
 static int cmd_d(char *args) {
   int num;
-  if(sscanf(args, "%d", num) != EOF) {
+  if(sscanf(args, "%d", &num) != EOF) {
     WP *wp = find_WP(num);
     if(wp != NULL) {
       free_WP(wp);

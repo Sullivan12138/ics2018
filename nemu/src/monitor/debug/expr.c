@@ -7,7 +7,7 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ, NUM, LC, RC
+  TK_NOTYPE = 256, TK_EQ, NUM, LC, RC, HEX, REG, DEREF
 
   /* TODO: Add more token types */
 
@@ -30,7 +30,9 @@ static struct rule {
   {"\\/", '/'},         // divide
   {"[1-9]?[0-9]+", NUM},//number
   {"\\(", LC},          // left closure
-  {"\\)", RC}           // right closure
+  {"\\)", RC},          // right closure
+  {"0(x|X)([1-9]|[a-f])?([0-9]|[a-f])+", HEX},
+  {"\\$(eax|ebx|ecx|edx|esp|ebp|esi|edi|sx|bx|cx|dx|sp|bp|si|di|al|bl|cl|dl|ah|bh|ch|dh)", REG}
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
@@ -99,6 +101,36 @@ static bool make_token(char *e) {
                   break;
               };
               case TK_NOTYPE: break;
+              case HEX: {
+                tokens[nr_token].type = HEX;
+                int hexValue;
+                sscanf(value, "%x", &hexValue);
+                sprintf(tokens[nr_token].str, "%d", hexValue);
+                nr_token++;
+              };
+              case REG: {
+                tokens[nr_token].type = REG;
+                int j;
+                for(j = 0; j < 8; j++) {
+                  if(strcmp(value, regsl[j]) == 0) {
+                    sprintf(tokens[nr_token].str, "%d", cpu.gpr[j]._32);
+                  }
+                  else if(strcmp(value, regsw[j]) == 0) {
+                    sprintf(tokens[nr_token].str, "%d", cpu.gpr[j]._16);
+                  }
+                  else if(strcmp(value, regsb[j]) == 0) {
+                    sprintf(tokens[nr_token].str, "%d", cpu.gpr[j%4]._8[j/4]);
+                  }
+                }
+                nr_token++;
+              };
+              case '*': {
+                if(nr_token == 0 || tokens[nr_token-1].type != NUM) {
+                  tokens[nr_token].type = DEREF;
+                }
+                else tokens[nr_token].type = '*';
+                nr_token++;
+              };
               default: tokens[nr_token++].type = rules[i].token_type;
           }
 
@@ -131,7 +163,8 @@ bool checkparentheses(int p, int q) {
 int priority(int type) {
   if (type == '+' || type == '-') return 1;
   else if (type == '*' || type == '/') return 2;
-  else return 3;
+  else if(type == DEREF) return 3;
+  else return 4;
 }
 int findPrimeOp(int p, int q) {
   int op = p;
@@ -142,11 +175,11 @@ int findPrimeOp(int p, int q) {
     if (tokens[i].type == LC) flag = false;
     else if(tokens[i].type == RC) flag = true;
     if (flag == false) continue;
-    if (tokens[i].type == '+' || tokens[i].type == '-' || tokens[i].type == '*' || tokens[i].type == '/') {
+    if (tokens[i].type == '+' || tokens[i].type == '-' || tokens[i].type == '*' || tokens[i].type == '/' || tokens[i].type == DEREF) {
       if (priority(tokens[i].type) <= priority(tokens[op].type)) op = i;
     }
   }
-  if (priority(tokens[op].type) == 3) assert(0);
+  if (priority(tokens[op].type) == 4) assert(0);
   return op;
 }
 int eval(int p, int q) {
@@ -164,6 +197,9 @@ int eval(int p, int q) {
   }
   else {
     int op = findPrimeOp(p, q);
+    if(tokens[op].type == DEREF) {
+      return paddr_read(eval(op+1, q), 1);
+    }
     printf("op:%d\n", op);
     int val1 = eval(p, op - 1);
     int val2 = eval(op + 1, q);
