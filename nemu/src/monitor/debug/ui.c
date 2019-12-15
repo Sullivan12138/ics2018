@@ -56,6 +56,7 @@ static int cmd_info(char *args) {
     printf("eax: %#010x\necx: %#010x\nedx: %#010x\nebx: %#010x\nesp: %#010x\nebp: %#010x\nesi: %#010x\nedi: %#010x\n", cpu.eax, cpu.ecx, cpu.edx, cpu.ebx, cpu.esp, cpu.ebp, cpu.esi, cpu.edi);
   }
   else if (strcmp(args, "w") == 0) {
+    print_WP();
   }
   else printf("Please choose r or w to be argument.\n");
   return 0;

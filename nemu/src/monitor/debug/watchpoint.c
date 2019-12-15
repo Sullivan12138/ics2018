@@ -88,3 +88,11 @@ WP *find_WP(int NO) {
     }
     return NULL;
 }
+
+void print_WP() {
+    WP *p = head;
+    printf("NO\twatchon\tvalue\t\n");
+    while(p != NULL) {
+        printf("%d\t%s\t%d\t\n", p->NO, p->buf, p->value);
+    }
+}

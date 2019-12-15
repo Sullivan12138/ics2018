@@ -16,5 +16,5 @@ WP *new_WP();
 void free_WP(WP *wp);
 int check_WP();
 WP *find_WP(int NO);
-
+void print_WP();
 #endif
