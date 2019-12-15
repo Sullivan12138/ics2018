@@ -112,14 +112,16 @@ static bool make_token(char *e) {
               case REG: {
                 tokens[nr_token].type = REG;
                 int j;
+                char regName[10];
+                sscanf(value, "$%s", regName);
                 for(j = 0; j < 8; j++) {
-                  if(strcmp(value, regsl[j]) == 0) {
+                  if(strcmp(regName, regsl[j]) == 0) {
                     sprintf(tokens[nr_token].str, "%d", cpu.gpr[j]._32);
                   }
-                  else if(strcmp(value, regsw[j]) == 0) {
+                  else if(strcmp(regName, regsw[j]) == 0) {
                     sprintf(tokens[nr_token].str, "%d", cpu.gpr[j]._16);
                   }
-                  else if(strcmp(value, regsb[j]) == 0) {
+                  else if(strcmp(regName, regsb[j]) == 0) {
                     sprintf(tokens[nr_token].str, "%d", cpu.gpr[j%4]._8[j/4]);
                   }
                 }
