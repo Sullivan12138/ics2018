@@ -107,6 +107,7 @@ static bool make_token(char *e) {
                 sscanf(value, "%x", &hexValue);
                 sprintf(tokens[nr_token].str, "%d", hexValue);
                 nr_token++;
+                break;
               };
               case REG: {
                 tokens[nr_token].type = REG;
@@ -123,6 +124,7 @@ static bool make_token(char *e) {
                   }
                 }
                 nr_token++;
+                break;
               };
               case '*': {
                 if(nr_token == 0 || tokens[nr_token-1].type != NUM) {
@@ -130,6 +132,7 @@ static bool make_token(char *e) {
                 }
                 else tokens[nr_token].type = '*';
                 nr_token++;
+                break;
               };
               default: tokens[nr_token++].type = rules[i].token_type;
           }
