@@ -31,7 +31,7 @@ static struct rule {
   {"[1-9]?[0-9]+", NUM},//number
   {"\\(", LC},          // left closure
   {"\\)", RC},          // right closure
-  {"0(x|X)([1-9]|[a-f])?([0-9]|[a-f])+", HEX},
+  {"(0x|0X)([1-9]|[a-f])?([0-9]|[a-f])+", HEX},
   {"\\$(eax|ebx|ecx|edx|esp|ebp|esi|edi|sx|bx|cx|dx|sp|bp|si|di|al|bl|cl|dl|ah|bh|ch|dh)", REG}
 };
 
