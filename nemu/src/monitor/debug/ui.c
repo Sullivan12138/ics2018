@@ -88,6 +88,7 @@ static int cmd_x(char *args) {
   int addr = 0;
   bool *success;
   success = (bool*)malloc(sizeof(bool));
+  *success = true;
   addr = expr(exp, success);
   if (*success == false) printf("The second argument is not a valid expr.\n");
   for (; n > 0; n--) {
