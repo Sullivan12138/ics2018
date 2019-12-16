@@ -33,7 +33,7 @@ static struct rule {
   {"\\(", LC},          // left closure
   {"\\)", RC},          // right closure
   
-  {"\\$(eax|ebx|ecx|edx|esp|ebp|esi|edi|sx|bx|cx|dx|sp|bp|si|di|al|bl|cl|dl|ah|bh|ch|dh)", REG},
+  {"\\$(eax|ebx|ecx|edx|esp|ebp|esi|edi|sx|bx|cx|dx|sp|bp|si|di|al|bl|cl|dl|ah|bh|ch|dh|eip)", REG},
   {"==", EQUAL},
   {"!=", NOTEQUAL},
   {"&&", AND}
@@ -118,15 +118,18 @@ static bool make_token(char *e) {
                 int j;
                 char regName[10];
                 sscanf(value, "$%s", regName);
-                for(j = 0; j < 8; j++) {
-                  if(strcmp(regName, regsl[j]) == 0) {
-                    sprintf(tokens[nr_token].str, "%d", cpu.gpr[j]._32);
-                  }
-                  else if(strcmp(regName, regsw[j]) == 0) {
-                    sprintf(tokens[nr_token].str, "%d", cpu.gpr[j]._16);
-                  }
-                  else if(strcmp(regName, regsb[j]) == 0) {
-                    sprintf(tokens[nr_token].str, "%d", cpu.gpr[j%4]._8[j/4]);
+                if(strcmp(regName, "eip") == 0) sprintf(tokens[nr_token].str, "%d", cpu.eip);
+                else {
+                  for(j = 0; j < 8; j++) {
+                    if(strcmp(regName, regsl[j]) == 0) {
+                      sprintf(tokens[nr_token].str, "%d", cpu.gpr[j]._32);
+                    }
+                    else if(strcmp(regName, regsw[j]) == 0) {
+                      sprintf(tokens[nr_token].str, "%d", cpu.gpr[j]._16);
+                    }
+                    else if(strcmp(regName, regsb[j]) == 0) {
+                      sprintf(tokens[nr_token].str, "%d", cpu.gpr[j%4]._8[j/4]);
+                    }
                   }
                 }
                 nr_token++;
