@@ -10,7 +10,6 @@ typedef struct watchpoint {
   /* TODO: Add more members if necessary */
   char buf[65536];
   int value;
-  bool isInit;
 } WP;
 WP *new_WP();
 void free_WP(WP *wp);

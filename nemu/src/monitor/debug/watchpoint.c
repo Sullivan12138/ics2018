@@ -11,9 +11,8 @@ void init_wp_pool() {
   for (i = 0; i < NR_WP; i ++) {
     wp_pool[i].NO = i;
     wp_pool[i].next = &wp_pool[i + 1];
-    wp_pool[i].isInit = false;
     memset(wp_pool[i].buf, 0, sizeof(wp_pool[i].buf));
-    wp_pool[i].value = 0;
+    wp_pool[i].value = -1;
   }
   wp_pool[NR_WP - 1].next = NULL;
 
@@ -65,16 +64,10 @@ int check_WP() {
     while(p != NULL) {
       bool *success = (bool*)malloc(sizeof(bool));
       int value = expr(p->buf, success);
-      if(p->isInit == false) {
-        p->isInit = true;
-        p->value = value;
-      }
-      else {
         if(p->value != value) {
           p->value = value;
           return p->NO;
         }
-      }
       p = p->next;
     }
     return 0;
