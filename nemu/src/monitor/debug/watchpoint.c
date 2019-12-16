@@ -40,7 +40,7 @@ void free_WP(WP *wp) {
     p = head;
     q = NULL;
     while(p != NULL) {
-        if(p -> NO == head->NO) {
+        if(wp -> NO == head->NO) {
             head = head->next;
             break;
         }
