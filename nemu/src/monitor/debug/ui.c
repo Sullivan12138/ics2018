@@ -100,7 +100,7 @@ static int cmd_x(char *args) {
   }
   printf("addr: %d\n", addr);
   for (; n > 0; n--) {
-    printf("%02x %02x %02x %02x\n", pmem[addr], pmem[addr+1], pmem[addr+2], pmem[addr+3]);
+    printf("%02x %02x %02x %02x\n", paddr_read(addr, 1), paddr_read(addr, 4), paddr_read(addr, 4), paddr_read(addr, 4));
     //printf("%c%c%c%c", pmem[addr], pmem[addr+1], pmem[addr+2], pmem[addr+3]);
 
     addr += 4;
