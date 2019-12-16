@@ -173,10 +173,12 @@ bool checkparentheses(int p, int q) {
   else return true;
 }
 int priority(int type) {
-  if (type == '+' || type == '-') return 1;
-  else if (type == '*' || type == '/') return 2;
-  else if(type == DEREF) return 3;
-  else return 4;
+  if(type == AND) return 0;
+  if(type == EQUAL || type == NOTEQUAL) return 1;
+  if (type == '+' || type == '-') return 2;
+  else if (type == '*' || type == '/') return 3;
+  else if(type == DEREF) return 4;
+  else return 5;
 }
 int findPrimeOp(int p, int q) {
   int op = p;
@@ -186,11 +188,12 @@ int findPrimeOp(int p, int q) {
     if (tokens[i].type == LC) flag = false;
     else if(tokens[i].type == RC) flag = true;
     if (flag == false) continue;
-    if (tokens[i].type == '+' || tokens[i].type == '-' || tokens[i].type == '*' || tokens[i].type == '/' || tokens[i].type == DEREF) {
+    if (tokens[i].type == '+' || tokens[i].type == '-' || tokens[i].type == '*' || tokens[i].type == '/' || tokens[i].type == DEREF
+        || tokens[i].type == EQUAL || tokens[i].type == NOTEQUAL || tokens[i].type == AND) {
       if (priority(tokens[i].type) <= priority(tokens[op].type)) op = i;
     }
   }
-  if (priority(tokens[op].type) == 4) assert(0);
+  if (priority(tokens[op].type) == 5) assert(0);
   return op;
 }
 int eval(int p, int q) {
