@@ -66,7 +66,7 @@ static int cmd_p(char *args) {
   success = (bool*)malloc(sizeof(bool));
   *success = true;
   int value = expr(args, success);
-  if (*success == false) printf("This is not an expr.\n");
+  if (*success == false) printf("This is not a valid expr.\n");
   else printf("%d\n", value);
   return 0;
 }
@@ -101,12 +101,17 @@ static int cmd_x(char *args) {
   return 0;
 }
 static int cmd_w(char *args){
+  bool *success = (bool*)malloc(sizeof(bool));
+  *success = true;
+  int ret = expr(args, success);
+  if(*success == false) {
+    printf("Please enter a valid expr as argument.\n");
+    return -1;
+  }
   WP *p = new_WP();
-    strcpy(p->buf, args);
-    bool *success = (bool*)malloc(sizeof(bool));
-    *success = true;
-    p->value = expr(p->buf, success);
-    return 0;
+  strcpy(p->buf, args);
+  p->value = ret;
+  return 0;
 }
 static int cmd_d(char *args) {
   int num;

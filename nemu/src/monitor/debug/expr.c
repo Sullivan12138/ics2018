@@ -137,7 +137,7 @@ static bool make_token(char *e) {
                 break;
               };
               case '*': {
-                if(nr_token == 0 || tokens[nr_token-1].type != NUM) {
+                if(nr_token == 0 || (tokens[nr_token-1].type != NUM && tokens[nr_token-1].type != RC)) {
                   tokens[nr_token].type = DEREF;
                 }
                 else tokens[nr_token].type = '*';
@@ -159,19 +159,18 @@ static bool make_token(char *e) {
 
   return true;
 }
-bool checkparentheses(int p, int q) {
-  if (tokens[p].type != LC || tokens[q].type != RC) return false;
-  bool flag = true;
+int checkparentheses(int p, int q) {
+  int lcNum, rcNum;
+  lcNum = rcNum = 0;
   int i;
   for (i = p; i <= q; i++) {
-    if (tokens[i].type == LC) flag = false;
-    if (tokens[i].type == RC) {
-     if (flag == true)  return false;
-     else flag = true;
-    }
+    if (tokens[i].type == LC) lcNum++;
+    else if (tokens[i].type == RC) rcNum++;
+    if(rcNum > lcNum) return -1;
   }
-  if (flag == false) assert(0);
-  else return true;
+  if(lcNum != rcNum) return -1;
+  else if (tokens[p].type != LC || tokens[q].type != RC) return 0;
+  else return 1;
 }
 int priority(int type) {
   if(type == AND) return 0;
@@ -194,37 +193,50 @@ int findPrimeOp(int p, int q) {
       if (priority(tokens[i].type) <= priority(tokens[op].type)) op = i;
     }
   }
-  if (priority(tokens[op].type) == 5) assert(0);
   return op;
 }
 int eval(int p, int q) {
+  int flag = 0;
   if (p > q) {
-    assert(0);
+    return -1;
   }
   else if (p == q) {
     int value = 0;
-    sscanf(tokens[p].str, "%d", &value);
+    if(sscanf(tokens[p].str, "%d", &value) == EOF) return -1;
     return value;
   }
-  else if (checkparentheses(p, q) == true) {
-    return eval(p + 1, q - 1);
-  }
   else {
-    int op = findPrimeOp(p, q);
-    if(tokens[op].type == DEREF) {
-      return paddr_read(eval(op+1, q), 1);
+    flag = checkparentheses(p, q);
+    if (flag == 1) {
+      return eval(p + 1, q - 1);
     }
-    int val1 = eval(p, op - 1);
-    int val2 = eval(op + 1, q);
-    switch (tokens[op].type) {
-      case '+': return val1 + val2;
-      case '-': return val1 - val2;
-      case '*': return val1 * val2;
-      case '/': return val1 / val2;
-      case TK_EQ: return val1 == val2;
-      case TK_NOEQ: return val1 != val2;
-      case AND: return val1 && val2;
-      default: assert(0);
+    else if(flag == 0) {
+      int op = findPrimeOp(p, q);
+      if(tokens[op].type == DEREF) {
+        int res = eval(op+1, q);
+        if(res != -1) return paddr_read(res, 1);
+        return -1;
+      }
+      int val1 = eval(p, op - 1);
+      int val2 = eval(op + 1, q);
+      if(val1 == -1 || val2 == -1) return -1;
+      switch (tokens[op].type) {
+        case '+': return val1 + val2;
+        case '-': return val1 - val2;
+        case '*': return val1 * val2;
+        case '/': return val1 / val2;
+        case TK_EQ: return val1 == val2;
+        case TK_NOEQ: return val1 != val2;
+        case AND: return val1 && val2;
+        default: {
+          printf("The op isn't right.\n");
+          return -1;
+        };
+      }
+    }
+    else {
+      printf("The expr's parentheses does not match.\n");
+      return -1;
     }
   }
 }
@@ -237,5 +249,10 @@ uint32_t expr(char *e, bool *success) {
   /* TODO: Insert codes to evaluate the expression. */
   int p = 0;
   int q = nr_token-1;
-  return eval(p, q);
+  int ret = eval(p, q);
+  if(ret == -1) {
+    *success = false;
+    return -1;
+  }
+  return ret;
 }
