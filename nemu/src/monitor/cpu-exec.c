@@ -44,7 +44,7 @@ void cpu_exec(uint64_t n) {
     int ret = check_WP();
     if(ret != 0) {
       nemu_state = NEMU_STOP;
-      printf("the program has reach the watchpoint NO%d", ret);
+      printf("the program has reach the watchpoint NO:%d\n", ret);
       return;
     }
 

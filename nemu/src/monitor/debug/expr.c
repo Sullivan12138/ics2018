@@ -177,7 +177,6 @@ int findPrimeOp(int p, int q) {
   int i;
   bool flag = true;
   for (i = p; i <= q; i++) {
-    printf("type: %c\n", tokens[i].type);
     if (tokens[i].type == LC) flag = false;
     else if(tokens[i].type == RC) flag = true;
     if (flag == false) continue;
@@ -195,7 +194,6 @@ int eval(int p, int q) {
   else if (p == q) {
     int value = 0;
     sscanf(tokens[p].str, "%d", &value);
-    printf("tokens[%d].str: %s\n", p, tokens[p].str);
     return value;
   }
   else if (checkparentheses(p, q) == true) {
