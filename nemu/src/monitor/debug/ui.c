@@ -90,7 +90,10 @@ static int cmd_x(char *args) {
   success = (bool*)malloc(sizeof(bool));
   *success = true;
   addr = expr(exp, success);
-  if (*success == false) printf("The second argument is not a valid expr.\n");
+  if (*success == false) {
+    printf("The second argument is not a valid expr.\n");
+    return 0;
+  }
   for (; n > 0; n--) {
     printf("%02x %02x %02x %02x\n", paddr_read(addr, 1), paddr_read(addr + 1, 1), paddr_read(addr + 2, 1), paddr_read(addr + 3, 1));
     //printf("%c%c%c%c", pmem[addr], pmem[addr+1], pmem[addr+2], pmem[addr+3]);
@@ -106,7 +109,7 @@ static int cmd_w(char *args){
   int ret = expr(args, success);
   if(*success == false) {
     printf("Please enter a valid expr as argument.\n");
-    return -1;
+    return 0;
   }
   WP *p = new_WP();
   strcpy(p->buf, args);
