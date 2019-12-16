@@ -72,7 +72,7 @@ static int cmd_p(char *args) {
 }
 static int cmd_x(char *args) {
   int n = 0;
-  char *number, *expr;
+  char *number, *exp;
   number = strtok(args, " ");
   printf("number: %s\n", number);
   if (sscanf(number, "%d", &n) != EOF) {
@@ -85,19 +85,12 @@ static int cmd_x(char *args) {
     printf("Please enter a number as the first argument.\n");
     return 0;
   }
-  expr = strtok(NULL, " ");
-  printf("expr: %s\n", expr);
+  exp = strtok(NULL, " ");
+  printf("expr: %s\n", exp);
   int addr = 0;
-  if (sscanf(expr, "%x", &addr) != EOF) {
-    if (n < 0) {
-      printf("Please enter an expr that has a value >= 0.\n");
-      return 0;
-    }
-  }
-  else {
-    printf("Please enter an expr in 0x format.\n");
-    return 0;
-  }
+  bool *success;
+  success = (bool*)malloc(sizeof(bool));
+  addr = expr(exp, success);
   printf("addr: %d\n", addr);
   for (; n > 0; n--) {
     printf("%02x %02x %02x %02x\n", paddr_read(addr, 1), paddr_read(addr + 1, 1), paddr_read(addr + 2, 1), paddr_read(addr + 3, 1));
