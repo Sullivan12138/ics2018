@@ -104,6 +104,7 @@ static int cmd_w(char *args){
   WP *p = new_WP();
     strcpy(p->buf, args);
     bool *success = (bool*)malloc(sizeof(bool));
+    *success = true;
     p->value = expr(p->buf, success);
     return 0;
 }

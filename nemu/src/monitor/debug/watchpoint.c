@@ -63,6 +63,7 @@ int check_WP() {
     WP *p = head;
     while(p != NULL) {
       bool *success = (bool*)malloc(sizeof(bool));
+      *success = true;
       int value = expr(p->buf, success);
         if(p->value != value) {
           p->value = value;

@@ -7,7 +7,7 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ, NUM, LC, RC, HEX, REG, DEREF
+  TK_NOTYPE = 256, TK_EQ, NUM, LC, RC, HEX, REG, DEREF, EQUAL, NOTEQUAL, AND
 
   /* TODO: Add more token types */
 
@@ -33,7 +33,10 @@ static struct rule {
   {"\\(", LC},          // left closure
   {"\\)", RC},          // right closure
   
-  {"\\$(eax|ebx|ecx|edx|esp|ebp|esi|edi|sx|bx|cx|dx|sp|bp|si|di|al|bl|cl|dl|ah|bh|ch|dh)", REG}
+  {"\\$(eax|ebx|ecx|edx|esp|ebp|esi|edi|sx|bx|cx|dx|sp|bp|si|di|al|bl|cl|dl|ah|bh|ch|dh)", REG},
+  {"==", EQUAL},
+  {"!=", NOTEQUAL},
+  {"&&", AND}
 };
 
 #define NR_REGEX (sizeof(rules) / sizeof(rules[0]) )
@@ -211,6 +214,9 @@ int eval(int p, int q) {
       case '-': return val1 - val2;
       case '*': return val1 * val2;
       case '/': return val1 / val2;
+      case EQUAL: return val1 == val2;
+      case NOTEQUAL: return val1 != val2;
+      case AND: return val1 && val2;
       default: assert(0);
     }
   }
