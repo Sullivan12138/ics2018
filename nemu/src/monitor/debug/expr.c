@@ -162,14 +162,16 @@ static bool make_token(char *e) {
 int checkparentheses(int p, int q) {
   int lcNum, rcNum;
   lcNum = rcNum = 0;
+  bool flag = false;
   int i;
   for (i = p; i <= q; i++) {
     if (tokens[i].type == LC) lcNum++;
     else if (tokens[i].type == RC) rcNum++;
     if(rcNum > lcNum) return -1;
+    if(rcNum == lcNum && i < q) flag = true; 
   }
   if(lcNum != rcNum) return -1;
-  else if (tokens[p].type != LC || tokens[q].type != RC) return 0;
+  else if (flag == true) return 0;
   else return 1;
 }
 int priority(int type) {
