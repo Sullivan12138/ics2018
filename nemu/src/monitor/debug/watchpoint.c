@@ -94,5 +94,6 @@ void print_WP() {
     printf("NO\twatchon\tvalue\t\n");
     while(p != NULL) {
         printf("%d\t%s\t%d\t\n", p->NO, p->buf, p->value);
+        p = p->next;
     }
 }
