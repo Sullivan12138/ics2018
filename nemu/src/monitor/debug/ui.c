@@ -111,6 +111,8 @@ static int cmd_x(char *args) {
 static int cmd_w(char *args){
   WP *p = new_WP();
     strcpy(p->buf, args);
+    bool *success = (bool*)malloc(sizeof(bool));
+    p->value = expr(p->buf, success);
     return 0;
 }
 static int cmd_d(char *args) {

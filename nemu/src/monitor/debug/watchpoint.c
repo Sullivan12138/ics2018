@@ -1,6 +1,6 @@
 #include "monitor/watchpoint.h"
 #include "monitor/expr.h"
-
+#include "stdlib.h"
 #define NR_WP 32
 
 static WP wp_pool[NR_WP];
@@ -66,7 +66,7 @@ int check_WP() {
       int value = expr(p->buf, success);
         if(p->value != value) {
           p->value = value;
-          return p->NO;
+          return p->NO + 1;
         }
       p = p->next;
     }
