@@ -7,7 +7,7 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ, NUM, LC, RC, HEX, REG, DEREF, EQUAL, NOTEQUAL, AND
+  TK_NOTYPE = 256, TK_EQ, TK_NOEQ, NUM, LC, RC, HEX, REG, DEREF, AND
 
   /* TODO: Add more token types */
 
@@ -25,6 +25,7 @@ static struct rule {
   {" +", TK_NOTYPE},    // spaces
   {"\\+", '+'},         // plus
   {"==", TK_EQ},        // equal
+  {"!=", TK_NOEQ},
   {"-", '-'},           // minus
   {"\\*", '*'},         // multiply
   {"\\/", '/'},         // divide
@@ -34,8 +35,8 @@ static struct rule {
   {"\\)", RC},          // right closure
   
   {"\\$(eax|ebx|ecx|edx|esp|ebp|esi|edi|sx|bx|cx|dx|sp|bp|si|di|al|bl|cl|dl|ah|bh|ch|dh|eip)", REG},
-  {"==", EQUAL},
-  {"!=", NOTEQUAL},
+  
+  
   {"&&", AND}
 };
 
@@ -174,8 +175,8 @@ bool checkparentheses(int p, int q) {
 }
 int priority(int type) {
   if(type == AND) return 0;
-  if(type == EQUAL || type == NOTEQUAL) return 1;
-  if (type == '+' || type == '-') return 2;
+  else if(type == TK_EQ || type == TK_NOEQ) return 1;
+  else if (type == '+' || type == '-') return 2;
   else if (type == '*' || type == '/') return 3;
   else if(type == DEREF) return 4;
   else return 5;
@@ -189,7 +190,7 @@ int findPrimeOp(int p, int q) {
     else if(tokens[i].type == RC) flag = true;
     if (flag == false) continue;
     if (tokens[i].type == '+' || tokens[i].type == '-' || tokens[i].type == '*' || tokens[i].type == '/' || tokens[i].type == DEREF
-        || tokens[i].type == EQUAL || tokens[i].type == NOTEQUAL || tokens[i].type == AND) {
+        || tokens[i].type == TK_EQ || tokens[i].type == TK_NOEQ || tokens[i].type == AND) {
       if (priority(tokens[i].type) <= priority(tokens[op].type)) op = i;
     }
   }
@@ -220,8 +221,8 @@ int eval(int p, int q) {
       case '-': return val1 - val2;
       case '*': return val1 * val2;
       case '/': return val1 / val2;
-      case EQUAL: return val1 == val2;
-      case NOTEQUAL: return val1 != val2;
+      case TK_EQ: return val1 == val2;
+      case TK_NOEQ: return val1 != val2;
       case AND: return val1 && val2;
       default: assert(0);
     }
