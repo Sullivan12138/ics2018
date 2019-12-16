@@ -7,7 +7,6 @@
 #include <readline/readline.h>
 #include <readline/history.h>
 
-void cpu_exec(uint64_t);
 
 /* We use the `readline' library to provide more flexibility to read from stdin. */
 char* rl_gets() {
@@ -37,6 +36,90 @@ static int cmd_q(char *args) {
 }
 
 static int cmd_help(char *args);
+static int cmd_si(char *args) {
+  int n = 1;
+  if (args != NULL) { 
+    if (sscanf(args, "%d", &n) == EOF) {
+      printf("Please enter a number as argument.\n");
+      return 0;
+    }
+  }
+  if (n <= 0) {
+    printf("Please enter a number > 0.\n");
+    return 0;
+  }
+  cpu_exec(n);
+  return 0;
+}
+static int cmd_info(char *args) {
+  if (strcmp(args, "r") == 0) {
+    printf("eax: %#010x\necx: %#010x\nedx: %#010x\nebx: %#010x\nesp: %#010x\nebp: %#010x\nesi: %#010x\nedi: %#010x\n", cpu.eax, cpu.ecx, cpu.edx, cpu.ebx, cpu.esp, cpu.ebp, cpu.esi, cpu.edi);
+  }
+  else if (strcmp(args, "w") == 0) {
+    print_WP();
+  }
+  else printf("Please choose r or w to be argument.\n");
+  return 0;
+}
+static int cmd_p(char *args) {
+  bool *success;
+  success = (bool*)malloc(sizeof(bool));
+  *success = true;
+  int value = expr(args, success);
+  if (*success == false) printf("This is not an expr.\n");
+  else printf("%d\n", value);
+  return 0;
+}
+static int cmd_x(char *args) {
+  int n = 0;
+  char *number, *exp;
+  number = strtok(args, " ");
+  if (sscanf(number, "%d", &n) != EOF) {
+    if (n <= 0) {
+      printf("Please enter a positive number N.\n");
+      return 0;
+    }
+  }
+  else {
+    printf("Please enter a number as the first argument.\n");
+    return 0;
+  }
+  exp = strtok(NULL, " ");
+  int addr = 0;
+  bool *success;
+  success = (bool*)malloc(sizeof(bool));
+  *success = true;
+  addr = expr(exp, success);
+  if (*success == false) printf("The second argument is not a valid expr.\n");
+  for (; n > 0; n--) {
+    printf("%02x %02x %02x %02x\n", paddr_read(addr, 1), paddr_read(addr + 1, 1), paddr_read(addr + 2, 1), paddr_read(addr + 3, 1));
+    //printf("%c%c%c%c", pmem[addr], pmem[addr+1], pmem[addr+2], pmem[addr+3]);
+
+    addr += 4;
+  }
+  printf("\n");
+  return 0;
+}
+static int cmd_w(char *args){
+  WP *p = new_WP();
+    strcpy(p->buf, args);
+    bool *success = (bool*)malloc(sizeof(bool));
+    *success = true;
+    p->value = expr(p->buf, success);
+    return 0;
+}
+static int cmd_d(char *args) {
+  int num;
+  if(sscanf(args, "%d", &num) != EOF) {
+    WP *wp = find_WP(num);
+    if(wp != NULL) {
+      free_WP(wp);
+      return 0;
+    }
+  }
+  printf("Please enter a correct watchpoint number.\n");
+  return 0;
+}
 
 static struct {
   char *name;
@@ -46,7 +129,12 @@ static struct {
   { "help", "Display informations about all supported commands", cmd_help },
   { "c", "Continue the execution of the program", cmd_c },
   { "q", "Exit NEMU", cmd_q },
-
+  { "si", "Usage: si [N]. Let the procedure execute N instructions step by step", cmd_si},
+  { "info", "Usage: info SUBCMD. Print information. For example, when the SUMCMD is r it means print register state, when the SUBCMD is w it means print watchpoint information.", cmd_info},
+  { "p", "Usage: p EXPR. Calculate the value of EXPR", cmd_p},
+  { "x", "Usage: x N EXPR. Calculate the value of EXPR, then use it as the start memory address, print N four-bytes in 0x format", cmd_x},
+  { "w", "Usage: w EXPR. When EXPR's value changes, pause the program.", cmd_w},
+  { "d", "Usage: d N. Delete the watchpoint of sequence number N", cmd_d},
   /* TODO: Add more commands */
 
 };
