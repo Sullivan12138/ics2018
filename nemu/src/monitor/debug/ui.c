@@ -74,7 +74,6 @@ static int cmd_x(char *args) {
   int n = 0;
   char *number, *exp;
   number = strtok(args, " ");
-  printf("number: %s\n", number);
   if (sscanf(number, "%d", &n) != EOF) {
     if (n <= 0) {
       printf("Please enter a positive number N.\n");
@@ -86,12 +85,11 @@ static int cmd_x(char *args) {
     return 0;
   }
   exp = strtok(NULL, " ");
-  printf("expr: %s\n", exp);
   int addr = 0;
   bool *success;
   success = (bool*)malloc(sizeof(bool));
   addr = expr(exp, success);
-  printf("addr: %d\n", addr);
+  if (*success == false) printf("The second argument is not a valid expr.\n");
   for (; n > 0; n--) {
     printf("%02x %02x %02x %02x\n", paddr_read(addr, 1), paddr_read(addr + 1, 1), paddr_read(addr + 2, 1), paddr_read(addr + 3, 1));
     //printf("%c%c%c%c", pmem[addr], pmem[addr+1], pmem[addr+2], pmem[addr+3]);

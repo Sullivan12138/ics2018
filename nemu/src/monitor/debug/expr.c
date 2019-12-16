@@ -204,7 +204,6 @@ int eval(int p, int q) {
     if(tokens[op].type == DEREF) {
       return paddr_read(eval(op+1, q), 1);
     }
-    printf("op:%d\n", op);
     int val1 = eval(p, op - 1);
     int val2 = eval(op + 1, q);
     switch (tokens[op].type) {
