@@ -111,6 +111,7 @@ static bool make_token(char *e) {
                 int hexValue;
                 sscanf(value, "%x", &hexValue);
                 sprintf(tokens[nr_token].str, "%d", hexValue);
+                printf("%d\n", hexValue);
                 nr_token++;
                 break;
               };
