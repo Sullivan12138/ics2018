@@ -7,7 +7,7 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ, TK_NOEQ, NUM, LC, RC, HEX, REG, DEREF, AND
+  TK_NOTYPE = 256, TK_EQ, TK_NOEQ, NUM, LC, RC, HEX, REG, DEREF, AND, MINUS
 
   /* TODO: Add more token types */
 
@@ -111,6 +111,7 @@ static bool make_token(char *e) {
                 int hexValue;
                 sscanf(value, "%x", &hexValue);
                 sprintf(tokens[nr_token].str, "%d", hexValue);
+                printf("%d\n", hexValue);
                 nr_token++;
                 break;
               };
@@ -137,10 +138,20 @@ static bool make_token(char *e) {
                 break;
               };
               case '*': {
-                if(nr_token == 0 || tokens[nr_token-1].type != NUM) {
+                if(nr_token == 0 || (tokens[nr_token-1].type != NUM && tokens[nr_token-1].type != RC && tokens[nr_token-1].type != HEX
+                  && tokens[nr_token-1].type != REG)) {
                   tokens[nr_token].type = DEREF;
                 }
                 else tokens[nr_token].type = '*';
+                nr_token++;
+                break;
+              };
+              case '-': {
+                if(nr_token == 0 || (tokens[nr_token-1].type != NUM && tokens[nr_token-1].type != RC && tokens[nr_token-1].type != HEX
+                  && tokens[nr_token-1].type != REG)) {
+                  tokens[nr_token].type = MINUS;
+                }
+                else tokens[nr_token].type = '-';
                 nr_token++;
                 break;
               };
@@ -159,72 +170,90 @@ static bool make_token(char *e) {
 
   return true;
 }
-bool checkparentheses(int p, int q) {
-  if (tokens[p].type != LC || tokens[q].type != RC) return false;
-  bool flag = true;
+int checkparentheses(int p, int q) {
+  int lcNum, rcNum;
+  lcNum = rcNum = 0;
+  bool flag = false;
   int i;
   for (i = p; i <= q; i++) {
-    if (tokens[i].type == LC) flag = false;
-    if (tokens[i].type == RC) {
-     if (flag == true)  return false;
-     else flag = true;
-    }
+    if (tokens[i].type == LC) lcNum++;
+    else if (tokens[i].type == RC) rcNum++;
+    if(rcNum > lcNum) return INT32_MAX;
+    if(rcNum == lcNum && i < q) flag = true; 
   }
-  if (flag == false) assert(0);
-  else return true;
+  if(lcNum != rcNum) return INT32_MAX;
+  else if (flag == true) return 0;
+  else return 1;
 }
 int priority(int type) {
   if(type == AND) return 0;
   else if(type == TK_EQ || type == TK_NOEQ) return 1;
   else if (type == '+' || type == '-') return 2;
   else if (type == '*' || type == '/') return 3;
-  else if(type == DEREF) return 4;
+  else if(type == DEREF || type == MINUS) return 4;
   else return 5;
 }
 int findPrimeOp(int p, int q) {
   int op = p;
   int i;
-  bool flag = true;
+  int num = 0;
   for (i = p; i <= q; i++) {
-    if (tokens[i].type == LC) flag = false;
-    else if(tokens[i].type == RC) flag = true;
-    if (flag == false) continue;
+    if (tokens[i].type == LC) num++;
+    else if(tokens[i].type == RC) num--;
+    if (num != 0) continue;
     if (tokens[i].type == '+' || tokens[i].type == '-' || tokens[i].type == '*' || tokens[i].type == '/' || tokens[i].type == DEREF
-        || tokens[i].type == TK_EQ || tokens[i].type == TK_NOEQ || tokens[i].type == AND) {
+        || tokens[i].type == TK_EQ || tokens[i].type == TK_NOEQ || tokens[i].type == AND || tokens[i].type == MINUS) {
       if (priority(tokens[i].type) <= priority(tokens[op].type)) op = i;
     }
   }
-  if (priority(tokens[op].type) == 5) assert(0);
   return op;
 }
 int eval(int p, int q) {
+  int flag = 0;
   if (p > q) {
-    assert(0);
+    return INT32_MAX;
   }
   else if (p == q) {
     int value = 0;
-    sscanf(tokens[p].str, "%d", &value);
+    if(sscanf(tokens[p].str, "%d", &value) == EOF) return INT32_MAX;
     return value;
   }
-  else if (checkparentheses(p, q) == true) {
-    return eval(p + 1, q - 1);
-  }
   else {
-    int op = findPrimeOp(p, q);
-    if(tokens[op].type == DEREF) {
-      return paddr_read(eval(op+1, q), 1);
+    flag = checkparentheses(p, q);
+    if (flag == 1) {
+      return eval(p + 1, q - 1);
     }
-    int val1 = eval(p, op - 1);
-    int val2 = eval(op + 1, q);
-    switch (tokens[op].type) {
-      case '+': return val1 + val2;
-      case '-': return val1 - val2;
-      case '*': return val1 * val2;
-      case '/': return val1 / val2;
-      case TK_EQ: return val1 == val2;
-      case TK_NOEQ: return val1 != val2;
-      case AND: return val1 && val2;
-      default: assert(0);
+    else if(flag == 0) {
+      int op = findPrimeOp(p, q);
+      if(tokens[op].type == DEREF || tokens[op].type == MINUS) {
+        int res = eval(op+1, q);
+        if(res != INT32_MAX) { 
+          if(tokens[op].type == DEREF) return paddr_read(res, 1);
+          else return -res;
+        }
+        return INT32_MAX;
+      }
+      int val1 = eval(p, op - 1);
+      int val2 = eval(op + 1, q);
+      if(val1 == INT32_MAX || val2 == INT32_MAX) return INT32_MAX;
+      switch (tokens[op].type) {
+        case '+': return val1 + val2;
+        case '-': return val1 - val2;
+        case '*': return val1 * val2;
+        case '/': return val1 / val2;
+        case TK_EQ: return val1 == val2;
+        case TK_NOEQ: return val1 != val2;
+        case AND: return val1 && val2;
+        default: {
+          printf("The op isn't right.\n");
+          return INT32_MAX;
+        };
+      }
+    }
+    else {
+      printf("The expr's parentheses does not match.\n");
+      printf("p:%d, q:%d\n", p, q);
+      return INT32_MAX;
     }
   }
 }
@@ -237,5 +266,10 @@ uint32_t expr(char *e, bool *success) {
   /* TODO: Insert codes to evaluate the expression. */
   int p = 0;
   int q = nr_token-1;
-  return eval(p, q);
+  unsigned int ret = eval(p, q);
+  if(ret == INT32_MAX) {
+    *success = false;
+    return UINT32_MAX;
+  }
+  return ret;
 }
