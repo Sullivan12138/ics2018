@@ -193,11 +193,11 @@ int priority(int type) {
 int findPrimeOp(int p, int q) {
   int op = p;
   int i;
-  bool flag = true;
+  int num = 0;
   for (i = p; i <= q; i++) {
-    if (tokens[i].type == LC) flag = false;
-    else if(tokens[i].type == RC) flag = true;
-    if (flag == false) continue;
+    if (tokens[i].type == LC) num++;
+    else if(tokens[i].type == RC) num--;
+    if (num != 0) continue;
     if (tokens[i].type == '+' || tokens[i].type == '-' || tokens[i].type == '*' || tokens[i].type == '/' || tokens[i].type == DEREF
         || tokens[i].type == TK_EQ || tokens[i].type == TK_NOEQ || tokens[i].type == AND) {
       if (priority(tokens[i].type) <= priority(tokens[op].type)) op = i;
