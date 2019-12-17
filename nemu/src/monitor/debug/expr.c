@@ -249,6 +249,7 @@ int eval(int p, int q) {
     }
     else {
       printf("The expr's parentheses does not match.\n");
+      printf("p:%d, q:%d\n", p, q);
       return INT32_MAX;
     }
   }
