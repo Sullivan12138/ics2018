@@ -224,9 +224,9 @@ int eval(int p, int q) {
       int op = findPrimeOp(p, q);
       if(tokens[op].type == DEREF || tokens[op].type == MINUS) {
         int res = eval(op+1, q);
-        if(res != -1) { 
+        if(res != INT32_MAX) { 
           if(tokens[op].type == DEREF) return paddr_read(res, 1);
-          else return -eval(op+1, q);
+          else return -res;
         }
         return INT32_MAX;
       }
