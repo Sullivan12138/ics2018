@@ -7,7 +7,7 @@
 #include <regex.h>
 
 enum {
-  TK_NOTYPE = 256, TK_EQ, TK_NOEQ, NUM, LC, RC, HEX, REG, DEREF, AND
+  TK_NOTYPE = 256, TK_EQ, TK_NOEQ, NUM, LC, RC, HEX, REG, DEREF, AND, MINUS
 
   /* TODO: Add more token types */
 
@@ -144,6 +144,14 @@ static bool make_token(char *e) {
                 nr_token++;
                 break;
               };
+              case '-': {
+                if(nr_token == 0 || (tokens[nr_token-1].type != NUM && tokens[nr_token-1].type != RC)) {
+                  tokens[nr_token].type = MINUS;
+                }
+                else tokens[nr_token].type = '-';
+                nr_token++;
+                break;
+              };
               default: tokens[nr_token++].type = rules[i].token_type;
           }
 
@@ -167,10 +175,10 @@ int checkparentheses(int p, int q) {
   for (i = p; i <= q; i++) {
     if (tokens[i].type == LC) lcNum++;
     else if (tokens[i].type == RC) rcNum++;
-    if(rcNum > lcNum) return -1;
+    if(rcNum > lcNum) return INT32_MAX;
     if(rcNum == lcNum && i < q) flag = true; 
   }
-  if(lcNum != rcNum) return -1;
+  if(lcNum != rcNum) return INT32_MAX;
   else if (flag == true) return 0;
   else return 1;
 }
@@ -179,7 +187,7 @@ int priority(int type) {
   else if(type == TK_EQ || type == TK_NOEQ) return 1;
   else if (type == '+' || type == '-') return 2;
   else if (type == '*' || type == '/') return 3;
-  else if(type == DEREF) return 4;
+  else if(type == DEREF || type == MINUS) return 4;
   else return 5;
 }
 int findPrimeOp(int p, int q) {
@@ -200,7 +208,7 @@ int findPrimeOp(int p, int q) {
 int eval(int p, int q) {
   int flag = 0;
   if (p > q) {
-    return -1;
+    return INT32_MAX;
   }
   else if (p == q) {
     int value = 0;
@@ -214,10 +222,13 @@ int eval(int p, int q) {
     }
     else if(flag == 0) {
       int op = findPrimeOp(p, q);
-      if(tokens[op].type == DEREF) {
+      if(tokens[op].type == DEREF || tokens[op].type == MINUS) {
         int res = eval(op+1, q);
-        if(res != -1) return paddr_read(res, 1);
-        return -1;
+        if(res != -1) { 
+          if(tokens[op].type == DEREF) return paddr_read(res, 1);
+          else return -eval(op+1, q);
+        }
+        return INT32_MAX;
       }
       int val1 = eval(p, op - 1);
       int val2 = eval(op + 1, q);
@@ -232,13 +243,13 @@ int eval(int p, int q) {
         case AND: return val1 && val2;
         default: {
           printf("The op isn't right.\n");
-          return -1;
+          return INT32_MAX;
         };
       }
     }
     else {
       printf("The expr's parentheses does not match.\n");
-      return -1;
+      return INT32_MAX;
     }
   }
 }
@@ -251,10 +262,10 @@ uint32_t expr(char *e, bool *success) {
   /* TODO: Insert codes to evaluate the expression. */
   int p = 0;
   int q = nr_token-1;
-  int ret = eval(p, q);
-  if(ret == -1) {
+  unsigned int ret = eval(p, q);
+  if(ret == INT32_MAX) {
     *success = false;
-    return -1;
+    return UINT32_MAX;
   }
   return ret;
 }
