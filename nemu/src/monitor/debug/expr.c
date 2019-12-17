@@ -138,8 +138,8 @@ static bool make_token(char *e) {
                 break;
               };
               case '*': {
-                if(nr_token == 0 || (tokens[nr_token-1].type != NUM && tokens[nr_token-1].type != RC) && tokens[nr_token-1].type != HEX
-                  && tokens[nr_token-1].type != REG) {
+                if(nr_token == 0 || (tokens[nr_token-1].type != NUM && tokens[nr_token-1].type != RC && tokens[nr_token-1].type != HEX
+                  && tokens[nr_token-1].type != REG)) {
                   tokens[nr_token].type = DEREF;
                 }
                 else tokens[nr_token].type = '*';
@@ -147,8 +147,8 @@ static bool make_token(char *e) {
                 break;
               };
               case '-': {
-                if(nr_token == 0 || (tokens[nr_token-1].type != NUM && tokens[nr_token-1].type != RC) && tokens[nr_token-1].type != HEX
-                  && tokens[nr_token-1].type != REG) {
+                if(nr_token == 0 || (tokens[nr_token-1].type != NUM && tokens[nr_token-1].type != RC && tokens[nr_token-1].type != HEX
+                  && tokens[nr_token-1].type != REG)) {
                   tokens[nr_token].type = MINUS;
                 }
                 else tokens[nr_token].type = '-';
