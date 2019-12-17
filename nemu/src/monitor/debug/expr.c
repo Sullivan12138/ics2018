@@ -199,7 +199,7 @@ int findPrimeOp(int p, int q) {
     else if(tokens[i].type == RC) num--;
     if (num != 0) continue;
     if (tokens[i].type == '+' || tokens[i].type == '-' || tokens[i].type == '*' || tokens[i].type == '/' || tokens[i].type == DEREF
-        || tokens[i].type == TK_EQ || tokens[i].type == TK_NOEQ || tokens[i].type == AND) {
+        || tokens[i].type == TK_EQ || tokens[i].type == TK_NOEQ || tokens[i].type == AND || tokens[i].type == MINUS) {
       if (priority(tokens[i].type) <= priority(tokens[op].type)) op = i;
     }
   }
