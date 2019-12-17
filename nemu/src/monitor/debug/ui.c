@@ -65,9 +65,9 @@ static int cmd_p(char *args) {
   bool *success;
   success = (bool*)malloc(sizeof(bool));
   *success = true;
-  int value = expr(args, success);
+  unsigned int value = expr(args, success);
   if (*success == false) printf("This is not a valid expr.\n");
-  else printf("%d\n", value);
+  else printf("%u\n", value);
   return 0;
 }
 static int cmd_x(char *args) {

@@ -212,7 +212,7 @@ int eval(int p, int q) {
   }
   else if (p == q) {
     int value = 0;
-    if(sscanf(tokens[p].str, "%d", &value) == EOF) return -1;
+    if(sscanf(tokens[p].str, "%d", &value) == EOF) return INT32_MAX;
     return value;
   }
   else {
@@ -232,7 +232,7 @@ int eval(int p, int q) {
       }
       int val1 = eval(p, op - 1);
       int val2 = eval(op + 1, q);
-      if(val1 == -1 || val2 == -1) return -1;
+      if(val1 == INT32_MAX || val2 == INT32_MAX) return INT32_MAX;
       switch (tokens[op].type) {
         case '+': return val1 + val2;
         case '-': return val1 - val2;
