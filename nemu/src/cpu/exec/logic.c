@@ -14,8 +14,9 @@ make_EHelper(and) {
 }
 
 make_EHelper(xor) {
-  TODO();
-
+  id_dest->val = id_src->val | id_dest->val;
+  operand_write(id_dest, &id_dest->val);
+  cpu.eflags.cf = cpu.eflags.of = 0;
   print_asm_template2(xor);
 }
 

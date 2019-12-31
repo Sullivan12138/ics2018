@@ -41,7 +41,7 @@ static inline make_DopHelper(SI) {
    *
    op->simm = ???
    */
-  TODO();
+  op->simm = instr_fetch(eip, op->width);
 
   rtl_li(&op->val, op->simm);
 
@@ -322,7 +322,10 @@ make_DHelper(out_a2dx) {
   sprintf(id_dest->str, "(%%dx)");
 #endif
 }
-
+make_DHelper(r2a) {
+  decode_op_r(eip, id_src, true);
+  decode_op_a(eip, id_src2, true);
+}
 void operand_write(Operand *op, rtlreg_t* src) {
   if (op->type == OP_TYPE_REG) { rtl_sr(op->reg, src, op->width); }
   else if (op->type == OP_TYPE_MEM) { rtl_sm(&op->addr, src, op->width); }

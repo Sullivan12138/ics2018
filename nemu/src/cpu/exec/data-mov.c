@@ -6,13 +6,14 @@ make_EHelper(mov) {
 }
 
 make_EHelper(push) {
-  TODO();
+  rtl_push(id_dest->val);
 
   print_asm_template1(push);
 }
 
 make_EHelper(pop) {
-  TODO();
+  rtl_pop(id_dest->val);
+  operand_write(id_dest, &id_dest->val);
 
   print_asm_template1(pop);
 }
@@ -73,4 +74,14 @@ make_EHelper(movzx) {
 make_EHelper(lea) {
   operand_write(id_dest, &id_src->addr);
   print_asm_template2(lea);
+}
+
+make_EHelper(xchg) {
+  id_dest->val = id_src->val;
+  operand_write(id_src, id_src2->val);
+  operand_write(id_src2, id_dest->val);
+}
+
+make_EHelper(endbr32) {
+  instr_fetch(eip, 3);
 }
