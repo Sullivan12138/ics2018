@@ -78,8 +78,8 @@ make_EHelper(lea) {
 
 make_EHelper(xchg) {
   id_dest->val = id_src->val;
-  operand_write(id_src, id_src2->val);
-  operand_write(id_src2, id_dest->val);
+  operand_write(id_src, &id_src2->val);
+  operand_write(id_src2, &id_dest->val);
 }
 
 make_EHelper(endbr32) {
