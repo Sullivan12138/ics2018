@@ -7,7 +7,10 @@ make_EHelper(add) {
 }
 
 make_EHelper(sub) {
-  TODO();
+  id_dest->val = id_dest->val - id_src->val;
+  operand_write(id_dest,  &id_dest->val);
+  cpu.eflags.zf = id_dest->val == 0 ? 1 : 0;
+  cpu.eflags.sf = ((id_dest->val & (1 << 31)) >> 31) == 0 ? 0 : 1;
 
   print_asm_template2(sub);
 }

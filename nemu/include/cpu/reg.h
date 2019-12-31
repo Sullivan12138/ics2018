@@ -34,6 +34,33 @@ union {
   };
 };
   vaddr_t eip;
+  union {
+    struct {
+      uint32_t cf:               1;
+      uint32_t reserved_1:       1;
+      uint32_t pf:               1;
+      uint32_t reserved_3:       1;
+      uint32_t af:               1;
+      uint32_t reserved_5:       1;
+      uint32_t zf:               1;
+      uint32_t sf:               1;
+      uint32_t tf:               1;
+      uint32_t If:               1;
+      uint32_t df:               1;
+      uint32_t of:               1;
+      uint32_t topl:             1;
+      uint32_t nt:               1;
+      uint32_t reserved_15:      1;
+      uint32_t rf:               1;
+      uint32_t vm:               1;
+      uint32_t ac:               1;
+      uint32_t vif:              1;
+      uint32_t vip:              1;
+      uint32_t td:               1;
+      uint32_t reserved_22to31: 10;
+    };
+    uint32_t val;
+  } eflags;
 
 } CPU_state;
 
