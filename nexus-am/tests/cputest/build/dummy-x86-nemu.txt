@@ -1,0 +1,26 @@
+
+/home/hust/ics2018/nexus-am/tests/cputest/build/dummy-x86-nemu:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00100000 <_start>:
+  100000:	bd 00 00 00 00       	mov    $0x0,%ebp
+  100005:	bc 00 7c 00 00       	mov    $0x7c00,%esp
+  10000a:	e8 01 00 00 00       	call   100010 <_trm_init>
+  10000f:	90                   	nop
+
+00100010 <_trm_init>:
+  100010:	f3 0f 1e fb          	endbr32 
+  100014:	55                   	push   %ebp
+  100015:	89 e5                	mov    %esp,%ebp
+  100017:	83 ec 08             	sub    $0x8,%esp
+  10001a:	e8 05 00 00 00       	call   100024 <main>
+  10001f:	d6                   	(bad)  
+  100020:	eb fe                	jmp    100020 <_trm_init+0x10>
+  100022:	66 90                	xchg   %ax,%ax
+
+00100024 <main>:
+  100024:	f3 0f 1e fb          	endbr32 
+  100028:	31 c0                	xor    %eax,%eax
+  10002a:	c3                   	ret    
