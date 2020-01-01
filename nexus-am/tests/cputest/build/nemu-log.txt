@@ -1,0 +1,16 @@
+[1;34m[src/monitor/monitor.c,72,load_img] The image is /home/hust/ics2018/nexus-am/tests/cputest/build/add-x86-nemu.bin[0m
+[1;34m[src/monitor/monitor.c,28,welcome] Debug: [1;32mON[0m[0m
+[1;34m[src/monitor/monitor.c,29,welcome] If debug mode is on, A log file will be generated to record every instruction NEMU executes. This may lead to a large log file. If it is not necessary, you can turn it off in include/common.h.[0m
+[1;34m[src/monitor/monitor.c,36,welcome] Build time: 10:13:13, Dec 31 2019[0m
+  100000:   bd 00 00 00 00                        movl $0x0,%ebp
+  100005:   bc 00 7c 00 00                        movl $0x7c00,%esp
+  10000a:   e8 11 00 00 00                        call 100020
+  100020:   f3 0f 1e fb                           call 100020
+  100024:   55                                    pushl %ebp
+  100025:   89 e5                                 movl %esp,%ebp
+  100027:   83 ec 08                              subl $0x8,%esp
+  10002a:   e8 35 00 00 00                        call 100064
+  100064:   f3 0f 1e fb                           call 100064
+  100068:   8d 8d 4c 24 04 83 e4 f0 ff               invalid opcode
+[1;31mnemu: ABORT[0m at eip = 0x00100070
+
