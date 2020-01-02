@@ -9,10 +9,5 @@
   10000a:   e8 01 00 00 00                        call 100010
   100010:   f3 0f 1e fb                           call 100010
   100014:   55                                    pushl %ebp
-  100015:   89 e5                                 movl %esp,%ebp
-  100017:   83 ec 08                              subl $0x8,%esp
-  10001a:   e8 05 00 00 00                        call 100024
-  100024:   f3 0f 1e fb                           call 100024
-  100028:   31 c0                                 xorl %eax,%eax
-[1;31mnemu: ABORT[0m at eip = 0x0010002a
+[1;31mnemu: ABORT[0m at eip = 0x00100015
 
