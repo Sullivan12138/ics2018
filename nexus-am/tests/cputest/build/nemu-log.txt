@@ -33,6 +33,6 @@
   100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
   10009e:   01 f2                                 addl %esi,%edx
   1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
-  1000a7:   0f 94 c2                              sete %edx
+  1000a7:   0f 94 c2                              sete %dl
 [1;31mnemu: ABORT[0m at eip = 0x001000aa
 
