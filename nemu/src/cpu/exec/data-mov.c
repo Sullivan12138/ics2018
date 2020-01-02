@@ -31,7 +31,8 @@ make_EHelper(popa) {
 }
 
 make_EHelper(leave) {
-  TODO();
+  cpu.esp = cpu.ebp;
+  rtl_pop(&cpu.ebp);
 
   print_asm("leave");
 }
@@ -74,12 +75,6 @@ make_EHelper(movzx) {
 make_EHelper(lea) {
   operand_write(id_dest, &id_src->addr);
   print_asm_template2(lea);
-}
-
-make_EHelper(xchg) {
-  id_dest->val = id_src->val;
-  operand_write(id_src, &id_src2->val);
-  operand_write(id_src2, &id_dest->val);
 }
 
 make_EHelper(endbr32) {
