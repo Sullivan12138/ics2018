@@ -10,10 +10,3 @@
   100020:   f3 0f 1e fb                           call 100020
   100024:   55                                    pushl %ebp
   100025:   89 e5                                 movl %esp,%ebp
-  100027:   83 ec 08                              subl $0x8,%esp
-  10002a:   e8 35 00 00 00                        call 100064
-  100064:   f3 0f 1e fb                           call 100064
-  100068:   8d 4c 24 04                           leal 0x4(%esp),%ecx
-  10006c:   83 e4 f0                              andl $0xf0,%esp
-[1;31mnemu: ABORT[0m at eip = 0x0010006f
-
