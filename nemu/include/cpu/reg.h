@@ -36,18 +36,18 @@ union {
   vaddr_t eip;
   union {
     struct {
-      uint32_t cf:               1;
+      uint32_t CF:               1;
       uint32_t reserved_1:       1;
       uint32_t pf:               1;
       uint32_t reserved_3:       1;
       uint32_t af:               1;
       uint32_t reserved_5:       1;
-      uint32_t zf:               1;
-      uint32_t sf:               1;
+      uint32_t ZF:               1;
+      uint32_t SF:               1;
       uint32_t tf:               1;
-      uint32_t If:               1;
+      uint32_t IF:               1;
       uint32_t df:               1;
-      uint32_t of:               1;
+      uint32_t OF:               1;
       uint32_t topl:             1;
       uint32_t nt:               1;
       uint32_t reserved_15:      1;
