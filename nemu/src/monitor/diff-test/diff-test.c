@@ -76,7 +76,7 @@ void difftest_step(uint32_t eip) {
   int i = 0;
   for(i = 0; i < 8; i++) {
     if(cpu.gpr[i]._32 != ref_r.gpr[i]._32) {
-      printf("%s is not the same\n", reg[i]);
+      printf("%s is not the same, the right answer is %x while you get %x\n", reg[i], ref_r.gpr[i], cpu.gpr[i]._32);
       nemu_state = NEMU_ABORT;
     }
   }
