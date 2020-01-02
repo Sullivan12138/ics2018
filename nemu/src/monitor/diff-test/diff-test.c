@@ -100,8 +100,5 @@ void difftest_step(uint32_t eip) {
     printf("OF is not the same\n, the right answer is %d while you get %d\n", ref_r.eflags.OF, cpu.eflags.OF);
     nemu_state = NEMU_ABORT;
   }
-  if(cpu.eflags.IF != ref_r.eflags.IF) {
-    printf("IF is not the same\n, the right answer is %d while you get %d\n", ref_r.eflags.IF, cpu.eflags.IF);
-    nemu_state = NEMU_ABORT;
-  }
+  
 }
