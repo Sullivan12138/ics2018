@@ -9,19 +9,5 @@
   10000a:   e8 11 00 00 00                        call 100020
   100020:   f3 0f 1e fb                           call 100020
   100024:   55                                    pushl %ebp
-  100025:   89 e5                                 movl %esp,%ebp
-  100027:   83 ec 08                              subl $0x8,%esp
-  10002a:   e8 8d 00 00 00                        call 1000bc
-  1000bc:   f3 0f 1e fb                           call 1000bc
-  1000c0:   8d 4c 24 04                           leal 0x4(%esp),%ecx
-  1000c4:   83 e4 f0                              andl $0xfffffff0,%esp
-  1000c7:   ff 71 fc                              pushl -0x4(%ecx)
-  1000ca:   55                                    pushl %ebp
-  1000cb:   89 e5                                 movl %esp,%ebp
-  1000cd:   53                                    pushl %ebx
-  1000ce:   51                                    pushl %ecx
-  1000cf:   83 ec 18                              subl $0x18,%esp
-  1000d2:   66 c7 45 f6 aa 00                     movw $0xaa,-0xa(%ebp)
-  1000d8:   6a 6a 00 8d 5d f6 53 e8 71               invalid opcode
-[1;31mnemu: ABORT[0m at eip = 0x001000e0
+[1;31mnemu: ABORT[0m at eip = 0x00100025
 
