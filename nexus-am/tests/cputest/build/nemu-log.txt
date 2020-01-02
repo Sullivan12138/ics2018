@@ -1,45 +1,13 @@
-[1;34m[src/monitor/monitor.c,72,load_img] The image is /home/hust/ics2018/nexus-am/tests/cputest/build/add-x86-nemu.bin[0m
+[1;34m[src/monitor/monitor.c,72,load_img] The image is /home/hust/ics2018/nexus-am/tests/cputest/build/dummy-x86-nemu.bin[0m
+[1;34m[src/monitor/diff-test/diff-test.c,46,init_difftest] Differential testing: [1;32mON[0m[0m
+[1;34m[src/monitor/diff-test/diff-test.c,47,init_difftest] The result of every instruction will be compared with /home/hust/ics2018/nemu/tools/qemu-diff/build/qemu-so. This will help you a lot for debugging, but also significantly reduce the performance. If it is not necessary, you can turn it off in include/common.h.[0m
 [1;34m[src/monitor/monitor.c,28,welcome] Debug: [1;32mON[0m[0m
 [1;34m[src/monitor/monitor.c,29,welcome] If debug mode is on, A log file will be generated to record every instruction NEMU executes. This may lead to a large log file. If it is not necessary, you can turn it off in include/common.h.[0m
-[1;34m[src/monitor/monitor.c,36,welcome] Build time: 20:29:53, Jan  2 2020[0m
+[1;34m[src/monitor/monitor.c,36,welcome] Build time: 20:31:26, Jan  2 2020[0m
   100000:   bd 00 00 00 00                        movl $0x0,%ebp
   100005:   bc 00 7c 00 00                        movl $0x7c00,%esp
-  10000a:   e8 11 00 00 00                        call 100020
-  100020:   f3 0f 1e fb                           call 100020
-  100024:   55                                    pushl %ebp
-  100025:   89 e5                                 movl %esp,%ebp
-  100027:   83 ec 08                              subl $0x8,%esp
-  10002a:   e8 35 00 00 00                        call 100064
-  100064:   f3 0f 1e fb                           call 100064
-  100068:   8d 4c 24 04                           leal 0x4(%esp),%ecx
-  10006c:   83 e4 f0                              andl $0xfffffff0,%esp
-  10006f:   ff 71 fc                              pushl -0x4(%ecx)
-  100072:   55                                    pushl %ebp
-  100073:   89 e5                                 movl %esp,%ebp
-  100075:   57                                    pushl %edi
-  100076:   56                                    pushl %esi
-  100077:   53                                    pushl %ebx
-  100078:   51                                    pushl %ecx
-  100079:   83 ec 18                              subl $0x18,%esp
-  10007c:   31 db                                 xorl %ebx,%ebx
-  10007e:   c7 45 e4 00 00 00 00                  movl $0x0,-0x1c(%ebp)
-  100085:   8d 76 00                              leal 0(%esi),%esi
-  100088:   8b 45 e4                              movl -0x1c(%ebp),%eax
-  10008b:   8b 34 85 00 02 10 00                  movl 0x100200(,%eax,4),%esi
-  100092:   31 ff                                 xorl %edi,%edi
-  100094:   83 ec 0c                              subl $0xc,%esp
-  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
-  10009e:   01 f2                                 addl %esi,%edx
-  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
-  1000a7:   0f 94 c2                              sete %dl
-  1000aa:   0f b6 d2                              movzxl %dl,%dl
-  1000ad:   52                                    pushl %edx
-  1000ae:   e8 81 ff ff ff                        call 100034
-  100034:   f3 0f 1e fb                           call 100034
-  100038:   55                                    pushl %ebp
-  100039:   89 e5                                 movl %esp,%ebp
-  10003b:   83 ec 08                              subl $0x8,%esp
-  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
-  100041:   85 c0                                 testl %eax,%eax
-  100043:   74 02                                 je 100047
-  100045:   c9                                    leave
+  10000a:   e8 01 00 00 00                        call 100010
+  100010:   f3 0f 1e fb                           call 100010
+  100014:   55                                    pushl %ebp
+[1;31mnemu: ABORT[0m at eip = 0x00100015
+
