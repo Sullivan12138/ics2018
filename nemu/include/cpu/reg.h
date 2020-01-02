@@ -58,9 +58,9 @@ union {
       uint32_t VIP:              1;
       uint32_t TD:               1;
       uint32_t reserved_22to31: 10;
-    };
+    }eflags;
     uint32_t val;
-  } eflags;
+  };
 
 } CPU_state;
 
