@@ -1,4 +1,4 @@
-[1;34m[src/monitor/monitor.c,72,load_img] The image is /home/hust/ics2018/nexus-am/tests/cputest/build/add-longlong-x86-nemu.bin[0m
+[1;34m[src/monitor/monitor.c,72,load_img] The image is /home/hust/ics2018/nexus-am/tests/cputest/build/add-x86-nemu.bin[0m
 [1;34m[src/monitor/monitor.c,28,welcome] Debug: [1;32mON[0m[0m
 [1;34m[src/monitor/monitor.c,29,welcome] If debug mode is on, A log file will be generated to record every instruction NEMU executes. This may lead to a large log file. If it is not necessary, you can turn it off in include/common.h.[0m
 [1;34m[src/monitor/monitor.c,36,welcome] Build time: 21:57:46, Jan  2 2020[0m
@@ -9,43 +9,32 @@
   100024:   55                                    pushl %ebp
   100025:   89 e5                                 movl %esp,%ebp
   100027:   83 ec 08                              subl $0x8,%esp
-  10002a:   e8 3d 00 00 00                        call 10006c
-  10006c:   f3 0f 1e fb                           call 10006c
-  100070:   8d 4c 24 04                           leal 0x4(%esp),%ecx
-  100074:   83 e4 f0                              andl $0xfffffff0,%esp
-  100077:   ff 71 fc                              pushl -0x4(%ecx)
-  10007a:   55                                    pushl %ebp
-  10007b:   89 e5                                 movl %esp,%ebp
-  10007d:   57                                    pushl %edi
-  10007e:   56                                    pushl %esi
-  10007f:   53                                    pushl %ebx
-  100080:   51                                    pushl %ecx
-  100081:   83 ec 18                              subl $0x18,%esp
-  100084:   31 c9                                 xorl %ecx,%ecx
-  100086:   c7 45 e0 00 00 00 00                  movl $0x0,-0x20(%ebp)
-  10008d:   89 4d e4                              movl %ecx,-0x1c(%ebp)
-  100090:   8b 45 e0                              movl -0x20(%ebp),%eax
-  100093:   8b b0 20 03 10 00                     movl 0x100320(%eax),%esi
-  100099:   8b b8 24 03 10 00                     movl 0x100324(%eax),%edi
-  10009f:   31 db                                 xorl %ebx,%ebx
-  1000a1:   89 75 d8                              movl %esi,-0x28(%ebp)
-  1000a4:   89 7d dc                              movl %edi,-0x24(%ebp)
-  1000a7:   90                                    nop
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  10002a:   e8 35 00 00 00                        call 100064
+  100064:   f3 0f 1e fb                           call 100064
+  100068:   8d 4c 24 04                           leal 0x4(%esp),%ecx
+  10006c:   83 e4 f0                              andl $0xfffffff0,%esp
+  10006f:   ff 71 fc                              pushl -0x4(%ecx)
+  100072:   55                                    pushl %ebp
+  100073:   89 e5                                 movl %esp,%ebp
+  100075:   57                                    pushl %edi
+  100076:   56                                    pushl %esi
+  100077:   53                                    pushl %ebx
+  100078:   51                                    pushl %ecx
+  100079:   83 ec 18                              subl $0x18,%esp
+  10007c:   31 db                                 xorl %ebx,%ebx
+  10007e:   c7 45 e4 00 00 00 00                  movl $0x0,-0x1c(%ebp)
+  100085:   8d 76 00                              leal 0(%esi),%esi
+  100088:   8b 45 e4                              movl -0x1c(%ebp),%eax
+  10008b:   8b 34 85 00 02 10 00                  movl 0x100200(,%eax,4),%esi
+  100092:   31 ff                                 xorl %edi,%edi
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -54,26 +43,208 @@
   100041:   85 c0                                 testl %eax,%eax
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
-  100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  100046:   c3                                    ret
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  1000bc:   83 ec 0c                              subl $0xc,%esp
+  1000bf:   6a 01                                 pushb $0x1
+  1000c1:   e8 6e ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  1000c6:   83 c4 10                              addl $0x10,%esp
+  1000c9:   ff 45 e4                              incl -0x1c(%ebp)
+  1000cc:   8b 45 e4                              movl -0x1c(%ebp),%eax
+  1000cf:   83 c3 20                              addl $0x20,%ebx
+  1000d2:   83 f8 08                              cmpl $0x8,%eax
+  1000d5:   75 b1                                 jne 100088
+  100088:   8b 45 e4                              movl -0x1c(%ebp),%eax
+  10008b:   8b 34 85 00 02 10 00                  movl 0x100200(,%eax,4),%esi
+  100092:   31 ff                                 xorl %edi,%edi
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -83,25 +254,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -111,25 +275,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -139,25 +296,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -167,25 +317,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -195,25 +338,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -223,25 +359,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -251,37 +380,13 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000eb:   83 45 e0 08                           addl $0x8,-0x20(%ebp)
-  1000ef:   8b 45 e0                              movl -0x20(%ebp),%eax
-  1000f2:   83 45 e4 40                           addl $0x40,-0x1c(%ebp)
-  1000f6:   83 f8 40                              cmpl $0x40,%eax
-  1000f9:   75 95                                 jne 100090
-  100090:   8b 45 e0                              movl -0x20(%ebp),%eax
-  100093:   8b b0 20 03 10 00                     movl 0x100320(%eax),%esi
-  100099:   8b b8 24 03 10 00                     movl 0x100324(%eax),%edi
-  10009f:   31 db                                 xorl %ebx,%ebx
-  1000a1:   89 75 d8                              movl %esi,-0x28(%ebp)
-  1000a4:   89 7d dc                              movl %edi,-0x24(%ebp)
-  1000a7:   90                                    nop
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  1000bc:   83 ec 0c                              subl $0xc,%esp
+  1000bf:   6a 01                                 pushb $0x1
+  1000c1:   e8 6e ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -291,25 +396,23 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000c6:   83 c4 10                              addl $0x10,%esp
+  1000c9:   ff 45 e4                              incl -0x1c(%ebp)
+  1000cc:   8b 45 e4                              movl -0x1c(%ebp),%eax
+  1000cf:   83 c3 20                              addl $0x20,%ebx
+  1000d2:   83 f8 08                              cmpl $0x8,%eax
+  1000d5:   75 b1                                 jne 100088
+  100088:   8b 45 e4                              movl -0x1c(%ebp),%eax
+  10008b:   8b 34 85 00 02 10 00                  movl 0x100200(,%eax,4),%esi
+  100092:   31 ff                                 xorl %edi,%edi
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -319,25 +422,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -347,25 +443,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -375,25 +464,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -403,25 +485,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -431,25 +506,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -459,25 +527,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -487,37 +548,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000eb:   83 45 e0 08                           addl $0x8,-0x20(%ebp)
-  1000ef:   8b 45 e0                              movl -0x20(%ebp),%eax
-  1000f2:   83 45 e4 40                           addl $0x40,-0x1c(%ebp)
-  1000f6:   83 f8 40                              cmpl $0x40,%eax
-  1000f9:   75 95                                 jne 100090
-  100090:   8b 45 e0                              movl -0x20(%ebp),%eax
-  100093:   8b b0 20 03 10 00                     movl 0x100320(%eax),%esi
-  100099:   8b b8 24 03 10 00                     movl 0x100324(%eax),%edi
-  10009f:   31 db                                 xorl %ebx,%ebx
-  1000a1:   89 75 d8                              movl %esi,-0x28(%ebp)
-  1000a4:   89 7d dc                              movl %edi,-0x24(%ebp)
-  1000a7:   90                                    nop
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -527,25 +569,13 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  1000bc:   83 ec 0c                              subl $0xc,%esp
+  1000bf:   6a 01                                 pushb $0x1
+  1000c1:   e8 6e ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -555,25 +585,23 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000c6:   83 c4 10                              addl $0x10,%esp
+  1000c9:   ff 45 e4                              incl -0x1c(%ebp)
+  1000cc:   8b 45 e4                              movl -0x1c(%ebp),%eax
+  1000cf:   83 c3 20                              addl $0x20,%ebx
+  1000d2:   83 f8 08                              cmpl $0x8,%eax
+  1000d5:   75 b1                                 jne 100088
+  100088:   8b 45 e4                              movl -0x1c(%ebp),%eax
+  10008b:   8b 34 85 00 02 10 00                  movl 0x100200(,%eax,4),%esi
+  100092:   31 ff                                 xorl %edi,%edi
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -583,25 +611,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -611,25 +632,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -639,25 +653,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -667,25 +674,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -695,25 +695,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -723,37 +716,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000eb:   83 45 e0 08                           addl $0x8,-0x20(%ebp)
-  1000ef:   8b 45 e0                              movl -0x20(%ebp),%eax
-  1000f2:   83 45 e4 40                           addl $0x40,-0x1c(%ebp)
-  1000f6:   83 f8 40                              cmpl $0x40,%eax
-  1000f9:   75 95                                 jne 100090
-  100090:   8b 45 e0                              movl -0x20(%ebp),%eax
-  100093:   8b b0 20 03 10 00                     movl 0x100320(%eax),%esi
-  100099:   8b b8 24 03 10 00                     movl 0x100324(%eax),%edi
-  10009f:   31 db                                 xorl %ebx,%ebx
-  1000a1:   89 75 d8                              movl %esi,-0x28(%ebp)
-  1000a4:   89 7d dc                              movl %edi,-0x24(%ebp)
-  1000a7:   90                                    nop
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -763,25 +737,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -791,25 +758,13 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  1000bc:   83 ec 0c                              subl $0xc,%esp
+  1000bf:   6a 01                                 pushb $0x1
+  1000c1:   e8 6e ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -819,25 +774,23 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000c6:   83 c4 10                              addl $0x10,%esp
+  1000c9:   ff 45 e4                              incl -0x1c(%ebp)
+  1000cc:   8b 45 e4                              movl -0x1c(%ebp),%eax
+  1000cf:   83 c3 20                              addl $0x20,%ebx
+  1000d2:   83 f8 08                              cmpl $0x8,%eax
+  1000d5:   75 b1                                 jne 100088
+  100088:   8b 45 e4                              movl -0x1c(%ebp),%eax
+  10008b:   8b 34 85 00 02 10 00                  movl 0x100200(,%eax,4),%esi
+  100092:   31 ff                                 xorl %edi,%edi
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -847,25 +800,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -875,25 +821,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -903,25 +842,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -931,25 +863,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -959,37 +884,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000eb:   83 45 e0 08                           addl $0x8,-0x20(%ebp)
-  1000ef:   8b 45 e0                              movl -0x20(%ebp),%eax
-  1000f2:   83 45 e4 40                           addl $0x40,-0x1c(%ebp)
-  1000f6:   83 f8 40                              cmpl $0x40,%eax
-  1000f9:   75 95                                 jne 100090
-  100090:   8b 45 e0                              movl -0x20(%ebp),%eax
-  100093:   8b b0 20 03 10 00                     movl 0x100320(%eax),%esi
-  100099:   8b b8 24 03 10 00                     movl 0x100324(%eax),%edi
-  10009f:   31 db                                 xorl %ebx,%ebx
-  1000a1:   89 75 d8                              movl %esi,-0x28(%ebp)
-  1000a4:   89 7d dc                              movl %edi,-0x24(%ebp)
-  1000a7:   90                                    nop
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -999,25 +905,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1027,25 +926,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1055,25 +947,13 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  1000bc:   83 ec 0c                              subl $0xc,%esp
+  1000bf:   6a 01                                 pushb $0x1
+  1000c1:   e8 6e ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1083,25 +963,23 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000c6:   83 c4 10                              addl $0x10,%esp
+  1000c9:   ff 45 e4                              incl -0x1c(%ebp)
+  1000cc:   8b 45 e4                              movl -0x1c(%ebp),%eax
+  1000cf:   83 c3 20                              addl $0x20,%ebx
+  1000d2:   83 f8 08                              cmpl $0x8,%eax
+  1000d5:   75 b1                                 jne 100088
+  100088:   8b 45 e4                              movl -0x1c(%ebp),%eax
+  10008b:   8b 34 85 00 02 10 00                  movl 0x100200(,%eax,4),%esi
+  100092:   31 ff                                 xorl %edi,%edi
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1111,25 +989,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1139,25 +1010,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1167,25 +1031,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1195,37 +1052,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000eb:   83 45 e0 08                           addl $0x8,-0x20(%ebp)
-  1000ef:   8b 45 e0                              movl -0x20(%ebp),%eax
-  1000f2:   83 45 e4 40                           addl $0x40,-0x1c(%ebp)
-  1000f6:   83 f8 40                              cmpl $0x40,%eax
-  1000f9:   75 95                                 jne 100090
-  100090:   8b 45 e0                              movl -0x20(%ebp),%eax
-  100093:   8b b0 20 03 10 00                     movl 0x100320(%eax),%esi
-  100099:   8b b8 24 03 10 00                     movl 0x100324(%eax),%edi
-  10009f:   31 db                                 xorl %ebx,%ebx
-  1000a1:   89 75 d8                              movl %esi,-0x28(%ebp)
-  1000a4:   89 7d dc                              movl %edi,-0x24(%ebp)
-  1000a7:   90                                    nop
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1235,25 +1073,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1263,25 +1094,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1291,25 +1115,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1319,25 +1136,13 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  1000bc:   83 ec 0c                              subl $0xc,%esp
+  1000bf:   6a 01                                 pushb $0x1
+  1000c1:   e8 6e ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1347,25 +1152,23 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000c6:   83 c4 10                              addl $0x10,%esp
+  1000c9:   ff 45 e4                              incl -0x1c(%ebp)
+  1000cc:   8b 45 e4                              movl -0x1c(%ebp),%eax
+  1000cf:   83 c3 20                              addl $0x20,%ebx
+  1000d2:   83 f8 08                              cmpl $0x8,%eax
+  1000d5:   75 b1                                 jne 100088
+  100088:   8b 45 e4                              movl -0x1c(%ebp),%eax
+  10008b:   8b 34 85 00 02 10 00                  movl 0x100200(,%eax,4),%esi
+  100092:   31 ff                                 xorl %edi,%edi
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1375,25 +1178,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1403,25 +1199,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1431,37 +1220,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000eb:   83 45 e0 08                           addl $0x8,-0x20(%ebp)
-  1000ef:   8b 45 e0                              movl -0x20(%ebp),%eax
-  1000f2:   83 45 e4 40                           addl $0x40,-0x1c(%ebp)
-  1000f6:   83 f8 40                              cmpl $0x40,%eax
-  1000f9:   75 95                                 jne 100090
-  100090:   8b 45 e0                              movl -0x20(%ebp),%eax
-  100093:   8b b0 20 03 10 00                     movl 0x100320(%eax),%esi
-  100099:   8b b8 24 03 10 00                     movl 0x100324(%eax),%edi
-  10009f:   31 db                                 xorl %ebx,%ebx
-  1000a1:   89 75 d8                              movl %esi,-0x28(%ebp)
-  1000a4:   89 7d dc                              movl %edi,-0x24(%ebp)
-  1000a7:   90                                    nop
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1471,25 +1241,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1499,25 +1262,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1527,25 +1283,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1555,25 +1304,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1583,25 +1325,13 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  1000bc:   83 ec 0c                              subl $0xc,%esp
+  1000bf:   6a 01                                 pushb $0x1
+  1000c1:   e8 6e ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1611,25 +1341,23 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000c6:   83 c4 10                              addl $0x10,%esp
+  1000c9:   ff 45 e4                              incl -0x1c(%ebp)
+  1000cc:   8b 45 e4                              movl -0x1c(%ebp),%eax
+  1000cf:   83 c3 20                              addl $0x20,%ebx
+  1000d2:   83 f8 08                              cmpl $0x8,%eax
+  1000d5:   75 b1                                 jne 100088
+  100088:   8b 45 e4                              movl -0x1c(%ebp),%eax
+  10008b:   8b 34 85 00 02 10 00                  movl 0x100200(,%eax,4),%esi
+  100092:   31 ff                                 xorl %edi,%edi
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1639,25 +1367,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1667,37 +1388,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000eb:   83 45 e0 08                           addl $0x8,-0x20(%ebp)
-  1000ef:   8b 45 e0                              movl -0x20(%ebp),%eax
-  1000f2:   83 45 e4 40                           addl $0x40,-0x1c(%ebp)
-  1000f6:   83 f8 40                              cmpl $0x40,%eax
-  1000f9:   75 95                                 jne 100090
-  100090:   8b 45 e0                              movl -0x20(%ebp),%eax
-  100093:   8b b0 20 03 10 00                     movl 0x100320(%eax),%esi
-  100099:   8b b8 24 03 10 00                     movl 0x100324(%eax),%edi
-  10009f:   31 db                                 xorl %ebx,%ebx
-  1000a1:   89 75 d8                              movl %esi,-0x28(%ebp)
-  1000a4:   89 7d dc                              movl %edi,-0x24(%ebp)
-  1000a7:   90                                    nop
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1707,25 +1409,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1735,25 +1430,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1763,25 +1451,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1791,25 +1472,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1819,25 +1493,18 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  100094:   83 ec 0c                              subl $0xc,%esp
+  100097:   8b 14 bd 00 02 10 00                  movl 0x100200(,%edi,4),%edx
+  10009e:   01 f2                                 addl %esi,%edx
+  1000a0:   3b 94 bb 00 01 10 00                  cmpl 0x100100(%ebx,%edi,4),%edx
+  1000a7:   0f 94 c2                              sete %dl
+  1000aa:   0f b6 d2                              movzxl %dl,%dl
+  1000ad:   52                                    pushl %edx
+  1000ae:   e8 81 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1847,25 +1514,13 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000b3:   83 c4 10                              addl $0x10,%esp
+  1000b6:   47                                    incl %edi
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+  1000ba:   75 d8                                 jne 100094
+  1000bc:   83 ec 0c                              subl $0xc,%esp
+  1000bf:   6a 01                                 pushb $0x1
+  1000c1:   e8 6e ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1875,25 +1530,15 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000a8:   83 ec 0c                              subl $0xc,%esp
-  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
-  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
-  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
-  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
-  1000c9:   31 c1                                 xorl %eax,%ecx
-  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
-  1000d2:   31 d0                                 xorl %edx,%eax
-  1000d4:   09 c1                                 orl %eax,%ecx
-  1000d6:   0f 94 c0                              sete %al
-  1000d9:   0f b6 c0                              movzxl %al,%al
-  1000dc:   50                                    pushl %eax
-  1000dd:   e8 52 ff ff ff                        call 100034
+  1000c6:   83 c4 10                              addl $0x10,%esp
+  1000c9:   ff 45 e4                              incl -0x1c(%ebp)
+  1000cc:   8b 45 e4                              movl -0x1c(%ebp),%eax
+  1000cf:   83 c3 20                              addl $0x20,%ebx
+  1000d2:   83 f8 08                              cmpl $0x8,%eax
+  1000d5:   75 b1                                 jne 100088
+  1000d7:   83 ec 0c                              subl $0xc,%esp
+  1000da:   6a 01                                 pushb $0x1
+  1000dc:   e8 53 ff ff ff                        call 100034
   100034:   f3 0f 1e fb                           call 100034
   100038:   55                                    pushl %ebp
   100039:   89 e5                                 movl %esp,%ebp
@@ -1903,20 +1548,17 @@
   100043:   74 02                                 je 100047
   100045:   c9                                    leave
   100046:   c3                                    ret
-  1000e2:   83 c4 10                              addl $0x10,%esp
-  1000e5:   43                                    incl %ebx
-  1000e6:   83 fb 08                              cmpl $0x8,%ebx
-  1000e9:   75 bd                                 jne 1000a8
-  1000eb:   83 45 e0 08                           addl $0x8,-0x20(%ebp)
-  1000ef:   8b 45 e0                              movl -0x20(%ebp),%eax
-  1000f2:   83 45 e4 40                           addl $0x40,-0x1c(%ebp)
-  1000f6:   83 f8 40                              cmpl $0x40,%eax
-  1000f9:   75 95                                 jne 100090
-  1000fb:   31 c0                                 xorl %eax,%eax
-  1000fd:   8d 65 f0                              leal -0x10(%ebp),%esp
-  100100:   59                                    popl %ecx
-  100101:   5b                                    popl %ebx
-  100102:   5e                                    popl %esi
-  100103:   5f                                    popl %edi
-  100104:   5d                                    popl %ebp
-  100105:   8d 61 fc                              leal -0x4(%ecx),%esp
+  1000e1:   83 c4 10                              addl $0x10,%esp
+  1000e4:   31 c0                                 xorl %eax,%eax
+  1000e6:   8d 65 f0                              leal -0x10(%ebp),%esp
+  1000e9:   59                                    popl %ecx
+  1000ea:   5b                                    popl %ebx
+  1000eb:   5e                                    popl %esi
+  1000ec:   5f                                    popl %edi
+  1000ed:   5d                                    popl %ebp
+  1000ee:   8d 61 fc                              leal -0x4(%ecx),%esp
+  1000f1:   c3                                    ret
+  10002f:   d6                                    nemu trap
+[1;31mnemu: HIT GOOD TRAP[0m at eip = 0x0010002f
+
+[1;34m[src/monitor/cpu-exec.c,23,monitor_statistic] total guest instructions = 1557[0m
