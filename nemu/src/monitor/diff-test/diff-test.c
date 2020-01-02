@@ -12,7 +12,7 @@ static void (*ref_difftest_exec)(uint64_t n);
 static bool is_skip_ref;
 static bool is_skip_dut;
 
-static char reg[8][10] {"eax", "ecx", "edx", "ebx", "esp", "ebp", "esi", "edi"};
+static char reg[8][10] = {"eax", "ecx", "edx", "ebx", "esp", "ebp", "esi", "edi"};
 
 void difftest_skip_ref() { is_skip_ref = true; }
 void difftest_skip_dut() { is_skip_dut = true; }
