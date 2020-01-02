@@ -1,9 +1,7 @@
 [1;34m[src/monitor/monitor.c,72,load_img] The image is /home/hust/ics2018/nexus-am/tests/cputest/build/add-x86-nemu.bin[0m
-[1;34m[src/monitor/diff-test/diff-test.c,46,init_difftest] Differential testing: [1;32mON[0m[0m
-[1;34m[src/monitor/diff-test/diff-test.c,47,init_difftest] The result of every instruction will be compared with /home/hust/ics2018/nemu/tools/qemu-diff/build/qemu-so. This will help you a lot for debugging, but also significantly reduce the performance. If it is not necessary, you can turn it off in include/common.h.[0m
 [1;34m[src/monitor/monitor.c,28,welcome] Debug: [1;32mON[0m[0m
 [1;34m[src/monitor/monitor.c,29,welcome] If debug mode is on, A log file will be generated to record every instruction NEMU executes. This may lead to a large log file. If it is not necessary, you can turn it off in include/common.h.[0m
-[1;34m[src/monitor/monitor.c,36,welcome] Build time: 20:31:26, Jan  2 2020[0m
+[1;34m[src/monitor/monitor.c,36,welcome] Build time: 21:57:46, Jan  2 2020[0m
   100000:   bd 00 00 00 00                        movl $0x0,%ebp
   100005:   bc 00 7c 00 00                        movl $0x7c00,%esp
   10000a:   e8 11 00 00 00                        call 100020
@@ -1555,5 +1553,12 @@
   1000e6:   8d 65 f0                              leal -0x10(%ebp),%esp
   1000e9:   59                                    popl %ecx
   1000ea:   5b                                    popl %ebx
-[1;31mnemu: ABORT[0m at eip = 0x001000eb
+  1000eb:   5e                                    popl %esi
+  1000ec:   5f                                    popl %edi
+  1000ed:   5d                                    popl %ebp
+  1000ee:   8d 61 fc                              leal -0x4(%ecx),%esp
+  1000f1:   c3                                    ret
+  10002f:   d6                                    nemu trap
+[1;31mnemu: HIT GOOD TRAP[0m at eip = 0x0010002f
 
+[1;34m[src/monitor/cpu-exec.c,23,monitor_statistic] total guest instructions = 1557[0m
