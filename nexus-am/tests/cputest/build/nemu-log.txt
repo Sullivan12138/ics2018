@@ -37,6 +37,12 @@
   1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
   1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
   1000b1:   03 04 dd 20 03 10 00                  addl 0x100320(,%ebx,8),%eax
-  1000b8:   13 13 14 dd 24 03 10 00 8b               invalid opcode
-[1;31mnemu: ABORT[0m at eip = 0x001000c0
+  1000b8:   13 14 dd 24 03 10 00                  adcl 0x100324(,%ebx,8),%edx
+  1000bf:   8b 7d e4                              movl -0x1c(%ebp),%edi
+  1000c2:   8b 8c df 20 01 10 00                  movl 0x100120(%edi,%ebx,8),%ecx
+  1000c9:   31 c1                                 xorl %eax,%ecx
+  1000cb:   8b 84 df 24 01 10 00                  movl 0x100124(%edi,%ebx,8),%eax
+  1000d2:   31 d0                                 xorl %edx,%eax
+  1000d4:   09 09 c1 0f 94 c0 0f b6 c0               invalid opcode
+[1;31mnemu: ABORT[0m at eip = 0x001000dc
 
