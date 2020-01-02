@@ -38,7 +38,6 @@ make_EHelper(cmp) {
 	t3 = ((((int32_t)(t1) < 0) == (((int32_t)(t2) >> 31) == 0)) && (((int32_t)(t0) < 0) != ((int32_t)(t1) < 0))); // 负正得正 正负得负
 	rtl_set_OF(&t3);
 	rtl_update_ZFSF(&t0, 4);
-	operand_write(id_dest, &t0);
 
   print_asm_template2(cmp);
 }

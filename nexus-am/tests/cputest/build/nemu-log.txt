@@ -48,6 +48,6 @@
   100046:   c3                                    ret
   1000b3:   83 c4 10                              addl $0x10,%esp
   1000b6:   47                                    incl %edi
-  1000b7:   83 ff 08 83 ff 08 75 d8 83 ec 0c               invalid opcode
-[1;31mnemu: ABORT[0m at eip = 0x001000bf
+  1000b7:   83 ff 08                              cmpl $0x8,%edi
+[1;31mnemu: ABORT[0m at eip = 0x001000ba
 
