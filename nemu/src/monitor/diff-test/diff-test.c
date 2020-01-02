@@ -84,23 +84,23 @@ void difftest_step(uint32_t eip) {
     printf("eip is not the same, the right answer is %d while you get %d\n", ref_r.eip, cpu.eip);
     nemu_state = NEMU_ABORT;
   }
-  if(cpu.eflags.CF != cpu.eflags.CF) {
+  if(cpu.eflags.CF != ref_r.eflags.CF) {
     printf("CF is not the same\n, the right answer is %d while you get %d\n", ref_r.eflags.CF, cpu.eflags.CF);
     nemu_state = NEMU_ABORT;
   }
-  if(cpu.eflags.ZF != cpu.eflags.ZF) {
+  if(cpu.eflags.ZF != ref_r.eflags.ZF) {
     printf("ZF is not the same\n, the right answer is %d while you get %d\n", ref_r.eflags.ZF, cpu.eflags.ZF);
     nemu_state = NEMU_ABORT;
   }
-  if(cpu.eflags.SF != cpu.eflags.SF) {
+  if(cpu.eflags.SF != ref_r.eflags.SF) {
     printf("SF is not the same\n, the right answer is %d while you get %d\n", ref_r.eflags.SF, cpu.eflags.SF);
     nemu_state = NEMU_ABORT;
   }
-  if(cpu.eflags.OF != cpu.eflags.OF) {
+  if(cpu.eflags.OF != ref_r.eflags.OF) {
     printf("OF is not the same\n, the right answer is %d while you get %d\n", ref_r.eflags.OF, cpu.eflags.OF);
     nemu_state = NEMU_ABORT;
   }
-  if(cpu.eflags.IF != cpu.eflags.IF) {
+  if(cpu.eflags.IF != ref_r.eflags.IF) {
     printf("IF is not the same\n, the right answer is %d while you get %d\n", ref_r.eflags.IF, cpu.eflags.IF);
     nemu_state = NEMU_ABORT;
   }
