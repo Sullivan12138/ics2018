@@ -12,6 +12,8 @@ static void (*ref_difftest_exec)(uint64_t n);
 static bool is_skip_ref;
 static bool is_skip_dut;
 
+static char reg[8][10] {"eax", "ecx", "edx", "ebx", "esp", "ebp", "esi", "edi"};
+
 void difftest_skip_ref() { is_skip_ref = true; }
 void difftest_skip_dut() { is_skip_dut = true; }
 
@@ -71,5 +73,15 @@ void difftest_step(uint32_t eip) {
 
   // TODO: Check the registers state with the reference design.
   // Set `nemu_state` to `NEMU_ABORT` if they are not the same.
-  TODO();
+  int i = 0;
+  for(i = 0; i < 8; i++) {
+    if(cpu.gpr[i]._32 != ref_r.gpr[i]._32) {
+      printf("%s is not the same\n", reg[i]);
+      nemu_state = NEMU_ABORT;
+    }
+  }
+  if(cpu.eip != ref_r.eip) {
+    printf("eip is not the same\n");
+    nemu_state = NEMU_ABORT;
+  }
 }
