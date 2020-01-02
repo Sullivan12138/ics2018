@@ -1917,5 +1917,13 @@
   1000fb:   31 c0                                 xorl %eax,%eax
   1000fd:   8d 65 f0                              leal -0x10(%ebp),%esp
   100100:   59                                    popl %ecx
-[1;31mnemu: ABORT[0m at eip = 0x00100101
+  100101:   5b                                    popl %ebx
+  100102:   5e                                    popl %esi
+  100103:   5f                                    popl %edi
+  100104:   5d                                    popl %ebp
+  100105:   8d 61 fc                              leal -0x4(%ecx),%esp
+  100108:   c3                                    ret
+  10002f:   d6                                    nemu trap
+[1;31mnemu: HIT GOOD TRAP[0m at eip = 0x0010002f
 
+[1;34m[src/monitor/cpu-exec.c,23,monitor_statistic] total guest instructions = 1920[0m
