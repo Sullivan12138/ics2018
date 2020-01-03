@@ -26,7 +26,7 @@ make_EHelper(pop) {
 		id_dest->val = temp;
 	}
 	else
-	  	id_dest->val = t0;
+	  	id_dest->val = t0; 
   operand_write(id_dest, &id_dest->val);
 
   print_asm_template1(pop);

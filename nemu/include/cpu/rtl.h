@@ -25,7 +25,7 @@ static inline void interpret_rtl_mv(rtlreg_t* dest, const rtlreg_t *src1) {
   static inline void concat(interpret_rtl_, name) (rtlreg_t* dest, const rtlreg_t* src1, const rtlreg_t* src2) { \
     *dest = concat(c_, name) (*src1, *src2); \
   } \
-  /* Actually those of imm version are pseudo rtl instructions,
+  /* Actually those of imm version are pseudo rtl instructions,\
    * but we define them here in the same macro */ \
   static inline void concat(rtl_, name ## i) (rtlreg_t* dest, const rtlreg_t* src1, int imm) { \
     rtl_li(&at, imm); \
