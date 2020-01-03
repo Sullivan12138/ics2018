@@ -331,5 +331,6 @@
   10009e:   8b 55 fc                              movl -0x4(%ebp),%edx
   1000a1:   75 0d                                 jne 1000b0
   1000a3:   f7 d0                                 notl %eax
-[1;31mnemu: ABORT[0m at eip = 0x001000a5
+  1000a5:   22 22 02 8b 55 fc 88 02 c9               invalid opcode
+[1;31mnemu: ABORT[0m at eip = 0x001000ad
 
