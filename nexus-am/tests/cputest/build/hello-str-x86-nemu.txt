@@ -55,14 +55,14 @@ Disassembly of section .text:
   100063:	89 e5                	mov    %esp,%ebp
   100065:	51                   	push   %ecx
   100066:	83 ec 08             	sub    $0x8,%esp
-  100069:	68 33 01 10 00       	push   $0x100133
-  10006e:	68 41 01 10 00       	push   $0x100141
-  100073:	68 80 01 10 00       	push   $0x100180
+  100069:	68 78 01 10 00       	push   $0x100178
+  10006e:	68 86 01 10 00       	push   $0x100186
+  100073:	68 c0 01 10 00       	push   $0x1001c0
   100078:	e8 a7 00 00 00       	call   100124 <sprintf>
   10007d:	58                   	pop    %eax
   10007e:	5a                   	pop    %edx
-  10007f:	68 33 01 10 00       	push   $0x100133
-  100084:	68 80 01 10 00       	push   $0x100180
+  10007f:	68 78 01 10 00       	push   $0x100178
+  100084:	68 c0 01 10 00       	push   $0x1001c0
   100089:	e8 9e 00 00 00       	call   10012c <strcmp>
   10008e:	85 c0                	test   %eax,%eax
   100090:	0f 94 c0             	sete   %al
@@ -72,12 +72,12 @@ Disassembly of section .text:
   10009e:	c7 04 24 02 00 00 00 	movl   $0x2,(%esp)
   1000a5:	6a 01                	push   $0x1
   1000a7:	6a 01                	push   $0x1
-  1000a9:	68 44 01 10 00       	push   $0x100144
-  1000ae:	68 80 01 10 00       	push   $0x100180
+  1000a9:	68 89 01 10 00       	push   $0x100189
+  1000ae:	68 c0 01 10 00       	push   $0x1001c0
   1000b3:	e8 6c 00 00 00       	call   100124 <sprintf>
   1000b8:	83 c4 18             	add    $0x18,%esp
-  1000bb:	68 52 01 10 00       	push   $0x100152
-  1000c0:	68 80 01 10 00       	push   $0x100180
+  1000bb:	68 97 01 10 00       	push   $0x100197
+  1000c0:	68 c0 01 10 00       	push   $0x1001c0
   1000c5:	e8 62 00 00 00       	call   10012c <strcmp>
   1000ca:	85 c0                	test   %eax,%eax
   1000cc:	0f 94 c0             	sete   %al
@@ -87,12 +87,12 @@ Disassembly of section .text:
   1000da:	c7 04 24 0c 00 00 00 	movl   $0xc,(%esp)
   1000e1:	6a 0a                	push   $0xa
   1000e3:	6a 02                	push   $0x2
-  1000e5:	68 44 01 10 00       	push   $0x100144
-  1000ea:	68 80 01 10 00       	push   $0x100180
+  1000e5:	68 89 01 10 00       	push   $0x100189
+  1000ea:	68 c0 01 10 00       	push   $0x1001c0
   1000ef:	e8 30 00 00 00       	call   100124 <sprintf>
   1000f4:	83 c4 18             	add    $0x18,%esp
-  1000f7:	68 5d 01 10 00       	push   $0x10015d
-  1000fc:	68 80 01 10 00       	push   $0x100180
+  1000f7:	68 a2 01 10 00       	push   $0x1001a2
+  1000fc:	68 c0 01 10 00       	push   $0x1001c0
   100101:	e8 26 00 00 00       	call   10012c <strcmp>
   100106:	85 c0                	test   %eax,%eax
   100108:	0f 94 c0             	sete   %al
@@ -115,5 +115,40 @@ Disassembly of section .text:
 
 0010012c <strcmp>:
   10012c:	f3 0f 1e fb          	endbr32 
-  100130:	31 c0                	xor    %eax,%eax
-  100132:	c3                   	ret    
+  100130:	55                   	push   %ebp
+  100131:	89 e5                	mov    %esp,%ebp
+  100133:	53                   	push   %ebx
+  100134:	8b 4d 08             	mov    0x8(%ebp),%ecx
+  100137:	8b 55 0c             	mov    0xc(%ebp),%edx
+  10013a:	8a 01                	mov    (%ecx),%al
+  10013c:	84 c0                	test   %al,%al
+  10013e:	75 12                	jne    100152 <strcmp+0x26>
+  100140:	eb 1e                	jmp    100160 <strcmp+0x34>
+  100142:	66 90                	xchg   %ax,%ax
+  100144:	38 c3                	cmp    %al,%bl
+  100146:	7c 10                	jl     100158 <strcmp+0x2c>
+  100148:	7f 26                	jg     100170 <strcmp+0x44>
+  10014a:	41                   	inc    %ecx
+  10014b:	42                   	inc    %edx
+  10014c:	8a 01                	mov    (%ecx),%al
+  10014e:	84 c0                	test   %al,%al
+  100150:	74 0e                	je     100160 <strcmp+0x34>
+  100152:	8a 1a                	mov    (%edx),%bl
+  100154:	84 db                	test   %bl,%bl
+  100156:	75 ec                	jne    100144 <strcmp+0x18>
+  100158:	b8 01 00 00 00       	mov    $0x1,%eax
+  10015d:	5b                   	pop    %ebx
+  10015e:	5d                   	pop    %ebp
+  10015f:	c3                   	ret    
+  100160:	31 c0                	xor    %eax,%eax
+  100162:	80 3a 00             	cmpb   $0x0,(%edx)
+  100165:	0f 95 c0             	setne  %al
+  100168:	f7 d8                	neg    %eax
+  10016a:	5b                   	pop    %ebx
+  10016b:	5d                   	pop    %ebp
+  10016c:	c3                   	ret    
+  10016d:	8d 76 00             	lea    0x0(%esi),%esi
+  100170:	b8 ff ff ff ff       	mov    $0xffffffff,%eax
+  100175:	5b                   	pop    %ebx
+  100176:	5d                   	pop    %ebp
+  100177:	c3                   	ret    
