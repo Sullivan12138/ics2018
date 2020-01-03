@@ -29,6 +29,161 @@
   1000c3:   40                                    incl %eax
   1000c4:   8b 0c 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%ecx
   1000cb:   39 ca                                 cmpl %ecx,%edx
-  1000cd:   7e 0e 89 0c 85                        jle 851c89e0
-[1;31mnemu: ABORT[0m at eip = 0x851c89e0
+  1000cd:   7e 0e                                 jle 1000dd
+  1000dd:   39 d8                                 cmpl %ebx,%eax
+  1000df:   75 db                                 jne 1000bc
+  1000bc:   8b 14 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%edx
+  1000c3:   40                                    incl %eax
+  1000c4:   8b 0c 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%ecx
+  1000cb:   39 ca                                 cmpl %ecx,%edx
+  1000cd:   7e 0e                                 jle 1000dd
+  1000dd:   39 d8                                 cmpl %ebx,%eax
+  1000df:   75 db                                 jne 1000bc
+  1000bc:   8b 14 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%edx
+  1000c3:   40                                    incl %eax
+  1000c4:   8b 0c 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%ecx
+  1000cb:   39 ca                                 cmpl %ecx,%edx
+  1000cd:   7e 0e                                 jle 1000dd
+  1000cf:   89 0c 85 9c 01 10 00                  movl %ecx,0x10019c(,%eax,4)
+  1000d6:   89 14 85 a0 01 10 00                  movl %edx,0x1001a0(,%eax,4)
+  1000dd:   39 d8                                 cmpl %ebx,%eax
+  1000df:   75 db                                 jne 1000bc
+  1000bc:   8b 14 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%edx
+  1000c3:   40                                    incl %eax
+  1000c4:   8b 0c 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%ecx
+  1000cb:   39 ca                                 cmpl %ecx,%edx
+  1000cd:   7e 0e                                 jle 1000dd
+  1000cf:   89 0c 85 9c 01 10 00                  movl %ecx,0x10019c(,%eax,4)
+  1000d6:   89 14 85 a0 01 10 00                  movl %edx,0x1001a0(,%eax,4)
+  1000dd:   39 d8                                 cmpl %ebx,%eax
+  1000df:   75 db                                 jne 1000bc
+  1000bc:   8b 14 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%edx
+  1000c3:   40                                    incl %eax
+  1000c4:   8b 0c 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%ecx
+  1000cb:   39 ca                                 cmpl %ecx,%edx
+  1000cd:   7e 0e                                 jle 1000dd
+  1000dd:   39 d8                                 cmpl %ebx,%eax
+  1000df:   75 db                                 jne 1000bc
+  1000bc:   8b 14 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%edx
+  1000c3:   40                                    incl %eax
+  1000c4:   8b 0c 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%ecx
+  1000cb:   39 ca                                 cmpl %ecx,%edx
+  1000cd:   7e 0e                                 jle 1000dd
+  1000dd:   39 d8                                 cmpl %ebx,%eax
+  1000df:   75 db                                 jne 1000bc
+  1000bc:   8b 14 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%edx
+  1000c3:   40                                    incl %eax
+  1000c4:   8b 0c 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%ecx
+  1000cb:   39 ca                                 cmpl %ecx,%edx
+  1000cd:   7e 0e                                 jle 1000dd
+  1000cf:   89 0c 85 9c 01 10 00                  movl %ecx,0x10019c(,%eax,4)
+  1000d6:   89 14 85 a0 01 10 00                  movl %edx,0x1001a0(,%eax,4)
+  1000dd:   39 d8                                 cmpl %ebx,%eax
+  1000df:   75 db                                 jne 1000bc
+  1000bc:   8b 14 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%edx
+  1000c3:   40                                    incl %eax
+  1000c4:   8b 0c 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%ecx
+  1000cb:   39 ca                                 cmpl %ecx,%edx
+  1000cd:   7e 0e                                 jle 1000dd
+  1000cf:   89 0c 85 9c 01 10 00                  movl %ecx,0x10019c(,%eax,4)
+  1000d6:   89 14 85 a0 01 10 00                  movl %edx,0x1001a0(,%eax,4)
+  1000dd:   39 d8                                 cmpl %ebx,%eax
+  1000df:   75 db                                 jne 1000bc
+  1000bc:   8b 14 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%edx
+  1000c3:   40                                    incl %eax
+  1000c4:   8b 0c 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%ecx
+  1000cb:   39 ca                                 cmpl %ecx,%edx
+  1000cd:   7e 0e                                 jle 1000dd
+  1000dd:   39 d8                                 cmpl %ebx,%eax
+  1000df:   75 db                                 jne 1000bc
+  1000bc:   8b 14 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%edx
+  1000c3:   40                                    incl %eax
+  1000c4:   8b 0c 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%ecx
+  1000cb:   39 ca                                 cmpl %ecx,%edx
+  1000cd:   7e 0e                                 jle 1000dd
+  1000cf:   89 0c 85 9c 01 10 00                  movl %ecx,0x10019c(,%eax,4)
+  1000d6:   89 14 85 a0 01 10 00                  movl %edx,0x1001a0(,%eax,4)
+  1000dd:   39 d8                                 cmpl %ebx,%eax
+  1000df:   75 db                                 jne 1000bc
+  1000bc:   8b 14 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%edx
+  1000c3:   40                                    incl %eax
+  1000c4:   8b 0c 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%ecx
+  1000cb:   39 ca                                 cmpl %ecx,%edx
+  1000cd:   7e 0e                                 jle 1000dd
+  1000dd:   39 d8                                 cmpl %ebx,%eax
+  1000df:   75 db                                 jne 1000bc
+  1000bc:   8b 14 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%edx
+  1000c3:   40                                    incl %eax
+  1000c4:   8b 0c 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%ecx
+  1000cb:   39 ca                                 cmpl %ecx,%edx
+  1000cd:   7e 0e                                 jle 1000dd
+  1000cf:   89 0c 85 9c 01 10 00                  movl %ecx,0x10019c(,%eax,4)
+  1000d6:   89 14 85 a0 01 10 00                  movl %edx,0x1001a0(,%eax,4)
+  1000dd:   39 d8                                 cmpl %ebx,%eax
+  1000df:   75 db                                 jne 1000bc
+  1000bc:   8b 14 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%edx
+  1000c3:   40                                    incl %eax
+  1000c4:   8b 0c 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%ecx
+  1000cb:   39 ca                                 cmpl %ecx,%edx
+  1000cd:   7e 0e                                 jle 1000dd
+  1000cf:   89 0c 85 9c 01 10 00                  movl %ecx,0x10019c(,%eax,4)
+  1000d6:   89 14 85 a0 01 10 00                  movl %edx,0x1001a0(,%eax,4)
+  1000dd:   39 d8                                 cmpl %ebx,%eax
+  1000df:   75 db                                 jne 1000bc
+  1000bc:   8b 14 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%edx
+  1000c3:   40                                    incl %eax
+  1000c4:   8b 0c 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%ecx
+  1000cb:   39 ca                                 cmpl %ecx,%edx
+  1000cd:   7e 0e                                 jle 1000dd
+  1000cf:   89 0c 85 9c 01 10 00                  movl %ecx,0x10019c(,%eax,4)
+  1000d6:   89 14 85 a0 01 10 00                  movl %edx,0x1001a0(,%eax,4)
+  1000dd:   39 d8                                 cmpl %ebx,%eax
+  1000df:   75 db                                 jne 1000bc
+  1000bc:   8b 14 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%edx
+  1000c3:   40                                    incl %eax
+  1000c4:   8b 0c 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%ecx
+  1000cb:   39 ca                                 cmpl %ecx,%edx
+  1000cd:   7e 0e                                 jle 1000dd
+  1000cf:   89 0c 85 9c 01 10 00                  movl %ecx,0x10019c(,%eax,4)
+  1000d6:   89 14 85 a0 01 10 00                  movl %edx,0x1001a0(,%eax,4)
+  1000dd:   39 d8                                 cmpl %ebx,%eax
+  1000df:   75 db                                 jne 1000bc
+  1000bc:   8b 14 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%edx
+  1000c3:   40                                    incl %eax
+  1000c4:   8b 0c 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%ecx
+  1000cb:   39 ca                                 cmpl %ecx,%edx
+  1000cd:   7e 0e                                 jle 1000dd
+  1000cf:   89 0c 85 9c 01 10 00                  movl %ecx,0x10019c(,%eax,4)
+  1000d6:   89 14 85 a0 01 10 00                  movl %edx,0x1001a0(,%eax,4)
+  1000dd:   39 d8                                 cmpl %ebx,%eax
+  1000df:   75 db                                 jne 1000bc
+  1000bc:   8b 14 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%edx
+  1000c3:   40                                    incl %eax
+  1000c4:   8b 0c 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%ecx
+  1000cb:   39 ca                                 cmpl %ecx,%edx
+  1000cd:   7e 0e                                 jle 1000dd
+  1000cf:   89 0c 85 9c 01 10 00                  movl %ecx,0x10019c(,%eax,4)
+  1000d6:   89 14 85 a0 01 10 00                  movl %edx,0x1001a0(,%eax,4)
+  1000dd:   39 d8                                 cmpl %ebx,%eax
+  1000df:   75 db                                 jne 1000bc
+  1000bc:   8b 14 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%edx
+  1000c3:   40                                    incl %eax
+  1000c4:   8b 0c 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%ecx
+  1000cb:   39 ca                                 cmpl %ecx,%edx
+  1000cd:   7e 0e                                 jle 1000dd
+  1000cf:   89 0c 85 9c 01 10 00                  movl %ecx,0x10019c(,%eax,4)
+  1000d6:   89 14 85 a0 01 10 00                  movl %edx,0x1001a0(,%eax,4)
+  1000dd:   39 d8                                 cmpl %ebx,%eax
+  1000df:   75 db                                 jne 1000bc
+  1000bc:   8b 14 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%edx
+  1000c3:   40                                    incl %eax
+  1000c4:   8b 0c 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%ecx
+  1000cb:   39 ca                                 cmpl %ecx,%edx
+  1000cd:   7e 0e                                 jle 1000dd
+  1000cf:   89 0c 85 9c 01 10 00                  movl %ecx,0x10019c(,%eax,4)
+  1000d6:   89 14 85 a0 01 10 00                  movl %edx,0x1001a0(,%eax,4)
+  1000dd:   39 d8                                 cmpl %ebx,%eax
+  1000df:   75 db                                 jne 1000bc
+  1000e1:   4b 4b 85 db 75 d2 66 90 83               invalid opcode
+[1;31mnemu: ABORT[0m at eip = 0x001000e9
 
