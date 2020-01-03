@@ -24,6 +24,25 @@
   10008d:   31 c0                                 xorl %eax,%eax
   10008f:   90                                    nop
   100090:   83 ec 0c                              subl $0xc,%esp
-  100093:   38 38 83 e0 00 10 00 0f 94               invalid opcode
-[1;31mnemu: ABORT[0m at eip = 0x0010009b
+  100093:   38 83 e0 00 10 00                     cmpb %al,0x1000e0(%ebx)
+  100099:   0f 94 c0                              sete %al
+  10009c:   0f b6 c0                              movzxl %al,%al
+  10009f:   50                                    pushl %eax
+  1000a0:   e8 8f ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  1000a5:   83 c4 10                              addl $0x10,%esp
+  1000a8:   43                                    incl %ebx
+  1000a9:   81 fb 80 00 00 00                     cmpl $0x80,%ebx
+  1000af:   74 10                                 je 1000c1
+  1000b1:   8d 43 bf                              leal -0x41(%ebx),%eax
+  1000b4:   3c 3c 19 76 04 88 d8 eb d4               invalid opcode
+[1;31mnemu: ABORT[0m at eip = 0x001000bc
 
