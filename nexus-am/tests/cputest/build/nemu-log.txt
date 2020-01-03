@@ -527,6 +527,7 @@
   10009e:   31 db                                 xorl %ebx,%ebx
   1000a0:   8b 04 9d 00 01 10 00                  movl 0x100100(,%ebx,4),%eax
   1000a7:   b9 01 00 00 00                        movl $0x1,%ecx
-  1000ac:   99 99 f7 f9 41 83 f9 0b 75               invalid opcode
-[1;31mnemu: ABORT[0m at eip = 0x001000b4
+  1000ac:   99                                    cltd
+  1000ad:   f7 f9 f7 f9 41 83 f9 0b 75 f7               invalid opcode
+[1;31mnemu: ABORT[0m at eip = 0x001000b5
 
