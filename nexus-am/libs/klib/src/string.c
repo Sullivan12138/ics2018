@@ -44,10 +44,11 @@ int strcmp(const char* s1, const char* s2) {
 int strncmp(const char* s1, const char* s2, size_t n) {
   while(*s1 && *s2 && n--) {
     if(*s1 > *s2) return 1;
+	else if(*s1 < *s2) return -1;
     s1++;
     s2++;
   }
-  if(n == 0) {
+  if(n != 0) {
 	  if(*s1) return 1;
 	  else if(*s2) return -1;
   }
@@ -55,10 +56,9 @@ int strncmp(const char* s1, const char* s2, size_t n) {
 }
 
 void* memset(void* v,int c,size_t n) {
-  unsigned char *head = v;
-  while(n != 0) {
-    *head++ = (unsigned char)c;
-    n--;
+  char *head = v;
+  while(n--) {
+    *head++ = c;
   }
   return v;
 }
