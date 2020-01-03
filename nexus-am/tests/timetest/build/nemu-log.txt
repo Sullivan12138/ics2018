@@ -1,0 +1,74 @@
+[1;34m[src/monitor/monitor.c,72,load_img] The image is /home/hust/ics2018/nexus-am/tests/timetest/build/timetest-x86-nemu.bin[0m
+[1;34m[src/monitor/monitor.c,28,welcome] Debug: [1;32mON[0m[0m
+[1;34m[src/monitor/monitor.c,29,welcome] If debug mode is on, A log file will be generated to record every instruction NEMU executes. This may lead to a large log file. If it is not necessary, you can turn it off in include/common.h.[0m
+[1;34m[src/monitor/monitor.c,36,welcome] Build time: 21:04:26, Jan  3 2020[0m
+  100000:   bd 00 00 00 00                        movl $0x0,%ebp
+  100005:   bc 00 7c 00 00                        movl $0x7c00,%esp
+  10000a:   e8 31 00 00 00                        call 100040
+  100040:   f3 0f 1e fb                           call 100040
+  100044:   55                                    pushl %ebp
+  100045:   89 e5                                 movl %esp,%ebp
+  100047:   83 ec 08                              subl $0x8,%esp
+  10004a:   e8 05 00 00 00                        call 100054
+  100054:   f3 0f 1e fb                           call 100054
+  100058:   8d 4c 24 04                           leal 0x4(%esp),%ecx
+  10005c:   83 e4 f0                              andl $0xfffffff0,%esp
+  10005f:   ff 71 fc                              pushl -0x4(%ecx)
+  100062:   55                                    pushl %ebp
+  100063:   89 e5                                 movl %esp,%ebp
+  100065:   57                                    pushl %edi
+  100066:   56                                    pushl %esi
+  100067:   53                                    pushl %ebx
+  100068:   51                                    pushl %ecx
+  100069:   83 ec 28                              subl $0x28,%esp
+  10006c:   e8 5f 04 00 00                        call 1004d0
+  1004d0:   f3 0f 1e fb                           call 1004d0
+  1004d4:   55                                    pushl %ebp
+  1004d5:   89 e5                                 movl %esp,%ebp
+  1004d7:   83 ec 08                              subl $0x8,%esp
+  1004da:   e8 19 01 00 00                        call 1005f8
+  1005f8:   f3 0f 1e fb                           call 1005f8
+  1005fc:   c3                                    ret
+  1004df:   e8 c4 00 00 00                        call 1005a8
+  1005a8:   f3 0f 1e fb                           call 1005a8
+  1005ac:   c3                                    ret
+  1004e4:   31 c0                                 xorl %eax,%eax
+  1004e6:   c9                                    leave
+  1004e7:   c3                                    ret
+  100071:   bb e8 03 00 00                        movl $0x3e8,%ebx
+  100076:   be 01 00 00 00                        movl $0x1,%esi
+  10007b:   8d 7d d0                              leal -0x30(%ebp),%edi
+  10007e:   66 90                                 nop
+  100080:   e8 a7 03 00 00                        call 10042c
+  10042c:   f3 0f 1e fb                           call 10042c
+  100430:   55                                    pushl %ebp
+  100431:   89 e5                                 movl %esp,%ebp
+  100433:   83 ec 18                              subl $0x18,%esp
+  100436:   a1 d0 06 10 00                        movl 0x1006d0,%eax
+  10043b:   85 c0                                 testl %eax,%eax
+  10043d:   74 11                                 je 100450
+  100450:   ba 03 ac 00 00                        movl $0xac03,%edx
+  100455:   b8 d0 06 10 00                        movl $0x1006d0,%eax
+  10045a:   e8 9d ff ff ff                        call 1003fc
+  1003fc:   55                                    pushl %ebp
+  1003fd:   89 e5                                 movl %esp,%ebp
+  1003ff:   57                                    pushl %edi
+  100400:   56                                    pushl %esi
+  100401:   53                                    pushl %ebx
+  100402:   83 ec 0c                              subl $0xc,%esp
+  100405:   89 c6                                 movl %eax,%esi
+  100407:   89 d3                                 movl %edx,%ebx
+  100409:   bf 01 00 00 00                        movl $0x1,%edi
+  10040e:   eb 01                                 jmp 100411
+  100411:   83 ec 0c                              subl $0xc,%esp
+  100414:   57                                    pushl %edi
+  100415:   e8 ce 00 00 00                        call 1004e8
+  1004e8:   f3 0f 1e fb                           call 1004e8
+  1004ec:   55                                    pushl %ebp
+  1004ed:   89 e5                                 movl %esp,%ebp
+  1004ef:   8b 45 08                              movl 0x8(%ebp),%eax
+  1004f2:   48                                    decl %eax
+  1004f3:   83 f8 02                              cmpl $0x2,%eax
+  1004f6:   77 77 0c c1 e0 04 05 a0 06               invalid opcode
+[1;31mnemu: ABORT[0m at eip = 0x001004fe
+
