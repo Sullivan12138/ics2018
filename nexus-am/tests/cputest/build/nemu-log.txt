@@ -45,6 +45,171 @@
   10013a:   8b 45 0c                              movl 0xc(%ebp),%eax
   10013d:   8a 00                                 movb (%eax),%al
   10013f:   84 c0                                 testb %al,%al
-  100141:   0f 84 0f 84 b7 00 00 00 89 fa               invalid opcode
-[1;31mnemu: ABORT[0m at eip = 0x00100149
+  100141:   0f 84 b7 00 00 00                     je 1001fe
+  100147:   89 fa                                 movl %edi,%edx
+  100149:   8b 7d 0c                              movl 0xc(%ebp),%edi
+  10014c:   89 ce                                 movl %ecx,%esi
+  10014e:   eb 14                                 jmp 100164
+  100164:   8d 5f 01                              leal 0x1(%edi),%ebx
+  100167:   3c 25                                 cmpb $0x25,%al
+  100169:   75 e5                                 jne 100150
+  10016b:   31 c9                                 xorl %ecx,%ecx
+  10016d:   0f be 03                              movsxl (%ebx),%al
+  100170:   3c 20                                 cmpb $0x20,%al
+  100172:   74 0f                                 je 100183
+  100174:   3c 30                                 cmpb $0x30,%al
+  100176:   75 14                                 jne 10018c
+  10018c:   89 8d 64 ff ff ff                     movl %ecx,-0x9c(%ebp)
+  100192:   8d 7e 04                              leal 0x4(%esi),%edi
+  100195:   89 bd 70 ff ff ff                     movl %edi,-0x90(%ebp)
+  10019b:   8d 48 d0                              leal -0x30(%eax),%ecx
+  10019e:   80 f9 09                              cmpb $0x9,%cl
+  1001a1:   76 69                                 jbe 10020c
+  1001a3:   8d 7b 01                              leal 0x1(%ebx),%edi
+  1001a6:   3c 2a                                 cmpb $0x2a,%al
+  1001a8:   0f 84 c2 00 00 00                     je 100270
+  1001ae:   c7 85 6c ff ff ff 00 00 00 00         movl $0x0,-0x94(%ebp)
+  1001b8:   8b 36                                 movl (%esi),%esi
+  1001ba:   3c 73                                 cmpb $0x73,%al
+  1001bc:   74 7f                                 je 10023d
+  10023d:   89 55 08                              movl %edx,0x8(%ebp)
+  100240:   83 ec 0c                              subl $0xc,%esp
+  100243:   56                                    pushl %esi
+  100244:   e8 97 01 00 00                        call 1003e0
+  1003e0:   f3 0f 1e fb                           call 1003e0
+  1003e4:   55                                    pushl %ebp
+  1003e5:   89 e5                                 movl %esp,%ebp
+  1003e7:   8b 55 08                              movl 0x8(%ebp),%edx
+  1003ea:   31 c0                                 xorl %eax,%eax
+  1003ec:   80 3a 00                              cmpb $0x0,(%edx)
+  1003ef:   74 0a                                 je 1003fb
+  1003f1:   8d 76 00                              leal 0(%esi),%esi
+  1003f4:   40                                    incl %eax
+  1003f5:   80 3c 02 00                           cmpb $0x0,(%edx,%eax,1)
+  1003f9:   75 f9                                 jne 1003f4
+  1003f4:   40                                    incl %eax
+  1003f5:   80 3c 02 00                           cmpb $0x0,(%edx,%eax,1)
+  1003f9:   75 f9                                 jne 1003f4
+  1003f4:   40                                    incl %eax
+  1003f5:   80 3c 02 00                           cmpb $0x0,(%edx,%eax,1)
+  1003f9:   75 f9                                 jne 1003f4
+  1003f4:   40                                    incl %eax
+  1003f5:   80 3c 02 00                           cmpb $0x0,(%edx,%eax,1)
+  1003f9:   75 f9                                 jne 1003f4
+  1003f4:   40                                    incl %eax
+  1003f5:   80 3c 02 00                           cmpb $0x0,(%edx,%eax,1)
+  1003f9:   75 f9                                 jne 1003f4
+  1003f4:   40                                    incl %eax
+  1003f5:   80 3c 02 00                           cmpb $0x0,(%edx,%eax,1)
+  1003f9:   75 f9                                 jne 1003f4
+  1003f4:   40                                    incl %eax
+  1003f5:   80 3c 02 00                           cmpb $0x0,(%edx,%eax,1)
+  1003f9:   75 f9                                 jne 1003f4
+  1003f4:   40                                    incl %eax
+  1003f5:   80 3c 02 00                           cmpb $0x0,(%edx,%eax,1)
+  1003f9:   75 f9                                 jne 1003f4
+  1003f4:   40                                    incl %eax
+  1003f5:   80 3c 02 00                           cmpb $0x0,(%edx,%eax,1)
+  1003f9:   75 f9                                 jne 1003f4
+  1003f4:   40                                    incl %eax
+  1003f5:   80 3c 02 00                           cmpb $0x0,(%edx,%eax,1)
+  1003f9:   75 f9                                 jne 1003f4
+  1003f4:   40                                    incl %eax
+  1003f5:   80 3c 02 00                           cmpb $0x0,(%edx,%eax,1)
+  1003f9:   75 f9                                 jne 1003f4
+  1003f4:   40                                    incl %eax
+  1003f5:   80 3c 02 00                           cmpb $0x0,(%edx,%eax,1)
+  1003f9:   75 f9                                 jne 1003f4
+  1003f4:   40                                    incl %eax
+  1003f5:   80 3c 02 00                           cmpb $0x0,(%edx,%eax,1)
+  1003f9:   75 f9                                 jne 1003f4
+  1003fb:   5d                                    popl %ebp
+  1003fc:   c3                                    ret
+  100249:   83 c4 10                              addl $0x10,%esp
+  10024c:   85 c0                                 testl %eax,%eax
+  10024e:   8b 55 08                              movl 0x8(%ebp),%edx
+  100251:   7e 10                                 jle 100263
+  100253:   01 d0                                 addl %edx,%eax
+  100255:   8d 76 00                              leal 0(%esi),%esi
+  100258:   42                                    incl %edx
+  100259:   8a 0e                                 movb (%esi),%cl
+  10025b:   88 4a ff                              movb %cl,-0x1(%edx)
+  10025e:   46                                    incl %esi
+  10025f:   39 d0                                 cmpl %edx,%eax
+  100261:   75 f5                                 jne 100258
+  100258:   42                                    incl %edx
+  100259:   8a 0e                                 movb (%esi),%cl
+  10025b:   88 4a ff                              movb %cl,-0x1(%edx)
+  10025e:   46                                    incl %esi
+  10025f:   39 d0                                 cmpl %edx,%eax
+  100261:   75 f5                                 jne 100258
+  100258:   42                                    incl %edx
+  100259:   8a 0e                                 movb (%esi),%cl
+  10025b:   88 4a ff                              movb %cl,-0x1(%edx)
+  10025e:   46                                    incl %esi
+  10025f:   39 d0                                 cmpl %edx,%eax
+  100261:   75 f5                                 jne 100258
+  100258:   42                                    incl %edx
+  100259:   8a 0e                                 movb (%esi),%cl
+  10025b:   88 4a ff                              movb %cl,-0x1(%edx)
+  10025e:   46                                    incl %esi
+  10025f:   39 d0                                 cmpl %edx,%eax
+  100261:   75 f5                                 jne 100258
+  100258:   42                                    incl %edx
+  100259:   8a 0e                                 movb (%esi),%cl
+  10025b:   88 4a ff                              movb %cl,-0x1(%edx)
+  10025e:   46                                    incl %esi
+  10025f:   39 d0                                 cmpl %edx,%eax
+  100261:   75 f5                                 jne 100258
+  100258:   42                                    incl %edx
+  100259:   8a 0e                                 movb (%esi),%cl
+  10025b:   88 4a ff                              movb %cl,-0x1(%edx)
+  10025e:   46                                    incl %esi
+  10025f:   39 d0                                 cmpl %edx,%eax
+  100261:   75 f5                                 jne 100258
+  100258:   42                                    incl %edx
+  100259:   8a 0e                                 movb (%esi),%cl
+  10025b:   88 4a ff                              movb %cl,-0x1(%edx)
+  10025e:   46                                    incl %esi
+  10025f:   39 d0                                 cmpl %edx,%eax
+  100261:   75 f5                                 jne 100258
+  100258:   42                                    incl %edx
+  100259:   8a 0e                                 movb (%esi),%cl
+  10025b:   88 4a ff                              movb %cl,-0x1(%edx)
+  10025e:   46                                    incl %esi
+  10025f:   39 d0                                 cmpl %edx,%eax
+  100261:   75 f5                                 jne 100258
+  100258:   42                                    incl %edx
+  100259:   8a 0e                                 movb (%esi),%cl
+  10025b:   88 4a ff                              movb %cl,-0x1(%edx)
+  10025e:   46                                    incl %esi
+  10025f:   39 d0                                 cmpl %edx,%eax
+  100261:   75 f5                                 jne 100258
+  100258:   42                                    incl %edx
+  100259:   8a 0e                                 movb (%esi),%cl
+  10025b:   88 4a ff                              movb %cl,-0x1(%edx)
+  10025e:   46                                    incl %esi
+  10025f:   39 d0                                 cmpl %edx,%eax
+  100261:   75 f5                                 jne 100258
+  100258:   42                                    incl %edx
+  100259:   8a 0e                                 movb (%esi),%cl
+  10025b:   88 4a ff                              movb %cl,-0x1(%edx)
+  10025e:   46                                    incl %esi
+  10025f:   39 d0                                 cmpl %edx,%eax
+  100261:   75 f5                                 jne 100258
+  100258:   42                                    incl %edx
+  100259:   8a 0e                                 movb (%esi),%cl
+  10025b:   88 4a ff                              movb %cl,-0x1(%edx)
+  10025e:   46                                    incl %esi
+  10025f:   39 d0                                 cmpl %edx,%eax
+  100261:   75 f5                                 jne 100258
+  100258:   42                                    incl %edx
+  100259:   8a 0e                                 movb (%esi),%cl
+  10025b:   88 4a ff                              movb %cl,-0x1(%edx)
+  10025e:   46                                    incl %esi
+  10025f:   39 d0                                 cmpl %edx,%eax
+  100261:   75 f5                                 jne 100258
+  100263:   8b b5 70 ff ff ff                     movl -0x90(%ebp),%esi
+  100269:   e9 e9 eb fe ff ff 66 90 8b               invalid opcode
+[1;31mnemu: ABORT[0m at eip = 0x00100271
 
