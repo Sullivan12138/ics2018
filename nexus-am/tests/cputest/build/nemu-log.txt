@@ -46,6 +46,651 @@
   1000b9:   83 fb 01                              cmpl $0x1,%ebx
   1000bc:   74 23                                 je 1000e1
   1000e1:   ba 01 00 00 00                        movl $0x1,%edx
-  1000e6:   eb eb ac 00 00 00 00 00 00               invalid opcode
-[1;31mnemu: ABORT[0m at eip = 0x001000ee
+  1000e6:   eb ac                                 jmp 100094
+  100094:   89 14 9d 40 01 10 00                  movl %edx,0x100140(,%ebx,4)
+  10009b:   83 ec 0c                              subl $0xc,%esp
+  10009e:   31 c0                                 xorl %eax,%eax
+  1000a0:   39 14 9d 00 01 10 00                  cmpl %edx,0x100100(,%ebx,4)
+  1000a7:   0f 94 c0                              sete %eax
+  1000aa:   50                                    pushl %eax
+  1000ab:   e8 84 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  1000b0:   83 c4 10                              addl $0x10,%esp
+  1000b3:   43                                    incl %ebx
+  1000b4:   83 fb 0d                              cmpl $0xd,%ebx
+  1000b7:   74 1c                                 je 1000d5
+  1000b9:   83 fb 01                              cmpl $0x1,%ebx
+  1000bc:   74 23                                 je 1000e1
+  1000be:   89 d8                                 movl %ebx,%eax
+  1000c0:   ba 01 00 00 00                        movl $0x1,%edx
+  1000c5:   8d 76 00                              leal 0(%esi),%esi
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000d3:   eb bf                                 jmp 100094
+  100094:   89 14 9d 40 01 10 00                  movl %edx,0x100140(,%ebx,4)
+  10009b:   83 ec 0c                              subl $0xc,%esp
+  10009e:   31 c0                                 xorl %eax,%eax
+  1000a0:   39 14 9d 00 01 10 00                  cmpl %edx,0x100100(,%ebx,4)
+  1000a7:   0f 94 c0                              sete %eax
+  1000aa:   50                                    pushl %eax
+  1000ab:   e8 84 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  1000b0:   83 c4 10                              addl $0x10,%esp
+  1000b3:   43                                    incl %ebx
+  1000b4:   83 fb 0d                              cmpl $0xd,%ebx
+  1000b7:   74 1c                                 je 1000d5
+  1000b9:   83 fb 01                              cmpl $0x1,%ebx
+  1000bc:   74 23                                 je 1000e1
+  1000be:   89 d8                                 movl %ebx,%eax
+  1000c0:   ba 01 00 00 00                        movl $0x1,%edx
+  1000c5:   8d 76 00                              leal 0(%esi),%esi
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000d3:   eb bf                                 jmp 100094
+  100094:   89 14 9d 40 01 10 00                  movl %edx,0x100140(,%ebx,4)
+  10009b:   83 ec 0c                              subl $0xc,%esp
+  10009e:   31 c0                                 xorl %eax,%eax
+  1000a0:   39 14 9d 00 01 10 00                  cmpl %edx,0x100100(,%ebx,4)
+  1000a7:   0f 94 c0                              sete %eax
+  1000aa:   50                                    pushl %eax
+  1000ab:   e8 84 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  1000b0:   83 c4 10                              addl $0x10,%esp
+  1000b3:   43                                    incl %ebx
+  1000b4:   83 fb 0d                              cmpl $0xd,%ebx
+  1000b7:   74 1c                                 je 1000d5
+  1000b9:   83 fb 01                              cmpl $0x1,%ebx
+  1000bc:   74 23                                 je 1000e1
+  1000be:   89 d8                                 movl %ebx,%eax
+  1000c0:   ba 01 00 00 00                        movl $0x1,%edx
+  1000c5:   8d 76 00                              leal 0(%esi),%esi
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000d3:   eb bf                                 jmp 100094
+  100094:   89 14 9d 40 01 10 00                  movl %edx,0x100140(,%ebx,4)
+  10009b:   83 ec 0c                              subl $0xc,%esp
+  10009e:   31 c0                                 xorl %eax,%eax
+  1000a0:   39 14 9d 00 01 10 00                  cmpl %edx,0x100100(,%ebx,4)
+  1000a7:   0f 94 c0                              sete %eax
+  1000aa:   50                                    pushl %eax
+  1000ab:   e8 84 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  1000b0:   83 c4 10                              addl $0x10,%esp
+  1000b3:   43                                    incl %ebx
+  1000b4:   83 fb 0d                              cmpl $0xd,%ebx
+  1000b7:   74 1c                                 je 1000d5
+  1000b9:   83 fb 01                              cmpl $0x1,%ebx
+  1000bc:   74 23                                 je 1000e1
+  1000be:   89 d8                                 movl %ebx,%eax
+  1000c0:   ba 01 00 00 00                        movl $0x1,%edx
+  1000c5:   8d 76 00                              leal 0(%esi),%esi
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000d3:   eb bf                                 jmp 100094
+  100094:   89 14 9d 40 01 10 00                  movl %edx,0x100140(,%ebx,4)
+  10009b:   83 ec 0c                              subl $0xc,%esp
+  10009e:   31 c0                                 xorl %eax,%eax
+  1000a0:   39 14 9d 00 01 10 00                  cmpl %edx,0x100100(,%ebx,4)
+  1000a7:   0f 94 c0                              sete %eax
+  1000aa:   50                                    pushl %eax
+  1000ab:   e8 84 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  1000b0:   83 c4 10                              addl $0x10,%esp
+  1000b3:   43                                    incl %ebx
+  1000b4:   83 fb 0d                              cmpl $0xd,%ebx
+  1000b7:   74 1c                                 je 1000d5
+  1000b9:   83 fb 01                              cmpl $0x1,%ebx
+  1000bc:   74 23                                 je 1000e1
+  1000be:   89 d8                                 movl %ebx,%eax
+  1000c0:   ba 01 00 00 00                        movl $0x1,%edx
+  1000c5:   8d 76 00                              leal 0(%esi),%esi
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000d3:   eb bf                                 jmp 100094
+  100094:   89 14 9d 40 01 10 00                  movl %edx,0x100140(,%ebx,4)
+  10009b:   83 ec 0c                              subl $0xc,%esp
+  10009e:   31 c0                                 xorl %eax,%eax
+  1000a0:   39 14 9d 00 01 10 00                  cmpl %edx,0x100100(,%ebx,4)
+  1000a7:   0f 94 c0                              sete %eax
+  1000aa:   50                                    pushl %eax
+  1000ab:   e8 84 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  1000b0:   83 c4 10                              addl $0x10,%esp
+  1000b3:   43                                    incl %ebx
+  1000b4:   83 fb 0d                              cmpl $0xd,%ebx
+  1000b7:   74 1c                                 je 1000d5
+  1000b9:   83 fb 01                              cmpl $0x1,%ebx
+  1000bc:   74 23                                 je 1000e1
+  1000be:   89 d8                                 movl %ebx,%eax
+  1000c0:   ba 01 00 00 00                        movl $0x1,%edx
+  1000c5:   8d 76 00                              leal 0(%esi),%esi
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000d3:   eb bf                                 jmp 100094
+  100094:   89 14 9d 40 01 10 00                  movl %edx,0x100140(,%ebx,4)
+  10009b:   83 ec 0c                              subl $0xc,%esp
+  10009e:   31 c0                                 xorl %eax,%eax
+  1000a0:   39 14 9d 00 01 10 00                  cmpl %edx,0x100100(,%ebx,4)
+  1000a7:   0f 94 c0                              sete %eax
+  1000aa:   50                                    pushl %eax
+  1000ab:   e8 84 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  1000b0:   83 c4 10                              addl $0x10,%esp
+  1000b3:   43                                    incl %ebx
+  1000b4:   83 fb 0d                              cmpl $0xd,%ebx
+  1000b7:   74 1c                                 je 1000d5
+  1000b9:   83 fb 01                              cmpl $0x1,%ebx
+  1000bc:   74 23                                 je 1000e1
+  1000be:   89 d8                                 movl %ebx,%eax
+  1000c0:   ba 01 00 00 00                        movl $0x1,%edx
+  1000c5:   8d 76 00                              leal 0(%esi),%esi
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000d3:   eb bf                                 jmp 100094
+  100094:   89 14 9d 40 01 10 00                  movl %edx,0x100140(,%ebx,4)
+  10009b:   83 ec 0c                              subl $0xc,%esp
+  10009e:   31 c0                                 xorl %eax,%eax
+  1000a0:   39 14 9d 00 01 10 00                  cmpl %edx,0x100100(,%ebx,4)
+  1000a7:   0f 94 c0                              sete %eax
+  1000aa:   50                                    pushl %eax
+  1000ab:   e8 84 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  1000b0:   83 c4 10                              addl $0x10,%esp
+  1000b3:   43                                    incl %ebx
+  1000b4:   83 fb 0d                              cmpl $0xd,%ebx
+  1000b7:   74 1c                                 je 1000d5
+  1000b9:   83 fb 01                              cmpl $0x1,%ebx
+  1000bc:   74 23                                 je 1000e1
+  1000be:   89 d8                                 movl %ebx,%eax
+  1000c0:   ba 01 00 00 00                        movl $0x1,%edx
+  1000c5:   8d 76 00                              leal 0(%esi),%esi
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000d3:   eb bf                                 jmp 100094
+  100094:   89 14 9d 40 01 10 00                  movl %edx,0x100140(,%ebx,4)
+  10009b:   83 ec 0c                              subl $0xc,%esp
+  10009e:   31 c0                                 xorl %eax,%eax
+  1000a0:   39 14 9d 00 01 10 00                  cmpl %edx,0x100100(,%ebx,4)
+  1000a7:   0f 94 c0                              sete %eax
+  1000aa:   50                                    pushl %eax
+  1000ab:   e8 84 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  1000b0:   83 c4 10                              addl $0x10,%esp
+  1000b3:   43                                    incl %ebx
+  1000b4:   83 fb 0d                              cmpl $0xd,%ebx
+  1000b7:   74 1c                                 je 1000d5
+  1000b9:   83 fb 01                              cmpl $0x1,%ebx
+  1000bc:   74 23                                 je 1000e1
+  1000be:   89 d8                                 movl %ebx,%eax
+  1000c0:   ba 01 00 00 00                        movl $0x1,%edx
+  1000c5:   8d 76 00                              leal 0(%esi),%esi
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000d3:   eb bf                                 jmp 100094
+  100094:   89 14 9d 40 01 10 00                  movl %edx,0x100140(,%ebx,4)
+  10009b:   83 ec 0c                              subl $0xc,%esp
+  10009e:   31 c0                                 xorl %eax,%eax
+  1000a0:   39 14 9d 00 01 10 00                  cmpl %edx,0x100100(,%ebx,4)
+  1000a7:   0f 94 c0                              sete %eax
+  1000aa:   50                                    pushl %eax
+  1000ab:   e8 84 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  1000b0:   83 c4 10                              addl $0x10,%esp
+  1000b3:   43                                    incl %ebx
+  1000b4:   83 fb 0d                              cmpl $0xd,%ebx
+  1000b7:   74 1c                                 je 1000d5
+  1000b9:   83 fb 01                              cmpl $0x1,%ebx
+  1000bc:   74 23                                 je 1000e1
+  1000be:   89 d8                                 movl %ebx,%eax
+  1000c0:   ba 01 00 00 00                        movl $0x1,%edx
+  1000c5:   8d 76 00                              leal 0(%esi),%esi
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000d3:   eb bf                                 jmp 100094
+  100094:   89 14 9d 40 01 10 00                  movl %edx,0x100140(,%ebx,4)
+  10009b:   83 ec 0c                              subl $0xc,%esp
+  10009e:   31 c0                                 xorl %eax,%eax
+  1000a0:   39 14 9d 00 01 10 00                  cmpl %edx,0x100100(,%ebx,4)
+  1000a7:   0f 94 c0                              sete %eax
+  1000aa:   50                                    pushl %eax
+  1000ab:   e8 84 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  1000b0:   83 c4 10                              addl $0x10,%esp
+  1000b3:   43                                    incl %ebx
+  1000b4:   83 fb 0d                              cmpl $0xd,%ebx
+  1000b7:   74 1c                                 je 1000d5
+  1000b9:   83 fb 01                              cmpl $0x1,%ebx
+  1000bc:   74 23                                 je 1000e1
+  1000be:   89 d8                                 movl %ebx,%eax
+  1000c0:   ba 01 00 00 00                        movl $0x1,%edx
+  1000c5:   8d 76 00                              leal 0(%esi),%esi
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000c8:   89 c1                                 movl %eax,%ecx
+  1000ca:   48                                    decl %eax
+  1000cb:   0f af d1                              imull %ecx,%edx
+  1000ce:   83 f8 01                              cmpl $0x1,%eax
+  1000d1:   75 f5                                 jne 1000c8
+  1000d3:   eb bf                                 jmp 100094
+  100094:   89 14 9d 40 01 10 00                  movl %edx,0x100140(,%ebx,4)
+  10009b:   83 ec 0c                              subl $0xc,%esp
+  10009e:   31 c0                                 xorl %eax,%eax
+  1000a0:   39 14 9d 00 01 10 00                  cmpl %edx,0x100100(,%ebx,4)
+  1000a7:   0f 94 c0                              sete %eax
+  1000aa:   50                                    pushl %eax
+  1000ab:   e8 84 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  1000b0:   83 c4 10                              addl $0x10,%esp
+  1000b3:   43                                    incl %ebx
+  1000b4:   83 fb 0d                              cmpl $0xd,%ebx
+  1000b7:   74 1c                                 je 1000d5
+  1000d5:   31 c0                                 xorl %eax,%eax
+  1000d7:   8d 65 f8                              leal -0x8(%ebp),%esp
+  1000da:   59                                    popl %ecx
+  1000db:   5b                                    popl %ebx
+  1000dc:   5d                                    popl %ebp
+  1000dd:   8d 61 fc                              leal -0x4(%ecx),%esp
+  1000e0:   c3                                    ret
+  10002f:   d6                                    nemu trap
+[1;31mnemu: HIT GOOD TRAP[0m at eip = 0x0010002f
 
+[1;34m[src/monitor/cpu-exec.c,23,monitor_statistic] total guest instructions = 687[0m
