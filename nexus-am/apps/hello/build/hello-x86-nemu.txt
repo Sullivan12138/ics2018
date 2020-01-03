@@ -1,0 +1,72 @@
+
+/home/hust/ics2018/nexus-am/apps/hello/build/hello-x86-nemu:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00100000 <_start>:
+  100000:	bd 00 00 00 00       	mov    $0x0,%ebp
+  100005:	bc 00 7c 00 00       	mov    $0x7c00,%esp
+  10000a:	e8 21 00 00 00       	call   100030 <_trm_init>
+  10000f:	90                   	nop
+
+00100010 <_putc>:
+  100010:	f3 0f 1e fb          	endbr32 
+  100014:	55                   	push   %ebp
+  100015:	89 e5                	mov    %esp,%ebp
+  100017:	8b 4d 08             	mov    0x8(%ebp),%ecx
+  10001a:	ba fd 03 00 00       	mov    $0x3fd,%edx
+  10001f:	90                   	nop
+  100020:	ec                   	in     (%dx),%al
+  100021:	a8 20                	test   $0x20,%al
+  100023:	74 fb                	je     100020 <_putc+0x10>
+  100025:	ba f8 03 00 00       	mov    $0x3f8,%edx
+  10002a:	88 c8                	mov    %cl,%al
+  10002c:	ee                   	out    %al,(%dx)
+  10002d:	5d                   	pop    %ebp
+  10002e:	c3                   	ret    
+  10002f:	90                   	nop
+
+00100030 <_trm_init>:
+  100030:	f3 0f 1e fb          	endbr32 
+  100034:	55                   	push   %ebp
+  100035:	89 e5                	mov    %esp,%ebp
+  100037:	83 ec 08             	sub    $0x8,%esp
+  10003a:	e8 05 00 00 00       	call   100044 <main>
+  10003f:	d6                   	(bad)  
+  100040:	eb fe                	jmp    100040 <_trm_init+0x10>
+  100042:	66 90                	xchg   %ax,%ax
+
+00100044 <main>:
+  100044:	f3 0f 1e fb          	endbr32 
+  100048:	8d 4c 24 04          	lea    0x4(%esp),%ecx
+  10004c:	83 e4 f0             	and    $0xfffffff0,%esp
+  10004f:	ff 71 fc             	pushl  -0x4(%ecx)
+  100052:	55                   	push   %ebp
+  100053:	89 e5                	mov    %esp,%ebp
+  100055:	56                   	push   %esi
+  100056:	53                   	push   %ebx
+  100057:	51                   	push   %ecx
+  100058:	83 ec 0c             	sub    $0xc,%esp
+  10005b:	bb 0a 00 00 00       	mov    $0xa,%ebx
+  100060:	be 90 00 10 00       	mov    $0x100090,%esi
+  100065:	b8 48 00 00 00       	mov    $0x48,%eax
+  10006a:	66 90                	xchg   %ax,%ax
+  10006c:	83 ec 0c             	sub    $0xc,%esp
+  10006f:	50                   	push   %eax
+  100070:	e8 9b ff ff ff       	call   100010 <_putc>
+  100075:	46                   	inc    %esi
+  100076:	0f be 06             	movsbl (%esi),%eax
+  100079:	83 c4 10             	add    $0x10,%esp
+  10007c:	84 c0                	test   %al,%al
+  10007e:	75 ec                	jne    10006c <main+0x28>
+  100080:	4b                   	dec    %ebx
+  100081:	75 dd                	jne    100060 <main+0x1c>
+  100083:	31 c0                	xor    %eax,%eax
+  100085:	8d 65 f4             	lea    -0xc(%ebp),%esp
+  100088:	59                   	pop    %ecx
+  100089:	5b                   	pop    %ebx
+  10008a:	5e                   	pop    %esi
+  10008b:	5d                   	pop    %ebp
+  10008c:	8d 61 fc             	lea    -0x4(%ecx),%esp
+  10008f:	c3                   	ret    
