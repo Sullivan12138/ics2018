@@ -331,6 +331,187 @@
   10009e:   8b 55 fc                              movl -0x4(%ebp),%edx
   1000a1:   75 0d                                 jne 1000b0
   1000a3:   f7 d0                                 notl %eax
-  1000a5:   22 22 02 8b 55 fc 88 02 c9               invalid opcode
-[1;31mnemu: ABORT[0m at eip = 0x001000ad
+  1000a5:   22 02                                 andb (%edx),%al
+  1000a7:   8b 55 fc                              movl -0x4(%ebp),%edx
+  1000aa:   88 02                                 movb %al,(%edx)
+  1000ac:   c9                                    leave
+  1000ad:   c3                                    ret
+  1001c3:   83 c4 0c                              addl $0xc,%esp
+  1001c6:   6a 01                                 pushb $0x1
+  1001c8:   6a 0a                                 pushb $0xa
+  1001ca:   53                                    pushl %ebx
+  1001cb:   e8 a8 fe ff ff                        call 100078
+  100078:   f3 0f 1e fb                           call 100078
+  10007c:   55                                    pushl %ebp
+  10007d:   89 e5                                 movl %esp,%ebp
+  10007f:   83 ec 10                              subl $0x10,%esp
+  100082:   8b 55 0c                              movl 0xc(%ebp),%edx
+  100085:   89 d1                                 movl %edx,%ecx
+  100087:   83 e1 07                              andl $0x7,%ecx
+  10008a:   b8 01 00 00 00                        movl $0x1,%eax
+  10008f:   d3 e0                                 shll %cl,%eax
+  100091:   c1 fa 03                              sarl $0x3,%edx
+  100094:   03 55 08                              addl 0x8(%ebp),%edx
+  100097:   89 55 fc                              movl %edx,-0x4(%ebp)
+  10009a:   80 7d 10 00                           cmpb $0x0,0x10(%ebp)
+  10009e:   8b 55 fc                              movl -0x4(%ebp),%edx
+  1000a1:   75 0d                                 jne 1000b0
+  1000b0:   0a 02                                 orb (%edx),%al
+  1000b2:   8b 55 fc                              movl -0x4(%ebp),%edx
+  1000b5:   88 02                                 movb %al,(%edx)
+  1000b7:   c9                                    leave
+  1000b8:   c3                                    ret
+  1001d0:   83 c4 0c                              addl $0xc,%esp
+  1001d3:   6a 00                                 pushb $0x0
+  1001d5:   6a 0b                                 pushb $0xb
+  1001d7:   53                                    pushl %ebx
+  1001d8:   e8 9b fe ff ff                        call 100078
+  100078:   f3 0f 1e fb                           call 100078
+  10007c:   55                                    pushl %ebp
+  10007d:   89 e5                                 movl %esp,%ebp
+  10007f:   83 ec 10                              subl $0x10,%esp
+  100082:   8b 55 0c                              movl 0xc(%ebp),%edx
+  100085:   89 d1                                 movl %edx,%ecx
+  100087:   83 e1 07                              andl $0x7,%ecx
+  10008a:   b8 01 00 00 00                        movl $0x1,%eax
+  10008f:   d3 e0                                 shll %cl,%eax
+  100091:   c1 fa 03                              sarl $0x3,%edx
+  100094:   03 55 08                              addl 0x8(%ebp),%edx
+  100097:   89 55 fc                              movl %edx,-0x4(%ebp)
+  10009a:   80 7d 10 00                           cmpb $0x0,0x10(%ebp)
+  10009e:   8b 55 fc                              movl -0x4(%ebp),%edx
+  1000a1:   75 0d                                 jne 1000b0
+  1000a3:   f7 d0                                 notl %eax
+  1000a5:   22 02                                 andb (%edx),%al
+  1000a7:   8b 55 fc                              movl -0x4(%ebp),%edx
+  1000aa:   88 02                                 movb %al,(%edx)
+  1000ac:   c9                                    leave
+  1000ad:   c3                                    ret
+  1001dd:   83 c4 0c                              addl $0xc,%esp
+  1001e0:   6a 01                                 pushb $0x1
+  1001e2:   6a 0c                                 pushb $0xc
+  1001e4:   53                                    pushl %ebx
+  1001e5:   e8 8e fe ff ff                        call 100078
+  100078:   f3 0f 1e fb                           call 100078
+  10007c:   55                                    pushl %ebp
+  10007d:   89 e5                                 movl %esp,%ebp
+  10007f:   83 ec 10                              subl $0x10,%esp
+  100082:   8b 55 0c                              movl 0xc(%ebp),%edx
+  100085:   89 d1                                 movl %edx,%ecx
+  100087:   83 e1 07                              andl $0x7,%ecx
+  10008a:   b8 01 00 00 00                        movl $0x1,%eax
+  10008f:   d3 e0                                 shll %cl,%eax
+  100091:   c1 fa 03                              sarl $0x3,%edx
+  100094:   03 55 08                              addl 0x8(%ebp),%edx
+  100097:   89 55 fc                              movl %edx,-0x4(%ebp)
+  10009a:   80 7d 10 00                           cmpb $0x0,0x10(%ebp)
+  10009e:   8b 55 fc                              movl -0x4(%ebp),%edx
+  1000a1:   75 0d                                 jne 1000b0
+  1000b0:   0a 02                                 orb (%edx),%al
+  1000b2:   8b 55 fc                              movl -0x4(%ebp),%edx
+  1000b5:   88 02                                 movb %al,(%edx)
+  1000b7:   c9                                    leave
+  1000b8:   c3                                    ret
+  1001ea:   83 c4 0c                              addl $0xc,%esp
+  1001ed:   6a 00                                 pushb $0x0
+  1001ef:   6a 0d                                 pushb $0xd
+  1001f1:   53                                    pushl %ebx
+  1001f2:   e8 81 fe ff ff                        call 100078
+  100078:   f3 0f 1e fb                           call 100078
+  10007c:   55                                    pushl %ebp
+  10007d:   89 e5                                 movl %esp,%ebp
+  10007f:   83 ec 10                              subl $0x10,%esp
+  100082:   8b 55 0c                              movl 0xc(%ebp),%edx
+  100085:   89 d1                                 movl %edx,%ecx
+  100087:   83 e1 07                              andl $0x7,%ecx
+  10008a:   b8 01 00 00 00                        movl $0x1,%eax
+  10008f:   d3 e0                                 shll %cl,%eax
+  100091:   c1 fa 03                              sarl $0x3,%edx
+  100094:   03 55 08                              addl 0x8(%ebp),%edx
+  100097:   89 55 fc                              movl %edx,-0x4(%ebp)
+  10009a:   80 7d 10 00                           cmpb $0x0,0x10(%ebp)
+  10009e:   8b 55 fc                              movl -0x4(%ebp),%edx
+  1000a1:   75 0d                                 jne 1000b0
+  1000a3:   f7 d0                                 notl %eax
+  1000a5:   22 02                                 andb (%edx),%al
+  1000a7:   8b 55 fc                              movl -0x4(%ebp),%edx
+  1000aa:   88 02                                 movb %al,(%edx)
+  1000ac:   c9                                    leave
+  1000ad:   c3                                    ret
+  1001f7:   83 c4 0c                              addl $0xc,%esp
+  1001fa:   6a 01                                 pushb $0x1
+  1001fc:   6a 0e                                 pushb $0xe
+  1001fe:   53                                    pushl %ebx
+  1001ff:   e8 74 fe ff ff                        call 100078
+  100078:   f3 0f 1e fb                           call 100078
+  10007c:   55                                    pushl %ebp
+  10007d:   89 e5                                 movl %esp,%ebp
+  10007f:   83 ec 10                              subl $0x10,%esp
+  100082:   8b 55 0c                              movl 0xc(%ebp),%edx
+  100085:   89 d1                                 movl %edx,%ecx
+  100087:   83 e1 07                              andl $0x7,%ecx
+  10008a:   b8 01 00 00 00                        movl $0x1,%eax
+  10008f:   d3 e0                                 shll %cl,%eax
+  100091:   c1 fa 03                              sarl $0x3,%edx
+  100094:   03 55 08                              addl 0x8(%ebp),%edx
+  100097:   89 55 fc                              movl %edx,-0x4(%ebp)
+  10009a:   80 7d 10 00                           cmpb $0x0,0x10(%ebp)
+  10009e:   8b 55 fc                              movl -0x4(%ebp),%edx
+  1000a1:   75 0d                                 jne 1000b0
+  1000b0:   0a 02                                 orb (%edx),%al
+  1000b2:   8b 55 fc                              movl -0x4(%ebp),%edx
+  1000b5:   88 02                                 movb %al,(%edx)
+  1000b7:   c9                                    leave
+  1000b8:   c3                                    ret
+  100204:   83 c4 0c                              addl $0xc,%esp
+  100207:   6a 00                                 pushb $0x0
+  100209:   6a 0f                                 pushb $0xf
+  10020b:   53                                    pushl %ebx
+  10020c:   e8 67 fe ff ff                        call 100078
+  100078:   f3 0f 1e fb                           call 100078
+  10007c:   55                                    pushl %ebp
+  10007d:   89 e5                                 movl %esp,%ebp
+  10007f:   83 ec 10                              subl $0x10,%esp
+  100082:   8b 55 0c                              movl 0xc(%ebp),%edx
+  100085:   89 d1                                 movl %edx,%ecx
+  100087:   83 e1 07                              andl $0x7,%ecx
+  10008a:   b8 01 00 00 00                        movl $0x1,%eax
+  10008f:   d3 e0                                 shll %cl,%eax
+  100091:   c1 fa 03                              sarl $0x3,%edx
+  100094:   03 55 08                              addl 0x8(%ebp),%edx
+  100097:   89 55 fc                              movl %edx,-0x4(%ebp)
+  10009a:   80 7d 10 00                           cmpb $0x0,0x10(%ebp)
+  10009e:   8b 55 fc                              movl -0x4(%ebp),%edx
+  1000a1:   75 0d                                 jne 1000b0
+  1000a3:   f7 d0                                 notl %eax
+  1000a5:   22 02                                 andb (%edx),%al
+  1000a7:   8b 55 fc                              movl -0x4(%ebp),%edx
+  1000aa:   88 02                                 movb %al,(%edx)
+  1000ac:   c9                                    leave
+  1000ad:   c3                                    ret
+  100211:   31 c0                                 xorl %eax,%eax
+  100213:   80 7d f7 55                           cmpb $0x55,-0x9(%ebp)
+  100217:   0f 94 c0                              sete %eax
+  10021a:   89 04 24                              movl %eax,(%esp)
+  10021d:   e8 12 fe ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  100222:   83 c4 10                              addl $0x10,%esp
+  100225:   31 c0                                 xorl %eax,%eax
+  100227:   8d 65 f8                              leal -0x8(%ebp),%esp
+  10022a:   59                                    popl %ecx
+  10022b:   5b                                    popl %ebx
+  10022c:   5d                                    popl %ebp
+  10022d:   8d 61 fc                              leal -0x4(%ecx),%esp
+  100230:   c3                                    ret
+  10002f:   d6                                    nemu trap
+[1;31mnemu: HIT GOOD TRAP[0m at eip = 0x0010002f
 
+[1;34m[src/monitor/cpu-exec.c,23,monitor_statistic] total guest instructions = 508[0m
