@@ -42,6 +42,6 @@
   100068:   29 c8                                 subl %ecx,%eax
   10006a:   89 45 08                              movl %eax,0x8(%ebp)
   10006d:   5d                                    popl %ebp
-  10006e:   ff 25 18 02 10 00 ff 25 18 02 10 00 b8 01               invalid opcode
-[1;31mnemu: ABORT[0m at eip = 0x00100076
+  10006e:   ff 25 18 02 10 00                     jmp 100074
+[1;31mnemu: ABORT[0m at eip = 0x00100074
 
