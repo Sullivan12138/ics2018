@@ -87,6 +87,6 @@
   1000d9:   74 29                                 je 100104
   1000db:   83 fb 02                              cmpl $0x2,%ebx
   1000de:   74 1a                                 je 1000fa
-  1000e0:   f6 c3 f6 c3 01 74 1f be 02 00               invalid opcode
-[1;31mnemu: ABORT[0m at eip = 0x001000e8
+  1000e0:   f6 c3                                 testb $0x2,%bl
+[1;31mnemu: ABORT[0m at eip = 0x001000e2
 
