@@ -81,7 +81,7 @@ make_EHelper(setcc) {
 }
 
 make_EHelper(not) {
-  rtl_not(&t1, &id_src->val);
+  rtl_not(&t1, &id_dest->val);
   operand_write(id_dest, &t1);
 
   print_asm_template1(not);

@@ -330,6 +330,6 @@
   10009a:   80 7d 10 00                           cmpb $0x0,0x10(%ebp)
   10009e:   8b 55 fc                              movl -0x4(%ebp),%edx
   1000a1:   75 0d                                 jne 1000b0
-  1000a3:   f7 d0 f7 d0 22 02 8b 55 fc 88               invalid opcode
-[1;31mnemu: ABORT[0m at eip = 0x001000ab
+  1000a3:   f7 d0                                 notl %eax
+[1;31mnemu: ABORT[0m at eip = 0x001000a5
 
