@@ -73,8 +73,8 @@ void* memcpy(void* out, const void* in, size_t n) {
 }
 
 int memcmp(const void* s1, const void* s2, size_t n){
-  char *head1 = s1;
-  char *head2 = s2;
+  const char *head1 = s1;
+  const char *head2 = s2;
   while(n--) {
     if(*head1 > *head2) return 1;
     else if(*head1 < *head2) return -1;
