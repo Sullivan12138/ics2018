@@ -1,7 +1,7 @@
 [1;34m[src/monitor/monitor.c,72,load_img] The image is /home/hust/ics2018/nexus-am/apps/hello/build/hello-x86-nemu.bin[0m
 [1;34m[src/monitor/monitor.c,28,welcome] Debug: [1;32mON[0m[0m
 [1;34m[src/monitor/monitor.c,29,welcome] If debug mode is on, A log file will be generated to record every instruction NEMU executes. This may lead to a large log file. If it is not necessary, you can turn it off in include/common.h.[0m
-[1;34m[src/monitor/monitor.c,36,welcome] Build time: 19:43:49, Jan  3 2020[0m
+[1;34m[src/monitor/monitor.c,36,welcome] Build time: 20:43:50, Jan  3 2020[0m
   100000:   bd 00 00 00 00                        movl $0x0,%ebp
   100005:   bc 00 7c 00 00                        movl $0x7c00,%esp
   10000a:   e8 21 00 00 00                        call 100030
