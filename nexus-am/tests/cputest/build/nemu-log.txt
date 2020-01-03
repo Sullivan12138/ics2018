@@ -28,6 +28,7 @@
   1000bc:   8b 14 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%edx
   1000c3:   40                                    incl %eax
   1000c4:   8b 0c 85 a0 01 10 00                  movl 0x1001a0(,%eax,4),%ecx
-  1000cb:   39 39 ca 7e 0e 89 0c 85 9c               invalid opcode
-[1;31mnemu: ABORT[0m at eip = 0x001000d3
+  1000cb:   39 ca                                 cmpl %ecx,%edx
+  1000cd:   7e 7e 0e 89 0c 85 9c 01 10               invalid opcode
+[1;31mnemu: ABORT[0m at eip = 0x001000d5
 
