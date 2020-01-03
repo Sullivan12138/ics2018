@@ -1,0 +1,133 @@
+
+/home/hust/ics2018/nexus-am/tests/cputest/build/min3-x86-nemu:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00100000 <_start>:
+  100000:	bd 00 00 00 00       	mov    $0x0,%ebp
+  100005:	bc 00 7c 00 00       	mov    $0x7c00,%esp
+  10000a:	e8 11 00 00 00       	call   100020 <_trm_init>
+  10000f:	90                   	nop
+
+00100010 <_halt>:
+  100010:	f3 0f 1e fb          	endbr32 
+  100014:	55                   	push   %ebp
+  100015:	89 e5                	mov    %esp,%ebp
+  100017:	8b 45 08             	mov    0x8(%ebp),%eax
+  10001a:	d6                   	(bad)  
+  10001b:	eb fe                	jmp    10001b <_halt+0xb>
+  10001d:	66 90                	xchg   %ax,%ax
+  10001f:	90                   	nop
+
+00100020 <_trm_init>:
+  100020:	f3 0f 1e fb          	endbr32 
+  100024:	55                   	push   %ebp
+  100025:	89 e5                	mov    %esp,%ebp
+  100027:	83 ec 08             	sub    $0x8,%esp
+  10002a:	e8 41 00 00 00       	call   100070 <main>
+  10002f:	d6                   	(bad)  
+  100030:	eb fe                	jmp    100030 <_trm_init+0x10>
+  100032:	66 90                	xchg   %ax,%ax
+
+00100034 <nemu_assert>:
+  100034:	f3 0f 1e fb          	endbr32 
+  100038:	55                   	push   %ebp
+  100039:	89 e5                	mov    %esp,%ebp
+  10003b:	83 ec 08             	sub    $0x8,%esp
+  10003e:	8b 45 08             	mov    0x8(%ebp),%eax
+  100041:	85 c0                	test   %eax,%eax
+  100043:	74 02                	je     100047 <nemu_assert+0x13>
+  100045:	c9                   	leave  
+  100046:	c3                   	ret    
+  100047:	83 ec 0c             	sub    $0xc,%esp
+  10004a:	6a 01                	push   $0x1
+  10004c:	e8 bf ff ff ff       	call   100010 <_halt>
+  100051:	8d 76 00             	lea    0x0(%esi),%esi
+
+00100054 <min3>:
+  100054:	f3 0f 1e fb          	endbr32 
+  100058:	55                   	push   %ebp
+  100059:	89 e5                	mov    %esp,%ebp
+  10005b:	8b 45 0c             	mov    0xc(%ebp),%eax
+  10005e:	3b 45 10             	cmp    0x10(%ebp),%eax
+  100061:	7e 03                	jle    100066 <min3+0x12>
+  100063:	8b 45 10             	mov    0x10(%ebp),%eax
+  100066:	3b 45 08             	cmp    0x8(%ebp),%eax
+  100069:	7e 03                	jle    10006e <min3+0x1a>
+  10006b:	8b 45 08             	mov    0x8(%ebp),%eax
+  10006e:	5d                   	pop    %ebp
+  10006f:	c3                   	ret    
+
+00100070 <main>:
+  100070:	f3 0f 1e fb          	endbr32 
+  100074:	8d 4c 24 04          	lea    0x4(%esp),%ecx
+  100078:	83 e4 f0             	and    $0xfffffff0,%esp
+  10007b:	ff 71 fc             	pushl  -0x4(%ecx)
+  10007e:	55                   	push   %ebp
+  10007f:	89 e5                	mov    %esp,%ebp
+  100081:	57                   	push   %edi
+  100082:	56                   	push   %esi
+  100083:	53                   	push   %ebx
+  100084:	51                   	push   %ecx
+  100085:	83 ec 18             	sub    $0x18,%esp
+  100088:	c7 45 d8 60 02 10 00 	movl   $0x100260,-0x28(%ebp)
+  10008f:	c7 45 dc 00 00 00 00 	movl   $0x0,-0x24(%ebp)
+  100096:	8b 45 d8             	mov    -0x28(%ebp),%eax
+  100099:	8b 00                	mov    (%eax),%eax
+  10009b:	89 45 e0             	mov    %eax,-0x20(%ebp)
+  10009e:	8b 45 dc             	mov    -0x24(%ebp),%eax
+  1000a1:	8d 34 85 00 00 00 00 	lea    0x0(,%eax,4),%esi
+  1000a8:	c7 45 e4 00 00 00 00 	movl   $0x0,-0x1c(%ebp)
+  1000af:	8b 45 e4             	mov    -0x1c(%ebp),%eax
+  1000b2:	8b 98 60 02 10 00    	mov    0x100260(%eax),%ebx
+  1000b8:	8b 45 e0             	mov    -0x20(%ebp),%eax
+  1000bb:	39 c3                	cmp    %eax,%ebx
+  1000bd:	7e 02                	jle    1000c1 <main+0x51>
+  1000bf:	89 c3                	mov    %eax,%ebx
+  1000c1:	31 ff                	xor    %edi,%edi
+  1000c3:	83 ec 0c             	sub    $0xc,%esp
+  1000c6:	8b 04 bd 60 02 10 00 	mov    0x100260(,%edi,4),%eax
+  1000cd:	39 d8                	cmp    %ebx,%eax
+  1000cf:	7e 02                	jle    1000d3 <main+0x63>
+  1000d1:	89 d8                	mov    %ebx,%eax
+  1000d3:	3b 84 be 60 01 10 00 	cmp    0x100160(%esi,%edi,4),%eax
+  1000da:	0f 94 c0             	sete   %al
+  1000dd:	0f b6 c0             	movzbl %al,%eax
+  1000e0:	50                   	push   %eax
+  1000e1:	e8 4e ff ff ff       	call   100034 <nemu_assert>
+  1000e6:	83 c4 10             	add    $0x10,%esp
+  1000e9:	47                   	inc    %edi
+  1000ea:	83 ff 04             	cmp    $0x4,%edi
+  1000ed:	75 d4                	jne    1000c3 <main+0x53>
+  1000ef:	83 ec 0c             	sub    $0xc,%esp
+  1000f2:	6a 01                	push   $0x1
+  1000f4:	e8 3b ff ff ff       	call   100034 <nemu_assert>
+  1000f9:	83 c4 10             	add    $0x10,%esp
+  1000fc:	83 45 e4 04          	addl   $0x4,-0x1c(%ebp)
+  100100:	8b 45 e4             	mov    -0x1c(%ebp),%eax
+  100103:	83 c6 10             	add    $0x10,%esi
+  100106:	83 f8 10             	cmp    $0x10,%eax
+  100109:	75 a4                	jne    1000af <main+0x3f>
+  10010b:	83 45 dc 10          	addl   $0x10,-0x24(%ebp)
+  10010f:	8b 75 dc             	mov    -0x24(%ebp),%esi
+  100112:	83 ec 0c             	sub    $0xc,%esp
+  100115:	6a 01                	push   $0x1
+  100117:	e8 18 ff ff ff       	call   100034 <nemu_assert>
+  10011c:	83 c4 10             	add    $0x10,%esp
+  10011f:	83 45 d8 04          	addl   $0x4,-0x28(%ebp)
+  100123:	83 fe 40             	cmp    $0x40,%esi
+  100126:	0f 85 6a ff ff ff    	jne    100096 <main+0x26>
+  10012c:	83 ec 0c             	sub    $0xc,%esp
+  10012f:	6a 01                	push   $0x1
+  100131:	e8 fe fe ff ff       	call   100034 <nemu_assert>
+  100136:	83 c4 10             	add    $0x10,%esp
+  100139:	31 c0                	xor    %eax,%eax
+  10013b:	8d 65 f0             	lea    -0x10(%ebp),%esp
+  10013e:	59                   	pop    %ecx
+  10013f:	5b                   	pop    %ebx
+  100140:	5e                   	pop    %esi
+  100141:	5f                   	pop    %edi
+  100142:	5d                   	pop    %ebp
+  100143:	8d 61 fc             	lea    -0x4(%ecx),%esp
+  100146:	c3                   	ret    
