@@ -42,35 +42,32 @@ int strcmp(const char* s1, const char* s2) {
 }
 
 int strncmp(const char* s1, const char* s2, size_t n) {
-  size_t i = 0;
-  while(*s1 && *s2) {
+  while(*s1 && *s2 && n--) {
     if(*s1 > *s2) return 1;
-    else if(*s1 < *s2) return -1;
-    i++;
-    if(i == n) break;
     s1++;
     s2++;
   }
-  if(*s1) return 1;
-  else if(*s2) return -1;
+  if(n == 0) {
+	  if(*s1) return 1;
+	  else if(*s2) return -1;
+  }
   return 0;
 }
 
 void* memset(void* v,int c,size_t n) {
-  char *head = v;
+  unsigned char *head = v;
   while(n != 0) {
-    *(head++) = c;
+    *head++ = (unsigned char)c;
     n--;
   }
   return v;
 }
 
 void* memcpy(void* out, const void* in, size_t n) {
-  char *head = out;
-  char *headin = in;
-  while(n != 0) {
-    *head++ = *headin++;
-    n--;
+  char *headout = out;
+  const char *headin = in;
+  while(n--) {
+    *headout++ = *headin++;
   }
   return out;
 }
@@ -78,7 +75,7 @@ void* memcpy(void* out, const void* in, size_t n) {
 int memcmp(const void* s1, const void* s2, size_t n){
   char *head1 = s1;
   char *head2 = s2;
-  while(n != 0) {
+  while(n--) {
     if(*head1 > *head2) return 1;
     else if(*head1 < *head2) return -1;
 	head1++;
