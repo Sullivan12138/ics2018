@@ -22,6 +22,3 @@
   10019a:   83 ec 0c                              subl $0xc,%esp
   10019d:   6a 00                                 pushb $0x0
   10019f:   68 23 38 00 00                        pushl $0x3823
-  1001a4:   ff 15 0c 02 10 00 ff 15 0c 02 10 00 39 05               invalid opcode
-[1;31mnemu: ABORT[0m at eip = 0x001001ac
-
