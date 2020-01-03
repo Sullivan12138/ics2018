@@ -1,0 +1,38 @@
+[1;34m[src/monitor/monitor.c,72,load_img] The image is /home/hust/ics2018/nexus-am/apps/hello/build/hello-x86-nemu.bin[0m
+[1;34m[src/monitor/monitor.c,28,welcome] Debug: [1;32mON[0m[0m
+[1;34m[src/monitor/monitor.c,29,welcome] If debug mode is on, A log file will be generated to record every instruction NEMU executes. This may lead to a large log file. If it is not necessary, you can turn it off in include/common.h.[0m
+[1;34m[src/monitor/monitor.c,36,welcome] Build time: 19:43:49, Jan  3 2020[0m
+  100000:   bd 00 00 00 00                        movl $0x0,%ebp
+  100005:   bc 00 7c 00 00                        movl $0x7c00,%esp
+  10000a:   e8 21 00 00 00                        call 100030
+  100030:   f3 0f 1e fb                           call 100030
+  100034:   55                                    pushl %ebp
+  100035:   89 e5                                 movl %esp,%ebp
+  100037:   83 ec 08                              subl $0x8,%esp
+  10003a:   e8 05 00 00 00                        call 100044
+  100044:   f3 0f 1e fb                           call 100044
+  100048:   8d 4c 24 04                           leal 0x4(%esp),%ecx
+  10004c:   83 e4 f0                              andl $0xfffffff0,%esp
+  10004f:   ff 71 fc                              pushl -0x4(%ecx)
+  100052:   55                                    pushl %ebp
+  100053:   89 e5                                 movl %esp,%ebp
+  100055:   56                                    pushl %esi
+  100056:   53                                    pushl %ebx
+  100057:   51                                    pushl %ecx
+  100058:   83 ec 0c                              subl $0xc,%esp
+  10005b:   bb 0a 00 00 00                        movl $0xa,%ebx
+  100060:   be 90 00 10 00                        movl $0x100090,%esi
+  100065:   b8 48 00 00 00                        movl $0x48,%eax
+  10006a:   66 90                                 nop
+  10006c:   83 ec 0c                              subl $0xc,%esp
+  10006f:   50                                    pushl %eax
+  100070:   e8 9b ff ff ff                        call 100010
+  100010:   f3 0f 1e fb                           call 100010
+  100014:   55                                    pushl %ebp
+  100015:   89 e5                                 movl %esp,%ebp
+  100017:   8b 4d 08                              movl 0x8(%ebp),%ecx
+  10001a:   ba fd 03 00 00                        movl $0x3fd,%edx
+  10001f:   90                                    nop
+  100020:   ec ec a8 20 74 fb ba f8 03               invalid opcode
+[1;31mnemu: ABORT[0m at eip = 0x00100028
+
