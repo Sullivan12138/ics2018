@@ -69,6 +69,48 @@
   1004ef:   8b 45 08                              movl 0x8(%ebp),%eax
   1004f2:   48                                    decl %eax
   1004f3:   83 f8 02                              cmpl $0x2,%eax
-  1004f6:   77 77 0c c1 e0 04 05 a0 06               invalid opcode
-[1;31mnemu: ABORT[0m at eip = 0x001004fe
+  1004f6:   77 0c                                 jnbe 100504
+  1004f8:   c1 e0 04                              shll $0x4,%eax
+  1004fb:   05 a0 06 10 00                        addl $0x1006a0,%eax
+  100500:   5d                                    popl %ebp
+  100501:   c3                                    ret
+  10041a:   83 c4 10                              addl $0x10,%esp
+  10041d:   39 18                                 cmpl %ebx,(%eax)
+  10041f:   75 ef                                 jne 100410
+  100421:   89 06                                 movl %eax,(%esi)
+  100423:   8d 65 f4                              leal -0xc(%ebp),%esp
+  100426:   5b                                    popl %ebx
+  100427:   5e                                    popl %esi
+  100428:   5f                                    popl %edi
+  100429:   5d                                    popl %ebp
+  10042a:   c3                                    ret
+  10045f:   eb de                                 jmp 10043f
+  10043f:   52                                    pushl %edx
+  100440:   6a 08                                 pushb $0x8
+  100442:   8d 55 f0                              leal -0x10(%ebp),%edx
+  100445:   52                                    pushl %edx
+  100446:   6a 01                                 pushb $0x1
+  100448:   ff 50 08                              call *0x8(%eax)
+  100534:   f3 0f 1e fb                           call *0x8(%eax)
+  100538:   55                                    pushl %ebp
+  100539:   89 e5                                 movl %esp,%ebp
+  10053b:   8b 45 08                              movl 0x8(%ebp),%eax
+  10053e:   8b 4d 0c                              movl 0xc(%ebp),%ecx
+  100541:   83 f8 01                              cmpl $0x1,%eax
+  100544:   74 3a                                 je 100580
+  100580:   ba 48 00 00 00                        movl $0x48,%edx
+  100585:   ed                                    inl (%dx),%eax
+  100586:   a3 d8 06 10 00                        movl %eax,0x1006d8
+  10058b:   c7 05 dc 06 10 00 00 00 00 00         movl $0x0,0x1006dc
+  100595:   c7 01 00 00 00 00                     movl $0x0,(%ecx)
+  10059b:   89 41 04                              movl %eax,0x4(%ecx)
+  10059e:   b8 08 00 00 00                        movl $0x8,%eax
+  1005a3:   5d                                    popl %ebp
+  1005a4:   c3                                    ret
+  10044b:   8b 45 f4                              movl -0xc(%ebp),%eax
+  10044e:   c9                                    leave
+  10044f:   c3                                    ret
+  100085:   39 d8                                 cmpl %ebx,%eax
+  100087:   72 72 f7 83 ec 0c 57 e8 d2               invalid opcode
+[1;31mnemu: ABORT[0m at eip = 0x0010008f
 
