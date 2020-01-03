@@ -43,6 +43,7 @@
   1000a9:   81 fb 80 00 00 00                     cmpl $0x80,%ebx
   1000af:   74 10                                 je 1000c1
   1000b1:   8d 43 bf                              leal -0x41(%ebx),%eax
-  1000b4:   3c 3c 19 76 04 88 d8 eb d4               invalid opcode
-[1;31mnemu: ABORT[0m at eip = 0x001000bc
+  1000b4:   3c 19                                 cmpb $0x19,%al
+  1000b6:   76 76 04 88 d8 eb d4 8d 43               invalid opcode
+[1;31mnemu: ABORT[0m at eip = 0x001000be
 
