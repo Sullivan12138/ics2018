@@ -1,0 +1,174 @@
+
+/home/hust/ics2018/nexus-am/tests/cputest/build/goldbach-x86-nemu:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00100000 <_start>:
+  100000:	bd 00 00 00 00       	mov    $0x0,%ebp
+  100005:	bc 00 7c 00 00       	mov    $0x7c00,%esp
+  10000a:	e8 11 00 00 00       	call   100020 <_trm_init>
+  10000f:	90                   	nop
+
+00100010 <_halt>:
+  100010:	f3 0f 1e fb          	endbr32 
+  100014:	55                   	push   %ebp
+  100015:	89 e5                	mov    %esp,%ebp
+  100017:	8b 45 08             	mov    0x8(%ebp),%eax
+  10001a:	d6                   	(bad)  
+  10001b:	eb fe                	jmp    10001b <_halt+0xb>
+  10001d:	66 90                	xchg   %ax,%ax
+  10001f:	90                   	nop
+
+00100020 <_trm_init>:
+  100020:	f3 0f 1e fb          	endbr32 
+  100024:	55                   	push   %ebp
+  100025:	89 e5                	mov    %esp,%ebp
+  100027:	83 ec 08             	sub    $0x8,%esp
+  10002a:	e8 e5 00 00 00       	call   100114 <main>
+  10002f:	d6                   	(bad)  
+  100030:	eb fe                	jmp    100030 <_trm_init+0x10>
+  100032:	66 90                	xchg   %ax,%ax
+
+00100034 <nemu_assert>:
+  100034:	f3 0f 1e fb          	endbr32 
+  100038:	55                   	push   %ebp
+  100039:	89 e5                	mov    %esp,%ebp
+  10003b:	83 ec 08             	sub    $0x8,%esp
+  10003e:	8b 45 08             	mov    0x8(%ebp),%eax
+  100041:	85 c0                	test   %eax,%eax
+  100043:	74 02                	je     100047 <nemu_assert+0x13>
+  100045:	c9                   	leave  
+  100046:	c3                   	ret    
+  100047:	83 ec 0c             	sub    $0xc,%esp
+  10004a:	6a 01                	push   $0x1
+  10004c:	e8 bf ff ff ff       	call   100010 <_halt>
+  100051:	8d 76 00             	lea    0x0(%esi),%esi
+
+00100054 <is_prime>:
+  100054:	f3 0f 1e fb          	endbr32 
+  100058:	55                   	push   %ebp
+  100059:	89 e5                	mov    %esp,%ebp
+  10005b:	53                   	push   %ebx
+  10005c:	8b 5d 08             	mov    0x8(%ebp),%ebx
+  10005f:	83 fb 01             	cmp    $0x1,%ebx
+  100062:	7e 2c                	jle    100090 <is_prime+0x3c>
+  100064:	83 fb 02             	cmp    $0x2,%ebx
+  100067:	74 1d                	je     100086 <is_prime+0x32>
+  100069:	f6 c3 01             	test   $0x1,%bl
+  10006c:	74 22                	je     100090 <is_prime+0x3c>
+  10006e:	b9 02 00 00 00       	mov    $0x2,%ecx
+  100073:	eb 0c                	jmp    100081 <is_prime+0x2d>
+  100075:	8d 76 00             	lea    0x0(%esi),%esi
+  100078:	89 d8                	mov    %ebx,%eax
+  10007a:	99                   	cltd   
+  10007b:	f7 f9                	idiv   %ecx
+  10007d:	85 d2                	test   %edx,%edx
+  10007f:	74 0a                	je     10008b <is_prime+0x37>
+  100081:	41                   	inc    %ecx
+  100082:	39 cb                	cmp    %ecx,%ebx
+  100084:	75 f2                	jne    100078 <is_prime+0x24>
+  100086:	ba 01 00 00 00       	mov    $0x1,%edx
+  10008b:	89 d0                	mov    %edx,%eax
+  10008d:	5b                   	pop    %ebx
+  10008e:	5d                   	pop    %ebp
+  10008f:	c3                   	ret    
+  100090:	31 d2                	xor    %edx,%edx
+  100092:	89 d0                	mov    %edx,%eax
+  100094:	5b                   	pop    %ebx
+  100095:	5d                   	pop    %ebp
+  100096:	c3                   	ret    
+  100097:	90                   	nop
+
+00100098 <goldbach>:
+  100098:	f3 0f 1e fb          	endbr32 
+  10009c:	55                   	push   %ebp
+  10009d:	89 e5                	mov    %esp,%ebp
+  10009f:	57                   	push   %edi
+  1000a0:	56                   	push   %esi
+  1000a1:	53                   	push   %ebx
+  1000a2:	8b 7d 08             	mov    0x8(%ebp),%edi
+  1000a5:	83 ff 02             	cmp    $0x2,%edi
+  1000a8:	7e 60                	jle    10010a <goldbach+0x72>
+  1000aa:	8d 5f fe             	lea    -0x2(%edi),%ebx
+  1000ad:	b9 02 00 00 00       	mov    $0x2,%ecx
+  1000b2:	66 90                	xchg   %ax,%ax
+  1000b4:	83 f9 02             	cmp    $0x2,%ecx
+  1000b7:	74 1d                	je     1000d6 <goldbach+0x3e>
+  1000b9:	f6 c1 01             	test   $0x1,%cl
+  1000bc:	74 46                	je     100104 <goldbach+0x6c>
+  1000be:	be 02 00 00 00       	mov    $0x2,%esi
+  1000c3:	eb 0c                	jmp    1000d1 <goldbach+0x39>
+  1000c5:	8d 76 00             	lea    0x0(%esi),%esi
+  1000c8:	89 c8                	mov    %ecx,%eax
+  1000ca:	99                   	cltd   
+  1000cb:	f7 fe                	idiv   %esi
+  1000cd:	85 d2                	test   %edx,%edx
+  1000cf:	74 33                	je     100104 <goldbach+0x6c>
+  1000d1:	46                   	inc    %esi
+  1000d2:	39 ce                	cmp    %ecx,%esi
+  1000d4:	75 f2                	jne    1000c8 <goldbach+0x30>
+  1000d6:	83 fb 01             	cmp    $0x1,%ebx
+  1000d9:	74 29                	je     100104 <goldbach+0x6c>
+  1000db:	83 fb 02             	cmp    $0x2,%ebx
+  1000de:	74 1a                	je     1000fa <goldbach+0x62>
+  1000e0:	f6 c3 01             	test   $0x1,%bl
+  1000e3:	74 1f                	je     100104 <goldbach+0x6c>
+  1000e5:	be 02 00 00 00       	mov    $0x2,%esi
+  1000ea:	eb 09                	jmp    1000f5 <goldbach+0x5d>
+  1000ec:	89 d8                	mov    %ebx,%eax
+  1000ee:	99                   	cltd   
+  1000ef:	f7 fe                	idiv   %esi
+  1000f1:	85 d2                	test   %edx,%edx
+  1000f3:	74 0f                	je     100104 <goldbach+0x6c>
+  1000f5:	46                   	inc    %esi
+  1000f6:	39 f3                	cmp    %esi,%ebx
+  1000f8:	75 f2                	jne    1000ec <goldbach+0x54>
+  1000fa:	b8 01 00 00 00       	mov    $0x1,%eax
+  1000ff:	5b                   	pop    %ebx
+  100100:	5e                   	pop    %esi
+  100101:	5f                   	pop    %edi
+  100102:	5d                   	pop    %ebp
+  100103:	c3                   	ret    
+  100104:	41                   	inc    %ecx
+  100105:	4b                   	dec    %ebx
+  100106:	39 cf                	cmp    %ecx,%edi
+  100108:	75 aa                	jne    1000b4 <goldbach+0x1c>
+  10010a:	31 c0                	xor    %eax,%eax
+  10010c:	5b                   	pop    %ebx
+  10010d:	5e                   	pop    %esi
+  10010e:	5f                   	pop    %edi
+  10010f:	5d                   	pop    %ebp
+  100110:	c3                   	ret    
+  100111:	66 90                	xchg   %ax,%ax
+  100113:	90                   	nop
+
+00100114 <main>:
+  100114:	f3 0f 1e fb          	endbr32 
+  100118:	8d 4c 24 04          	lea    0x4(%esp),%ecx
+  10011c:	83 e4 f0             	and    $0xfffffff0,%esp
+  10011f:	ff 71 fc             	pushl  -0x4(%ecx)
+  100122:	55                   	push   %ebp
+  100123:	89 e5                	mov    %esp,%ebp
+  100125:	53                   	push   %ebx
+  100126:	51                   	push   %ecx
+  100127:	bb 04 00 00 00       	mov    $0x4,%ebx
+  10012c:	83 ec 0c             	sub    $0xc,%esp
+  10012f:	53                   	push   %ebx
+  100130:	e8 63 ff ff ff       	call   100098 <goldbach>
+  100135:	48                   	dec    %eax
+  100136:	0f 94 c0             	sete   %al
+  100139:	0f b6 c0             	movzbl %al,%eax
+  10013c:	89 04 24             	mov    %eax,(%esp)
+  10013f:	e8 f0 fe ff ff       	call   100034 <nemu_assert>
+  100144:	83 c4 10             	add    $0x10,%esp
+  100147:	83 c3 02             	add    $0x2,%ebx
+  10014a:	83 fb 20             	cmp    $0x20,%ebx
+  10014d:	75 dd                	jne    10012c <main+0x18>
+  10014f:	31 c0                	xor    %eax,%eax
+  100151:	8d 65 f8             	lea    -0x8(%ebp),%esp
+  100154:	59                   	pop    %ecx
+  100155:	5b                   	pop    %ebx
+  100156:	5d                   	pop    %ebp
+  100157:	8d 61 fc             	lea    -0x4(%ecx),%esp
+  10015a:	c3                   	ret    
