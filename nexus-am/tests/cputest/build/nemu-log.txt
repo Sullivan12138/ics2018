@@ -31,6 +31,11 @@
   100059:   89 e5                                 movl %esp,%ebp
   10005b:   8b 4d 0c                              movl 0xc(%ebp),%ecx
   10005e:   89 ca                                 movl %ecx,%edx
-  100060:   c1 fa 03 c1 fa 03 83 e1 07 b8 01               invalid opcode
-[1;31mnemu: ABORT[0m at eip = 0x00100068
+  100060:   c1 fa 03                              sarl $0x3,%edx
+  100063:   83 e1 07                              andl $0x7,%ecx
+  100066:   b8 01 00 00 00                        movl $0x1,%eax
+  10006b:   d3 e0                                 shll %cl,%eax
+  10006d:   8b 4d 08                              movl 0x8(%ebp),%ecx
+  100070:   84 84 04 11 0f 95 c0 5d c3               invalid opcode
+[1;31mnemu: ABORT[0m at eip = 0x00100078
 
