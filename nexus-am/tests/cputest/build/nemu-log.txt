@@ -22,3 +22,26 @@
   10019a:   83 ec 0c                              subl $0xc,%esp
   10019d:   6a 00                                 pushb $0x0
   10019f:   68 23 38 00 00                        pushl $0x3823
+  1001a4:   ff 15 0c 02 10 00                     call *0x10020c
+  100034:   f3 0f 1e fb                           call *0x10020c
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   8b 4d 08                              movl 0x8(%ebp),%ecx
+  10003e:   8b 45 0c                              movl 0xc(%ebp),%eax
+  100041:   39 05 1c 02 10 00                     cmpl %eax,0x10021c
+  100047:   7d 05                                 jnl 10004e
+  10004e:   ff 05 20 02 10 00                     incl 0x100220
+  100054:   85 c9                                 testl %ecx,%ecx
+  100056:   7e 1c                                 jle 100074
+  100058:   40                                    incl %eax
+  100059:   89 45 0c                              movl %eax,0xc(%ebp)
+  10005c:   b8 56 55 55 55                        movl $0x55555556,%eax
+  100061:   f7 e9                                 imull %ecx
+  100063:   c1 f9 1f                              sarl $0x1f,%ecx
+  100066:   89 d0                                 movl %edx,%eax
+  100068:   29 c8                                 subl %ecx,%eax
+  10006a:   89 45 08                              movl %eax,0x8(%ebp)
+  10006d:   5d                                    popl %ebp
+  10006e:   ff 25 18 02 10 00 ff 25 18 02 10 00 b8 01               invalid opcode
+[1;31mnemu: ABORT[0m at eip = 0x00100076
+
