@@ -33,6 +33,7 @@
   100017:   8b 4d 08                              movl 0x8(%ebp),%ecx
   10001a:   ba fd 03 00 00                        movl $0x3fd,%edx
   10001f:   90                                    nop
-  100020:   ec ec a8 20 74 fb ba f8 03               invalid opcode
-[1;31mnemu: ABORT[0m at eip = 0x00100028
+  100020:   ec                                    inb (%dx),%al
+  100021:   a8 a8 20 74 fb ba f8 03 00               invalid opcode
+[1;31mnemu: ABORT[0m at eip = 0x00100029
 
