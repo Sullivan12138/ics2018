@@ -1,0 +1,136 @@
+
+/home/hust/ics2018/nexus-am/tests/cputest/build/if-else-x86-nemu:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00100000 <_start>:
+  100000:	bd 00 00 00 00       	mov    $0x0,%ebp
+  100005:	bc 00 7c 00 00       	mov    $0x7c00,%esp
+  10000a:	e8 11 00 00 00       	call   100020 <_trm_init>
+  10000f:	90                   	nop
+
+00100010 <_halt>:
+  100010:	f3 0f 1e fb          	endbr32 
+  100014:	55                   	push   %ebp
+  100015:	89 e5                	mov    %esp,%ebp
+  100017:	8b 45 08             	mov    0x8(%ebp),%eax
+  10001a:	d6                   	(bad)  
+  10001b:	eb fe                	jmp    10001b <_halt+0xb>
+  10001d:	66 90                	xchg   %ax,%ax
+  10001f:	90                   	nop
+
+00100020 <_trm_init>:
+  100020:	f3 0f 1e fb          	endbr32 
+  100024:	55                   	push   %ebp
+  100025:	89 e5                	mov    %esp,%ebp
+  100027:	83 ec 08             	sub    $0x8,%esp
+  10002a:	e8 6d 00 00 00       	call   10009c <main>
+  10002f:	d6                   	(bad)  
+  100030:	eb fe                	jmp    100030 <_trm_init+0x10>
+  100032:	66 90                	xchg   %ax,%ax
+
+00100034 <nemu_assert>:
+  100034:	f3 0f 1e fb          	endbr32 
+  100038:	55                   	push   %ebp
+  100039:	89 e5                	mov    %esp,%ebp
+  10003b:	83 ec 08             	sub    $0x8,%esp
+  10003e:	8b 45 08             	mov    0x8(%ebp),%eax
+  100041:	85 c0                	test   %eax,%eax
+  100043:	74 02                	je     100047 <nemu_assert+0x13>
+  100045:	c9                   	leave  
+  100046:	c3                   	ret    
+  100047:	83 ec 0c             	sub    $0xc,%esp
+  10004a:	6a 01                	push   $0x1
+  10004c:	e8 bf ff ff ff       	call   100010 <_halt>
+  100051:	8d 76 00             	lea    0x0(%esi),%esi
+
+00100054 <if_else>:
+  100054:	f3 0f 1e fb          	endbr32 
+  100058:	55                   	push   %ebp
+  100059:	89 e5                	mov    %esp,%ebp
+  10005b:	8b 45 08             	mov    0x8(%ebp),%eax
+  10005e:	3d f4 01 00 00       	cmp    $0x1f4,%eax
+  100063:	7f 1f                	jg     100084 <if_else+0x30>
+  100065:	3d 2c 01 00 00       	cmp    $0x12c,%eax
+  10006a:	7f 10                	jg     10007c <if_else+0x28>
+  10006c:	83 f8 64             	cmp    $0x64,%eax
+  10006f:	7f 23                	jg     100094 <if_else+0x40>
+  100071:	83 f8 32             	cmp    $0x32,%eax
+  100074:	7f 16                	jg     10008c <if_else+0x38>
+  100076:	31 c0                	xor    %eax,%eax
+  100078:	5d                   	pop    %ebp
+  100079:	c3                   	ret    
+  10007a:	66 90                	xchg   %ax,%ax
+  10007c:	b8 64 00 00 00       	mov    $0x64,%eax
+  100081:	5d                   	pop    %ebp
+  100082:	c3                   	ret    
+  100083:	90                   	nop
+  100084:	b8 96 00 00 00       	mov    $0x96,%eax
+  100089:	5d                   	pop    %ebp
+  10008a:	c3                   	ret    
+  10008b:	90                   	nop
+  10008c:	b8 32 00 00 00       	mov    $0x32,%eax
+  100091:	5d                   	pop    %ebp
+  100092:	c3                   	ret    
+  100093:	90                   	nop
+  100094:	b8 4b 00 00 00       	mov    $0x4b,%eax
+  100099:	5d                   	pop    %ebp
+  10009a:	c3                   	ret    
+  10009b:	90                   	nop
+
+0010009c <main>:
+  10009c:	f3 0f 1e fb          	endbr32 
+  1000a0:	8d 4c 24 04          	lea    0x4(%esp),%ecx
+  1000a4:	83 e4 f0             	and    $0xfffffff0,%esp
+  1000a7:	ff 71 fc             	pushl  -0x4(%ecx)
+  1000aa:	55                   	push   %ebp
+  1000ab:	89 e5                	mov    %esp,%ebp
+  1000ad:	53                   	push   %ebx
+  1000ae:	51                   	push   %ecx
+  1000af:	31 db                	xor    %ebx,%ebx
+  1000b1:	eb 34                	jmp    1000e7 <main+0x4b>
+  1000b3:	90                   	nop
+  1000b4:	3d 2c 01 00 00       	cmp    $0x12c,%eax
+  1000b9:	7f 41                	jg     1000fc <main+0x60>
+  1000bb:	83 f8 64             	cmp    $0x64,%eax
+  1000be:	7f 44                	jg     100104 <main+0x68>
+  1000c0:	83 f8 32             	cmp    $0x32,%eax
+  1000c3:	7f 47                	jg     10010c <main+0x70>
+  1000c5:	31 c0                	xor    %eax,%eax
+  1000c7:	90                   	nop
+  1000c8:	43                   	inc    %ebx
+  1000c9:	83 ec 0c             	sub    $0xc,%esp
+  1000cc:	39 04 9d 3c 01 10 00 	cmp    %eax,0x10013c(,%ebx,4)
+  1000d3:	0f 94 c0             	sete   %al
+  1000d6:	0f b6 c0             	movzbl %al,%eax
+  1000d9:	50                   	push   %eax
+  1000da:	e8 55 ff ff ff       	call   100034 <nemu_assert>
+  1000df:	83 c4 10             	add    $0x10,%esp
+  1000e2:	83 fb 0e             	cmp    $0xe,%ebx
+  1000e5:	74 2d                	je     100114 <main+0x78>
+  1000e7:	8b 04 9d 80 01 10 00 	mov    0x100180(,%ebx,4),%eax
+  1000ee:	3d f4 01 00 00       	cmp    $0x1f4,%eax
+  1000f3:	7e bf                	jle    1000b4 <main+0x18>
+  1000f5:	b8 96 00 00 00       	mov    $0x96,%eax
+  1000fa:	eb cc                	jmp    1000c8 <main+0x2c>
+  1000fc:	b8 64 00 00 00       	mov    $0x64,%eax
+  100101:	eb c5                	jmp    1000c8 <main+0x2c>
+  100103:	90                   	nop
+  100104:	b8 4b 00 00 00       	mov    $0x4b,%eax
+  100109:	eb bd                	jmp    1000c8 <main+0x2c>
+  10010b:	90                   	nop
+  10010c:	b8 32 00 00 00       	mov    $0x32,%eax
+  100111:	eb b5                	jmp    1000c8 <main+0x2c>
+  100113:	90                   	nop
+  100114:	83 ec 0c             	sub    $0xc,%esp
+  100117:	6a 01                	push   $0x1
+  100119:	e8 16 ff ff ff       	call   100034 <nemu_assert>
+  10011e:	83 c4 10             	add    $0x10,%esp
+  100121:	31 c0                	xor    %eax,%eax
+  100123:	8d 65 f8             	lea    -0x8(%ebp),%esp
+  100126:	59                   	pop    %ecx
+  100127:	5b                   	pop    %ebx
+  100128:	5d                   	pop    %ebp
+  100129:	8d 61 fc             	lea    -0x4(%ecx),%esp
+  10012c:	c3                   	ret    
