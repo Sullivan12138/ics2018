@@ -25,6 +25,86 @@
   10006b:   31 db                                 xorl %ebx,%ebx
   10006d:   8d 76 00                              leal 0(%esi),%esi
   100070:   83 ec 0c                              subl $0xc,%esp
-  100073:   0f bf 0f bf 84 1b e0 01 10 00               invalid opcode
+  100073:   0f bf 84 1b e0 01 10 00               movzxl 0x1001e0(%ebx,%ebx,1),%ax
+  10007b:   3b 04 9d c0 01 10 00                  cmpl 0x1001c0(,%ebx,4),%eax
+  100082:   0f 94 c0                              sete %al
+  100085:   0f b6 c0                              movzxl %al,%al
+  100088:   50                                    pushl %eax
+  100089:   e8 a6 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  10008e:   83 c4 10                              addl $0x10,%esp
+  100091:   43                                    incl %ebx
+  100092:   83 fb 08                              cmpl $0x8,%ebx
+  100095:   75 d9                                 jne 100070
+  100070:   83 ec 0c                              subl $0xc,%esp
+  100073:   0f bf 84 1b e0 01 10 00               movzxl 0x1001e0(%ebx,%ebx,1),%ax
+  10007b:   3b 04 9d c0 01 10 00                  cmpl 0x1001c0(,%ebx,4),%eax
+  100082:   0f 94 c0                              sete %al
+  100085:   0f b6 c0                              movzxl %al,%al
+  100088:   50                                    pushl %eax
+  100089:   e8 a6 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  10008e:   83 c4 10                              addl $0x10,%esp
+  100091:   43                                    incl %ebx
+  100092:   83 fb 08                              cmpl $0x8,%ebx
+  100095:   75 d9                                 jne 100070
+  100070:   83 ec 0c                              subl $0xc,%esp
+  100073:   0f bf 84 1b e0 01 10 00               movzxl 0x1001e0(%ebx,%ebx,1),%ax
+  10007b:   3b 04 9d c0 01 10 00                  cmpl 0x1001c0(,%ebx,4),%eax
+  100082:   0f 94 c0                              sete %al
+  100085:   0f b6 c0                              movzxl %al,%al
+  100088:   50                                    pushl %eax
+  100089:   e8 a6 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  10008e:   83 c4 10                              addl $0x10,%esp
+  100091:   43                                    incl %ebx
+  100092:   83 fb 08                              cmpl $0x8,%ebx
+  100095:   75 d9                                 jne 100070
+  100070:   83 ec 0c                              subl $0xc,%esp
+  100073:   0f bf 84 1b e0 01 10 00               movzxl 0x1001e0(%ebx,%ebx,1),%ax
+  10007b:   3b 04 9d c0 01 10 00                  cmpl 0x1001c0(,%ebx,4),%eax
+  100082:   0f 94 c0                              sete %al
+  100085:   0f b6 c0                              movzxl %al,%al
+  100088:   50                                    pushl %eax
+  100089:   e8 a6 ff ff ff                        call 100034
+  100034:   f3 0f 1e fb                           call 100034
+  100038:   55                                    pushl %ebp
+  100039:   89 e5                                 movl %esp,%ebp
+  10003b:   83 ec 08                              subl $0x8,%esp
+  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
+  100041:   85 c0                                 testl %eax,%eax
+  100043:   74 02                                 je 100047
+  100045:   c9                                    leave
+  100046:   c3                                    ret
+  10008e:   83 c4 10                              addl $0x10,%esp
+  100091:   43                                    incl %ebx
+  100092:   83 fb 08                              cmpl $0x8,%ebx
+  100095:   75 d9                                 jne 100070
+  100070:   83 ec 0c                              subl $0xc,%esp
+  100073:   0f bf 84 1b e0 01 10 00               movzxl 0x1001e0(%ebx,%ebx,1),%ax
 [1;31mnemu: ABORT[0m at eip = 0x0010007b
 
