@@ -305,6 +305,31 @@
   10009a:   80 7d 10 00                           cmpb $0x0,0x10(%ebp)
   10009e:   8b 55 fc                              movl -0x4(%ebp),%edx
   1000a1:   75 0d                                 jne 1000b0
-  1000b0:   0a 0a 02 8b 55 fc 88 02 c9               invalid opcode
-[1;31mnemu: ABORT[0m at eip = 0x001000b8
+  1000b0:   0a 02                                 orb (%edx),%al
+  1000b2:   8b 55 fc                              movl -0x4(%ebp),%edx
+  1000b5:   88 02                                 movb %al,(%edx)
+  1000b7:   c9                                    leave
+  1000b8:   c3                                    ret
+  1001b6:   83 c4 0c                              addl $0xc,%esp
+  1001b9:   6a 00                                 pushb $0x0
+  1001bb:   6a 09                                 pushb $0x9
+  1001bd:   53                                    pushl %ebx
+  1001be:   e8 b5 fe ff ff                        call 100078
+  100078:   f3 0f 1e fb                           call 100078
+  10007c:   55                                    pushl %ebp
+  10007d:   89 e5                                 movl %esp,%ebp
+  10007f:   83 ec 10                              subl $0x10,%esp
+  100082:   8b 55 0c                              movl 0xc(%ebp),%edx
+  100085:   89 d1                                 movl %edx,%ecx
+  100087:   83 e1 07                              andl $0x7,%ecx
+  10008a:   b8 01 00 00 00                        movl $0x1,%eax
+  10008f:   d3 e0                                 shll %cl,%eax
+  100091:   c1 fa 03                              sarl $0x3,%edx
+  100094:   03 55 08                              addl 0x8(%ebp),%edx
+  100097:   89 55 fc                              movl %edx,-0x4(%ebp)
+  10009a:   80 7d 10 00                           cmpb $0x0,0x10(%ebp)
+  10009e:   8b 55 fc                              movl -0x4(%ebp),%edx
+  1000a1:   75 0d                                 jne 1000b0
+  1000a3:   f7 d0 f7 d0 22 02 8b 55 fc 88               invalid opcode
+[1;31mnemu: ABORT[0m at eip = 0x001000ab
 
