@@ -23,6 +23,9 @@
   1000af:   31 db                                 xorl %ebx,%ebx
   1000b1:   eb 34                                 jmp 1000e7
   1000e7:   8b 04 9d 80 01 10 00                  movl 0x100180(,%ebx,4),%eax
-  1000ee:   3d 3d f4 01 00 00 7e bf b8               invalid opcode
-[1;31mnemu: ABORT[0m at eip = 0x001000f6
+  1000ee:   3d f4 01 00 00                        cmpl $0x1f4,%eax
+  1000f3:   7e bf                                 jle 1000b4
+  1000b4:   3d 2c 01 00 00                        cmpl $0x12c,%eax
+  1000b9:   7f 7f 41 83 f8 64 7f 44 83               invalid opcode
+[1;31mnemu: ABORT[0m at eip = 0x001000c1
 
