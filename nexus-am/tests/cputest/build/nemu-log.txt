@@ -464,6 +464,29 @@
   1001cf:   0f 85 cb 00 00 00                     jne 1002a0
   1002a0:   8b 85 74 ff ff ff                     movl -0x8c(%ebp),%eax
   1002a6:   85 c0                                 testl %eax,%eax
-  1002a8:   0f 88 0f 88 9b 00 00 00 89 95               invalid opcode
-[1;31mnemu: ABORT[0m at eip = 0x001002b0
+  1002a8:   0f 88 9b 00 00 00                     js 100349
+  1002ae:   89 95 68 ff ff ff                     movl %edx,-0x98(%ebp)
+  1002b4:   31 f6                                 xorl %esi,%esi
+  1002b6:   89 7d 0c                              movl %edi,0xc(%ebp)
+  1002b9:   8d 76 00                              leal 0(%esi),%esi
+  1002bc:   89 f7                                 movl %esi,%edi
+  1002be:   46                                    incl %esi
+  1002bf:   8b 85 74 ff ff ff                     movl -0x8c(%ebp),%eax
+  1002c5:   b9 0a 00 00 00                        movl $0xa,%ecx
+  1002ca:   99                                    cltd
+  1002cb:   f7 f9                                 idivl %ecx
+  1002cd:   8d 4a 30                              leal 0x30(%edx),%ecx
+  1002d0:   88 4c 35 83                           movb %cl,-0x7d(%ebp,%esi,1)
+  1002d4:   b8 cd cc cc cc                        movl $0xcccccccd,%eax
+  1002d9:   f7 a5 74 ff ff ff                     mull -0x8c(%ebp)
+  1002df:   89 d0                                 movl %edx,%eax
+  1002e1:   c1 e8 03                              shrl $0x3,%eax
+  1002e4:   89 85 74 ff ff ff                     movl %eax,-0x8c(%ebp)
+  1002ea:   75 d0                                 jne 1002bc
+  1002ec:   89 bd 60 ff ff ff                     movl %edi,-0xa0(%ebp)
+  1002f2:   88 8d 74 ff ff ff                     movb %cl,-0x8c(%ebp)
+  1002f8:   8b 7d 0c                              movl 0xc(%ebp),%edi
+  1002fb:   39 b5 6c ff ff ff                     cmpl %esi,-0x94(%ebp)
+  100301:   0f 8f 0f 8f b2 00 00 00 8b 85               invalid opcode
+[1;31mnemu: ABORT[0m at eip = 0x00100309
 
