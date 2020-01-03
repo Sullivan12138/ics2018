@@ -1,4 +1,4 @@
-[1;34m[src/monitor/monitor.c,72,load_img] The image is /home/hust/ics2018/nexus-am/tests/cputest/build/string-x86-nemu.bin[0m
+[1;34m[src/monitor/monitor.c,72,load_img] The image is /home/hust/ics2018/nexus-am/tests/cputest/build/sub-longlong-x86-nemu.bin[0m
 [1;34m[src/monitor/diff-test/diff-test.c,46,init_difftest] Differential testing: [1;32mON[0m[0m
 [1;34m[src/monitor/diff-test/diff-test.c,47,init_difftest] The result of every instruction will be compared with /home/hust/ics2018/nemu/tools/qemu-diff/build/qemu-so. This will help you a lot for debugging, but also significantly reduce the performance. If it is not necessary, you can turn it off in include/common.h.[0m
 [1;34m[src/monitor/monitor.c,28,welcome] Debug: [1;32mON[0m[0m
@@ -11,65 +11,31 @@
   100024:   55                                    pushl %ebp
   100025:   89 e5                                 movl %esp,%ebp
   100027:   83 ec 08                              subl $0x8,%esp
-  10002a:   e8 25 00 00 00                        call 100054
-  100054:   f3 0f 1e fb                           call 100054
-  100058:   8d 4c 24 04                           leal 0x4(%esp),%ecx
-  10005c:   83 e4 f0                              andl $0xfffffff0,%esp
-  10005f:   ff 71 fc                              pushl -0x4(%ecx)
-  100062:   55                                    pushl %ebp
-  100063:   89 e5                                 movl %esp,%ebp
-  100065:   56                                    pushl %esi
-  100066:   53                                    pushl %ebx
-  100067:   51                                    pushl %ecx
-  100068:   83 ec 14                              subl $0x14,%esp
-  10006b:   ff 35 40 02 10 00                     pushl 0x100240
-  100071:   ff 35 38 02 10 00                     pushl 0x100238
-  100077:   e8 38 01 00 00                        call 1001b4
-  1001b4:   f3 0f 1e fb                           call 1001b4
-  1001b8:   31 c0                                 xorl %eax,%eax
-  1001ba:   c3                                    ret
-  10007c:   85 c0                                 testl %eax,%eax
-  10007e:   0f 94 c0                              sete %al
-  100081:   0f b6 c0                              movzxl %al,%al
-  100084:   89 04 24                              movl %eax,(%esp)
-  100087:   e8 a8 ff ff ff                        call 100034
-  100034:   f3 0f 1e fb                           call 100034
-  100038:   55                                    pushl %ebp
-  100039:   89 e5                                 movl %esp,%ebp
-  10003b:   83 ec 08                              subl $0x8,%esp
-  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
-  100041:   85 c0                                 testl %eax,%eax
-  100043:   74 02                                 je 100047
-  100045:   c9                                    leave
-  100046:   c3                                    ret
-  10008c:   58                                    popl %eax
-  10008d:   5a                                    popl %edx
-  10008e:   ff 35 3c 02 10 00                     pushl 0x10023c
-  100094:   ff 35 38 02 10 00                     pushl 0x100238
-  10009a:   e8 15 01 00 00                        call 1001b4
-  1001b4:   f3 0f 1e fb                           call 1001b4
-  1001b8:   31 c0                                 xorl %eax,%eax
-  1001ba:   c3                                    ret
-  10009f:   40                                    incl %eax
-  1000a0:   0f 94 c0                              sete %al
-  1000a3:   0f b6 c0                              movzxl %al,%al
-  1000a6:   89 04 24                              movl %eax,(%esp)
-  1000a9:   e8 86 ff ff ff                        call 100034
-  100034:   f3 0f 1e fb                           call 100034
-  100038:   55                                    pushl %ebp
-  100039:   89 e5                                 movl %esp,%ebp
-  10003b:   83 ec 08                              subl $0x8,%esp
-  10003e:   8b 45 08                              movl 0x8(%ebp),%eax
-  100041:   85 c0                                 testl %eax,%eax
-  100043:   74 02                                 je 100047
-  100047:   83 ec 0c                              subl $0xc,%esp
-  10004a:   6a 01                                 pushb $0x1
-  10004c:   e8 bf ff ff ff                        call 100010
-  100010:   f3 0f 1e fb                           call 100010
-  100014:   55                                    pushl %ebp
-  100015:   89 e5                                 movl %esp,%ebp
-  100017:   8b 45 08                              movl 0x8(%ebp),%eax
-  10001a:   d6                                    nemu trap
-[1;31mnemu: HIT BAD TRAP[0m at eip = 0x0010001a
+  10002a:   e8 3d 00 00 00                        call 10006c
+  10006c:   f3 0f 1e fb                           call 10006c
+  100070:   8d 4c 24 04                           leal 0x4(%esp),%ecx
+  100074:   83 e4 f0                              andl $0xfffffff0,%esp
+  100077:   ff 71 fc                              pushl -0x4(%ecx)
+  10007a:   55                                    pushl %ebp
+  10007b:   89 e5                                 movl %esp,%ebp
+  10007d:   57                                    pushl %edi
+  10007e:   56                                    pushl %esi
+  10007f:   53                                    pushl %ebx
+  100080:   51                                    pushl %ecx
+  100081:   83 ec 18                              subl $0x18,%esp
+  100084:   31 c9                                 xorl %ecx,%ecx
+  100086:   c7 45 e0 00 00 00 00                  movl $0x0,-0x20(%ebp)
+  10008d:   89 4d e4                              movl %ecx,-0x1c(%ebp)
+  100090:   8b 45 e0                              movl -0x20(%ebp),%eax
+  100093:   8b b0 20 03 10 00                     movl 0x100320(%eax),%esi
+  100099:   8b b8 24 03 10 00                     movl 0x100324(%eax),%edi
+  10009f:   31 db                                 xorl %ebx,%ebx
+  1000a1:   89 75 d8                              movl %esi,-0x28(%ebp)
+  1000a4:   89 7d dc                              movl %edi,-0x24(%ebp)
+  1000a7:   90                                    nop
+  1000a8:   83 ec 0c                              subl $0xc,%esp
+  1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
+  1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
+  1000b1:   2b 2b 04 dd 20 03 10 00 1b               invalid opcode
+[1;31mnemu: ABORT[0m at eip = 0x001000b9
 
-[1;34m[src/monitor/cpu-exec.c,23,monitor_statistic] total guest instructions = 66[0m
