@@ -36,6 +36,7 @@
   1000a8:   83 ec 0c                              subl $0xc,%esp
   1000ab:   8b 45 d8                              movl -0x28(%ebp),%eax
   1000ae:   8b 55 dc                              movl -0x24(%ebp),%edx
-  1000b1:   2b 2b 04 dd 20 03 10 00 1b               invalid opcode
-[1;31mnemu: ABORT[0m at eip = 0x001000b9
+  1000b1:   2b 04 dd 20 03 10 00                  subl 0x100320(,%ebx,8),%eax
+  1000b8:   1b 1b 14 dd 24 03 10 00 8b               invalid opcode
+[1;31mnemu: ABORT[0m at eip = 0x001000c0
 
