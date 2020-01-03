@@ -1,0 +1,124 @@
+
+/home/hust/ics2018/nexus-am/tests/cputest/build/leap-year-x86-nemu:     file format elf32-i386
+
+
+Disassembly of section .text:
+
+00100000 <_start>:
+  100000:	bd 00 00 00 00       	mov    $0x0,%ebp
+  100005:	bc 00 7c 00 00       	mov    $0x7c00,%esp
+  10000a:	e8 11 00 00 00       	call   100020 <_trm_init>
+  10000f:	90                   	nop
+
+00100010 <_halt>:
+  100010:	f3 0f 1e fb          	endbr32 
+  100014:	55                   	push   %ebp
+  100015:	89 e5                	mov    %esp,%ebp
+  100017:	8b 45 08             	mov    0x8(%ebp),%eax
+  10001a:	d6                   	(bad)  
+  10001b:	eb fe                	jmp    10001b <_halt+0xb>
+  10001d:	66 90                	xchg   %ax,%ax
+  10001f:	90                   	nop
+
+00100020 <_trm_init>:
+  100020:	f3 0f 1e fb          	endbr32 
+  100024:	55                   	push   %ebp
+  100025:	89 e5                	mov    %esp,%ebp
+  100027:	83 ec 08             	sub    $0x8,%esp
+  10002a:	e8 5d 00 00 00       	call   10008c <main>
+  10002f:	d6                   	(bad)  
+  100030:	eb fe                	jmp    100030 <_trm_init+0x10>
+  100032:	66 90                	xchg   %ax,%ax
+
+00100034 <nemu_assert>:
+  100034:	f3 0f 1e fb          	endbr32 
+  100038:	55                   	push   %ebp
+  100039:	89 e5                	mov    %esp,%ebp
+  10003b:	83 ec 08             	sub    $0x8,%esp
+  10003e:	8b 45 08             	mov    0x8(%ebp),%eax
+  100041:	85 c0                	test   %eax,%eax
+  100043:	74 02                	je     100047 <nemu_assert+0x13>
+  100045:	c9                   	leave  
+  100046:	c3                   	ret    
+  100047:	83 ec 0c             	sub    $0xc,%esp
+  10004a:	6a 01                	push   $0x1
+  10004c:	e8 bf ff ff ff       	call   100010 <_halt>
+  100051:	8d 76 00             	lea    0x0(%esi),%esi
+
+00100054 <is_leap_year>:
+  100054:	f3 0f 1e fb          	endbr32 
+  100058:	55                   	push   %ebp
+  100059:	89 e5                	mov    %esp,%ebp
+  10005b:	f6 45 08 03          	testb  $0x3,0x8(%ebp)
+  10005f:	75 17                	jne    100078 <is_leap_year+0x24>
+  100061:	b9 64 00 00 00       	mov    $0x64,%ecx
+  100066:	8b 45 08             	mov    0x8(%ebp),%eax
+  100069:	99                   	cltd   
+  10006a:	f7 f9                	idiv   %ecx
+  10006c:	85 d2                	test   %edx,%edx
+  10006e:	74 08                	je     100078 <is_leap_year+0x24>
+  100070:	b8 01 00 00 00       	mov    $0x1,%eax
+  100075:	5d                   	pop    %ebp
+  100076:	c3                   	ret    
+  100077:	90                   	nop
+  100078:	b9 90 01 00 00       	mov    $0x190,%ecx
+  10007d:	8b 45 08             	mov    0x8(%ebp),%eax
+  100080:	99                   	cltd   
+  100081:	f7 f9                	idiv   %ecx
+  100083:	31 c0                	xor    %eax,%eax
+  100085:	85 d2                	test   %edx,%edx
+  100087:	0f 94 c0             	sete   %al
+  10008a:	5d                   	pop    %ebp
+  10008b:	c3                   	ret    
+
+0010008c <main>:
+  10008c:	f3 0f 1e fb          	endbr32 
+  100090:	8d 4c 24 04          	lea    0x4(%esp),%ecx
+  100094:	83 e4 f0             	and    $0xfffffff0,%esp
+  100097:	ff 71 fc             	pushl  -0x4(%ecx)
+  10009a:	55                   	push   %ebp
+  10009b:	89 e5                	mov    %esp,%ebp
+  10009d:	57                   	push   %edi
+  10009e:	56                   	push   %esi
+  10009f:	53                   	push   %ebx
+  1000a0:	51                   	push   %ecx
+  1000a1:	83 ec 08             	sub    $0x8,%esp
+  1000a4:	bb 62 07 00 00       	mov    $0x762,%ebx
+  1000a9:	be 90 01 00 00       	mov    $0x190,%esi
+  1000ae:	bf 64 00 00 00       	mov    $0x64,%edi
+  1000b3:	eb 33                	jmp    1000e8 <main+0x5c>
+  1000b5:	8d 76 00             	lea    0x0(%esi),%esi
+  1000b8:	89 d8                	mov    %ebx,%eax
+  1000ba:	99                   	cltd   
+  1000bb:	f7 ff                	idiv   %edi
+  1000bd:	85 d2                	test   %edx,%edx
+  1000bf:	74 2c                	je     1000ed <main+0x61>
+  1000c1:	b8 01 00 00 00       	mov    $0x1,%eax
+  1000c6:	83 ec 0c             	sub    $0xc,%esp
+  1000c9:	39 04 9d 98 e3 0f 00 	cmp    %eax,0xfe398(,%ebx,4)
+  1000d0:	0f 94 c0             	sete   %al
+  1000d3:	0f b6 c0             	movzbl %al,%eax
+  1000d6:	50                   	push   %eax
+  1000d7:	e8 58 ff ff ff       	call   100034 <nemu_assert>
+  1000dc:	83 c4 10             	add    $0x10,%esp
+  1000df:	43                   	inc    %ebx
+  1000e0:	81 fb df 07 00 00    	cmp    $0x7df,%ebx
+  1000e6:	74 13                	je     1000fb <main+0x6f>
+  1000e8:	f6 c3 03             	test   $0x3,%bl
+  1000eb:	74 cb                	je     1000b8 <main+0x2c>
+  1000ed:	89 d8                	mov    %ebx,%eax
+  1000ef:	99                   	cltd   
+  1000f0:	f7 fe                	idiv   %esi
+  1000f2:	31 c0                	xor    %eax,%eax
+  1000f4:	85 d2                	test   %edx,%edx
+  1000f6:	0f 94 c0             	sete   %al
+  1000f9:	eb cb                	jmp    1000c6 <main+0x3a>
+  1000fb:	31 c0                	xor    %eax,%eax
+  1000fd:	8d 65 f0             	lea    -0x10(%ebp),%esp
+  100100:	59                   	pop    %ecx
+  100101:	5b                   	pop    %ebx
+  100102:	5e                   	pop    %esi
+  100103:	5f                   	pop    %edi
+  100104:	5d                   	pop    %ebp
+  100105:	8d 61 fc             	lea    -0x4(%ecx),%esp
+  100108:	c3                   	ret    
