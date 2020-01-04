@@ -22,8 +22,7 @@ intptr_t _syscall_(int type, intptr_t a0, intptr_t a1, intptr_t a2){
 #else
 #error _syscall_ is not implemented
 #endif
-extern char end;
-intptr_t program_break;
+static intptr_t old_program_break = &end;
 void _exit(int status) {
   _syscall_(SYS_exit, status, 0, 0);
   while (1);
@@ -39,10 +38,10 @@ int _write(int fd, void *buf, size_t count){
 }
 
 void *_sbrk(intptr_t increment){
-  if(program_break == 0) program_break = &end + 1;
-  intptr_t _end = program_break;
-  program_break += increment;
-  if (_syscall_(SYS_brk, program_break, 0, 0) == 0) return (void*)_end;
+  if(old_program_break == -1) old_program_break = &end;
+  intptr_t ret = old_program_break;
+  old_program_break += increment;
+  if (_syscall_(SYS_brk, program_old_break, 0, 0) == 0) return (void*)ret;
   return (void *)-1; 
 }
 
