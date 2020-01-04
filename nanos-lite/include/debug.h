@@ -2,7 +2,7 @@
 #define __DEBUG_H__
 
 #include "common.h"
-
+#define printk printf
 #define Log(format, ...) \
   printk("\33[1;35m[%s,%d,%s] " format "\33[0m\n", \
       __FILE__, __LINE__, __func__, ## __VA_ARGS__)

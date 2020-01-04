@@ -58,9 +58,16 @@ union {
       uint32_t VIP:              1;
       uint32_t TD:               1;
       uint32_t reserved_22to31: 10;
-    }eflags;
+    };
     uint32_t val;
-  };
+  }eflags;
+  bool intr;
+  struct {
+    uint32_t base;
+    uint32_t length;
+  } idtr;
+  uint16_t cs;
+  rtlreg_t es;
 
 } CPU_state;
 
