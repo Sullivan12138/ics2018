@@ -3,7 +3,7 @@
 #include "fs.h"
 #include <am.h>
 #include <stdlib.h>
-extern char end;
+intptr_t program_brk;
 uintptr_t sys_yield() {
   _yield();
   return 0;
@@ -20,10 +20,11 @@ size_t sys_write(int fd, void *buf, size_t count) {
     int i = 0;
     for(;i< count; i++) _putc(*(str+i));
   }
+  Log("call write\n");
   return count;
 }
 uintptr_t sys_brk(void* address) {
-  end = *((char*)address);
+  program_brk = (intptr_t)address;
   return 0;
 }
 _Context* do_syscall(_Context *c) {
