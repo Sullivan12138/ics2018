@@ -44,7 +44,7 @@ make_EHelper(int) {
 }
 
 make_EHelper(iret) {
-  Trtl_pop(&decoding.jmp_eip);
+  rtl_pop(&decoding.jmp_eip);
 	rtl_j(decoding.jmp_eip);
 
 	rtl_pop(&t0);
