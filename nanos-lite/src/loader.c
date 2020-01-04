@@ -1,9 +1,9 @@
 #include "proc.h"
-
 #define DEFAULT_ENTRY 0x4000000
+void naive_uload(PCB *pcb, const char *filename);
 
 static uintptr_t loader(PCB *pcb, const char *filename) {
-  ramdisk_read(DEFAULT_ENTRY, 0, get_ramdisk_size());
+  ramdisk_read((void*)DEFAULT_ENTRY, 0, get_ramdisk_size());
   return DEFAULT_ENTRY;
 }
 
