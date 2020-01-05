@@ -39,8 +39,8 @@ int _write(int fd, void *buf, size_t count){
 
 void *_sbrk(intptr_t increment){
   intptr_t old_program_brk = program_brk;
-  intptr_t new_program_brk = old_program_break + increment;
-  if (_syscall_(SYS_brk, old_program_break, 0, 0) == 0) {
+  intptr_t new_program_brk = old_program_brk + increment;
+  if (_syscall_(SYS_brk, old_program_brk, 0, 0) == 0) {
     program_brk = new_program_brk;
     return (void*)old_program_brk;
   }
