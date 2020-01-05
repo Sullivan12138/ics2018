@@ -20,7 +20,7 @@ typedef struct {
   WriteFn write;
 } Finfo;
 
-enum {FD_STDIN, FD_STDOUT, FD_STDERR, FD_FB, FD_FB, FD_EVENTS, FD_DISPINFO, FD_TTY};
+enum {FD_STDIN, FD_STDOUT, FD_STDERR,  FD_FB, FD_EVENTS, FD_DISPINFO, FD_TTY};
 
 size_t invalid_read(void *buf, size_t offset, size_t len) {
   panic("should not reach here");
@@ -49,6 +49,7 @@ static Finfo file_table[] __attribute__((used)) = {
 void init_fs() {
   // TODO: initialize the size of /dev/fb
   file_table[FD_FB].size = screen_width() * screen_height() * 4;
+  file_table[0].size = file_table[1].size = file_table[2].size= 0x7fffffff;
 }
 
 int fs_open(const char *pathname, int flags, int mode) {
@@ -67,7 +68,8 @@ size_t fs_filesz(int fd) {
 	return file_table[fd].size;
 }
 
-size_t fs_read(int fd, void *buf, size_t len) {
+ssize_t fs_read(int fd, void *buf, size_t len) {
+  // printf("fs_read:%d\n", fd);
   size_t l = (file_table[fd].open_offset + len) <= fs_filesz(fd) ? len : (fs_filesz(fd) - file_table[fd].open_offset);
   if(file_table[fd].read == NULL) ramdisk_read(buf, file_table[fd].disk_offset + file_table[fd].open_offset, l);
   else l = file_table[fd].read(buf, file_table[fd].disk_offset + file_table[fd].open_offset, l);
@@ -75,7 +77,7 @@ size_t fs_read(int fd, void *buf, size_t len) {
   return l;
 }
 
-size_t fs_write(int fd, void *buf, size_t len) {
+ssize_t fs_write(int fd, const void *buf, size_t len) {
   size_t l = (file_table[fd].open_offset + len) <= fs_filesz(fd) ? len : (fs_filesz(fd) - file_table[fd].open_offset);
   if(file_table[fd].write == NULL) ramdisk_write(buf, file_table[fd].disk_offset + file_table[fd].open_offset, l);
   else l = file_table[fd].write(buf, file_table[fd].disk_offset + file_table[fd].open_offset, l);

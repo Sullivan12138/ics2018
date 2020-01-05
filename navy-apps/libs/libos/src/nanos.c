@@ -4,7 +4,6 @@
 #include <sys/time.h>
 #include <assert.h>
 #include <time.h>
-#include <stdlib.h>
 #include "syscall.h"
 
 #if defined(__ISA_X86__)
@@ -22,7 +21,8 @@ intptr_t _syscall_(int type, intptr_t a0, intptr_t a1, intptr_t a2){
 #else
 #error _syscall_ is not implemented
 #endif
-static intptr_t old_program_break = &end;
+extern char _end;
+static intptr_t program_brk = (intptr_t)&_end;
 void _exit(int status) {
   _syscall_(SYS_exit, status, 0, 0);
   while (1);
@@ -38,10 +38,12 @@ int _write(int fd, void *buf, size_t count){
 }
 
 void *_sbrk(intptr_t increment){
-  if(old_program_break == -1) old_program_break = &end;
-  intptr_t ret = old_program_break;
-  old_program_break += increment;
-  if (_syscall_(SYS_brk, program_old_break, 0, 0) == 0) return (void*)ret;
+  intptr_t old_program_brk = program_brk;
+  intptr_t new_program_brk = old_program_break + increment;
+  if (_syscall_(SYS_brk, old_program_break, 0, 0) == 0) {
+    program_brk = new_program_brk;
+    return (void*)old_program_brk;
+  }
   return (void *)-1; 
 }
 
