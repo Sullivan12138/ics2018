@@ -52,13 +52,11 @@ int _read(int fd, void *buf, size_t count) {
 }
 
 int _close(int fd) {
-  _syscall_(SYS_close, fd);
-  return 0;
+  return _syscall_(SYS_close, fd);
 }
 
 off_t _lseek(int fd, off_t offset, int whence) {
-  _syscall_(SYS_lseek, fd, offset, whence);
-  return 0;
+  return _syscall_(SYS_lseek, fd, offset, whence);
 }
 
 int _execve(const char *fname, char * const argv[], char *const envp[]) {
