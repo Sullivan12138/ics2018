@@ -99,6 +99,7 @@ off_t fs_lseek(int fd, off_t offset, int whence) {
 }
 
 int fs_close(int fd) {
+  printf("close:%d\n", fd);
   fs_lseek(fd, 0, SEEK_SET);
   return 0;
 }
