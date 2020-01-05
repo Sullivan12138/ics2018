@@ -41,7 +41,7 @@ void *_sbrk(intptr_t increment){
   if(old_program_break == -1) old_program_break = &end;
   intptr_t ret = old_program_break;
   old_program_break += increment;
-  if (_syscall_(SYS_brk, program_old_break, 0, 0) == 0) return (void*)ret;
+  if (_syscall_(SYS_brk, old_program_break, 0, 0) == 0) return (void*)ret;
   return (void *)-1; 
 }
 
