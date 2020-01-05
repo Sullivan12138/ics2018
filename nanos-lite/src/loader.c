@@ -21,7 +21,10 @@ static uintptr_t loader(PCB *pcb, const char *filename) {
   // fs_close(fd);
   int fd = fs_open(filename, 0, 0);
   int len = fs_filesz(fd);
-  fs_read(fd, (void *)DEFAULT_ENTRY, len);
+  char buf[len];
+  fs_read(fd, buf, len);
+  uintptr_t start = DEFAULT_ENTRY;
+  memcpy((void*)start, buf, len);
   fs_close(fd);
     // ramdisk_read((void*)DEFAULT_ENTRY, 0, get_ramdisk_size());
 
