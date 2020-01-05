@@ -22,6 +22,4 @@ enum {
   SYS_times,
   SYS_gettimeofday
 };
-extern char end;
-extern intptr_t program_brk;
 #endif

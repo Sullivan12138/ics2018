@@ -5,7 +5,6 @@
 #include <stdlib.h>
 #include "unistd.h"
 #include "proc.h"
-intptr_t program_brk;
 extern void naive_uload(PCB *pcb, const char *filename);
 uintptr_t sys_yield() {
   _yield();
@@ -29,7 +28,7 @@ size_t sys_write(int fd, void *buf, size_t count) {
 }
 
 uintptr_t sys_brk(void* address) {
-  program_brk = (intptr_t)address;
+  
   return 0;
 }
 
