@@ -1,9 +1,6 @@
 #include "common.h"
 #include "syscall.h"
 #include "fs.h"
-#include <am.h>
-#include <stdlib.h>
-#include "unistd.h"
 #include "proc.h"
 extern void naive_uload(PCB *pcb, const char *filename);
 uintptr_t sys_yield() {

@@ -1,8 +1,7 @@
 #include "proc.h"
 #include "fs.h"
+#include "common.h"
 #define DEFAULT_ENTRY 0x4000000
-#define MAP_TEST 1
-#define MAP_CREATE 2
 static uintptr_t loader(PCB *pcb, const char *filename) {
   // int fd = fs_open(filename, 0, 0);
   // int len = fs_filesz(fd);
