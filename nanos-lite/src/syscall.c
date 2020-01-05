@@ -15,13 +15,8 @@ void sys_exit(int code) {
 
 
 size_t sys_write(int fd, void *buf, size_t count) {
-  if(fd == 1 || fd == 2) {
-    char *str = buf;
-    int i = 0;
-    for(;i< count; i++) _putc(*(str+i));
-  }
-  Log("call write\n");
-  return count;
+  
+  return fs_write(fd, buf, count);
 }
 uintptr_t sys_brk(void* address) {
   program_brk = (intptr_t)address;
