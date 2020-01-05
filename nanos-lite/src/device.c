@@ -18,6 +18,26 @@ static const char *keyname[256] __attribute__((used)) = {
 };
 
 size_t events_read(void *buf, size_t offset, size_t len) {
+  // int kc = read_key(), l;
+  
+  // if ((kc & 0xfff) == _KEY_NONE) {
+  //   uint32_t ut = uptime();
+  //   l = sprintf(buf, "t %d\n", ut);
+  // } else {
+  //   if (kc & 0x8000) {
+  //     l = sprintf(buf, "kd %s\n", keyname[kc & 0xfff]);
+  //     if ((kc & 0xfff) == _KEY_F1) {
+  //       fg_pcb = pcbs[1];
+        
+  //     } else if ((kc & 0xfff) == _KEY_F2) {
+        
+  //       fg_pcb = pcbs[2];
+  //     }
+  //   } else {
+  //     l = sprintf(buf, "ku %s\n", keyname[kc & 0xfff]);
+  //   }
+  // }
+  // return l;
   return 0;
 }
 
